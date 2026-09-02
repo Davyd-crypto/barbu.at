@@ -1,5 +1,462 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="de">
-<head><meta charset="utf-8"><title>Hello</title></head>
-<body><h1>Hello World</h1></body>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>HELLO WORLD // MATRIX_ERR</title>
+  <style>
+    :root {
+      --neon-pink: #ff007f;
+      --neon-cyan: #00f3ff;
+      --neon-lime: #00ff66;
+      --bg-dark: #07070c;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      user-select: none;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    body {
+      background-color: var(--bg-dark);
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Courier New', Courier, monospace;
+      overflow: hidden;
+      perspective: 1200px;
+      color: #fff;
+    }
+
+    /* Dynamischer Noise- & Grid-Hintergrund */
+    .grid-bg {
+      position: fixed;
+      inset: -50%;
+      width: 200%;
+      height: 200%;
+      background-image: 
+        linear-gradient(to right, rgba(0, 243, 255, 0.08) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(255, 0, 127, 0.08) 1px, transparent 1px);
+      background-size: 40px 40px;
+      transform: rotateX(60deg) translateZ(-200px);
+      animation: grid-scroll 12s linear infinite;
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    @keyframes grid-scroll {
+      0% { transform: rotateX(60deg) translateY(0); }
+      100% { transform: rotateX(60deg) translateY(40px); }
+    }
+
+    /* Partikel Canvas */
+    canvas#particles {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 2;
+    }
+
+    /* Floating Blobs */
+    .blob {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(80px);
+      opacity: 0.6;
+      pointer-events: none;
+      z-index: 1;
+      animation: pulse-drift 8s ease-in-out infinite alternate;
+    }
+    .blob-1 {
+      top: 10%;
+      left: 15%;
+      width: 280px;
+      height: 280px;
+      background: var(--neon-pink);
+    }
+    .blob-2 {
+      bottom: 10%;
+      right: 15%;
+      width: 320px;
+      height: 320px;
+      background: var(--neon-cyan);
+      animation-delay: -4s;
+    }
+
+    @keyframes pulse-drift {
+      0% { transform: scale(0.9) translate(0, 0); }
+      100% { transform: scale(1.2) translate(30px, -40px); }
+    }
+
+    /* 3D Glass Card Container */
+    .card-wrapper {
+      position: relative;
+      z-index: 10;
+      padding: 1rem;
+      width: 100%;
+      max-width: 520px;
+      transform-style: preserve-3d;
+      transition: transform 0.15s ease-out;
+    }
+
+    .card {
+      position: relative;
+      background: rgba(15, 15, 25, 0.65);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      border-radius: 24px;
+      padding: 2.5rem 1.75rem;
+      text-align: center;
+      box-shadow: 
+        0 20px 50px rgba(0, 0, 0, 0.8),
+        0 0 30px rgba(0, 243, 255, 0.2),
+        inset 0 0 20px rgba(255, 0, 127, 0.15);
+      overflow: hidden;
+    }
+
+    /* Scanner-Lichtstreifen */
+    .card::after {
+      content: '';
+      position: absolute;
+      top: -150%;
+      left: -50%;
+      width: 200%;
+      height: 60%;
+      background: linear-gradient(180deg, transparent, rgba(0, 243, 255, 0.15), transparent);
+      transform: rotate(-25deg);
+      animation: scan 6s linear infinite;
+      pointer-events: none;
+    }
+
+    @keyframes scan {
+      0% { top: -150%; }
+      100% { top: 200%; }
+    }
+
+    /* Badges & System Tags */
+    .system-tag {
+      font-size: 0.7rem;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--neon-lime);
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 4px 12px;
+      border: 1px solid var(--neon-lime);
+      border-radius: 50px;
+      margin-bottom: 1.5rem;
+    }
+    .pulse-dot {
+      width: 6px;
+      height: 6px;
+      background: var(--neon-lime);
+      border-radius: 50%;
+      animation: blink 1s infinite alternate;
+    }
+
+    @keyframes blink {
+      0% { opacity: 0.2; }
+      100% { opacity: 1; }
+    }
+
+    /* Glitch Typography */
+    .glitch-title {
+      font-size: clamp(2.4rem, 8vw, 4.2rem);
+      font-weight: 900;
+      letter-spacing: -2px;
+      text-transform: uppercase;
+      line-height: 1;
+      position: relative;
+      color: #fff;
+      text-shadow: 0 0 10px rgba(255,255,255,0.8);
+      margin-bottom: 1.5rem;
+    }
+
+    .glitch-title::before,
+    .glitch-title::after {
+      content: attr(data-text);
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      clip: rect(0, 0, 0, 0);
+    }
+
+    .glitch-title::before {
+      left: 2px;
+      text-shadow: -2px 0 var(--neon-pink);
+      animation: glitch-anim-1 3s infinite linear alternate-reverse;
+    }
+
+    .glitch-title::after {
+      left: -2px;
+      text-shadow: 2px 0 var(--neon-cyan);
+      animation: glitch-anim-2 2.5s infinite linear alternate-reverse;
+    }
+
+    @keyframes glitch-anim-1 {
+      0% { clip: rect(10px, 9999px, 30px, 0); }
+      20% { clip: rect(65px, 9999px, 85px, 0); }
+      40% { clip: rect(20px, 9999px, 50px, 0); }
+      60% { clip: rect(80px, 9999px, 95px, 0); }
+      80% { clip: rect(40px, 9999px, 60px, 0); }
+      100% { clip: rect(0, 9999px, 20px, 0); }
+    }
+
+    @keyframes glitch-anim-2 {
+      0% { clip: rect(50px, 9999px, 70px, 0); }
+      20% { clip: rect(15px, 9999px, 35px, 0); }
+      40% { clip: rect(75px, 9999px, 90px, 0); }
+      60% { clip: rect(30px, 9999px, 45px, 0); }
+      80% { clip: rect(90px, 9999px, 110px, 0); }
+      100% { clip: rect(5px, 9999px, 25px, 0); }
+    }
+
+    /* Subtext & Interactive Terminal */
+    .terminal-box {
+      background: rgba(0, 0, 0, 0.45);
+      border: 1px dashed rgba(255, 255, 255, 0.2);
+      border-radius: 12px;
+      padding: 0.9rem;
+      font-size: 0.8rem;
+      color: #aaa;
+      margin-bottom: 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    /* Neomorphism / Cyberpunk Button */
+    .crazy-btn {
+      appearance: none;
+      border: none;
+      background: linear-gradient(135deg, var(--neon-pink), var(--neon-cyan));
+      color: #000;
+      font-family: inherit;
+      font-size: 0.95rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      padding: 1rem 2rem;
+      border-radius: 14px;
+      cursor: pointer;
+      position: relative;
+      transition: all 0.2s ease;
+      box-shadow: 0 0 20px rgba(0, 243, 255, 0.4);
+      width: 100%;
+      overflow: hidden;
+    }
+
+    .crazy-btn:active {
+      transform: scale(0.96);
+      box-shadow: 0 0 35px rgba(255, 0, 127, 0.7);
+    }
+
+    /* Floating Deco Rings */
+    .ring {
+      position: absolute;
+      border: 1px dashed rgba(255, 255, 255, 0.15);
+      border-radius: 50%;
+      pointer-events: none;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+    .ring-1 { width: 380px; height: 380px; animation: spin 24s linear infinite; }
+    .ring-2 { width: 480px; height: 480px; animation: spin-rev 32s linear infinite; }
+
+    @keyframes spin {
+      100% { transform: translate(-50%, -50%) rotate(360deg); }
+    }
+    @keyframes spin-rev {
+      100% { transform: translate(-50%, -50%) rotate(-360deg); }
+    }
+
+    @media (max-width: 480px) {
+      .card {
+        padding: 2rem 1.25rem;
+      }
+      .ring-2 {
+        display: none;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="grid-bg"></div>
+  <canvas id="particles"></canvas>
+  <div class="blob blob-1"></div>
+  <div class="blob blob-2"></div>
+
+  <div class="ring ring-1"></div>
+  <div class="ring ring-2"></div>
+
+  <div class="card-wrapper" id="cardWrapper">
+    <div class="card">
+      <div class="system-tag">
+        <span class="pulse-dot"></span>
+        <span>SYS_INIT // LIVE</span>
+      </div>
+
+      <h1 class="glitch-title" data-text="HELLO WORLD">HELLO WORLD</h1>
+
+      <div class="terminal-box">
+        <span>&gt; ENTITY: VISITOR</span>
+        <span id="coords">X: 00 | Y: 00</span>
+      </div>
+
+      <button class="crazy-btn" id="warpBtn">INITIATE OVERLOAD</button>
+    </div>
+  </div>
+
+  <script>
+    const wrapper = document.getElementById('cardWrapper');
+    const coords = document.getElementById('coords');
+    const warpBtn = document.getElementById('warpBtn');
+    const canvas = document.getElementById('particles');
+    const ctx = canvas.getContext('2d');
+
+    // Canvas Resize
+    let width, height;
+    function resizeCanvas() {
+      width = canvas.width = window.innerWidth;
+      height = canvas.height = window.innerHeight;
+    }
+    window.addEventListener('resize', resizeCanvas);
+    resizeCanvas();
+
+    // 3D Parallax Tilt Effect
+    function handleMove(x, y) {
+      const cx = window.innerWidth / 2;
+      const cy = window.innerHeight / 2;
+      const dx = (x - cx) / cx;
+      const dy = (y - cy) / cy;
+
+      wrapper.style.transform = `rotateY(${dx * 14}deg) rotateX(${-dy * 14}deg)`;
+      coords.innerText = `X: ${Math.round(x)} | Y: ${Math.round(y)}`;
+
+      addParticle(x, y);
+    }
+
+    window.addEventListener('mousemove', (e) => handleMove(e.clientX, e.clientY));
+    window.addEventListener('touchmove', (e) => {
+      if (e.touches.length > 0) {
+        handleMove(e.touches[0].clientX, e.touches[0].clientY);
+      }
+    }, { passive: true });
+
+    // Gyroskop-Support für mobile Geräte (falls freigegeben)
+    if (window.DeviceOrientationEvent) {
+      window.addEventListener('deviceorientation', (e) => {
+        if (!e.gamma || !e.beta) return;
+        const tiltX = Math.min(Math.max(e.gamma, -30), 30);
+        const tiltY = Math.min(Math.max(e.beta - 45, -30), 30);
+        wrapper.style.transform = `rotateY(${tiltX * 0.6}deg) rotateX(${-tiltY * 0.6}deg)`;
+      });
+    }
+
+    // Partikelsystem
+    const particles = [];
+    function addParticle(x, y) {
+      particles.push({
+        x: x,
+        y: y,
+        vx: (Math.random() - 0.5) * 4,
+        vy: (Math.random() - 0.5) * 4,
+        size: Math.random() * 4 + 2,
+        life: 1,
+        color: Math.random() > 0.5 ? '#00f3ff' : '#ff007f'
+      });
+      if (particles.length > 60) particles.shift();
+    }
+
+    function renderParticles() {
+      ctx.clearRect(0, 0, width, height);
+      for (let i = 0; i < particles.length; i++) {
+        const p = particles[i];
+        p.x += p.vx;
+        p.y += p.vy;
+        p.life -= 0.02;
+
+        ctx.fillStyle = p.color;
+        ctx.globalAlpha = Math.max(p.life, 0);
+        ctx.shadowBlur = 10;
+        ctx.shadowColor = p.color;
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
+        ctx.fill();
+
+        if (p.life <= 0) {
+          particles.splice(i, 1);
+          i--;
+        }
+      }
+      requestAnimationFrame(renderParticles);
+    }
+    renderParticles();
+
+    // Synthesizer Audio-Feedback ohne externe Assets
+    const AudioCtx = window.AudioContext || window.webkitAudioContext;
+    let audioCtx = null;
+
+    function playTone(freq, duration) {
+      if (!audioCtx) audioCtx = new AudioCtx();
+      const osc = audioCtx.createOscillator();
+      const gain = audioCtx.createGain();
+      osc.type = 'sawtooth';
+      osc.frequency.setValueAtTime(freq, audioCtx.currentTime);
+      osc.frequency.exponentialRampToValueAtTime(40, audioCtx.currentTime + duration);
+      gain.gain.setValueAtTime(0.3, audioCtx.currentTime);
+      gain.gain.linearRampToValueAtTime(0.01, audioCtx.currentTime + duration);
+      osc.connect(gain);
+      gain.connect(audioCtx.destination);
+      osc.start();
+      osc.stop(audioCtx.currentTime + duration);
+    }
+
+    // Shockwave Overload Effekt
+    warpBtn.addEventListener('click', () => {
+      playTone(520, 0.4);
+
+      // Partikel-Explosion
+      const rect = warpBtn.getBoundingClientRect();
+      const originX = rect.left + rect.width / 2;
+      const originY = rect.top + rect.height / 2;
+
+      for (let i = 0; i < 40; i++) {
+        const angle = Math.random() * Math.PI * 2;
+        const speed = Math.random() * 8 + 2;
+        particles.push({
+          x: originX,
+          y: originY,
+          vx: Math.cos(angle) * speed,
+          vy: Math.sin(angle) * speed,
+          size: Math.random() * 5 + 3,
+          life: 1.2,
+          color: '#00ff66'
+        });
+      }
+
+      // Card Glitch Pulse
+      wrapper.style.transform = 'scale(0.92) rotateY(15deg)';
+      setTimeout(() => {
+        wrapper.style.transform = 'scale(1.05) rotateY(-10deg)';
+      }, 100);
+      setTimeout(() => {
+        wrapper.style.transform = '';
+      }, 250);
+    });
+  </script>
+</body>
 </html>

@@ -1,874 +1,477 @@
-<!DOCTYPE html>
-<html lang="en">
+<!doctype html>
+<html lang="en" data-chapter="ink" data-route="home">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>David Barbu</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet">
-  <style>
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
-
-    /* Scrollable document setup for any screen height */
-    html {
-      background: #ffffff;
-      min-height: 100%;
-    }
-
-    body {
-      background: #ffffff;
-      color: #000000;
-      font-family: "VT323", monospace;
-      min-height: 100vh;
-      min-height: 100dvh;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      padding: clamp(1.5rem, 4vw, 3.5rem);
-      image-rendering: pixelated;
-      overflow-x: hidden;
-      overflow-y: auto;
-      position: relative;
-    }
-
-    .top-bar {
-      font-size: clamp(1.2rem, 1.6vw, 1.5rem);
-      letter-spacing: 0.1em;
-      opacity: 0.55;
-    }
-
-    /* Balanced layout with avatar shifted inward towards center */
-    .content-container {
-      margin: 2.5rem 0;
-      display: grid;
-      grid-template-columns: 1.15fr 0.85fr;
-      align-items: center;
-      justify-items: center;
-      gap: clamp(2rem, 4vw, 4.5rem);
-      position: relative;
-      width: 100%;
-    }
-
-    main {
-      width: 100%;
-    }
-
-    .prompt {
-      font-size: clamp(1.4rem, 2vw, 2rem);
-      opacity: 0.45;
-      margin-bottom: 0.4rem;
-      letter-spacing: 0.05em;
-    }
-
-    h1 {
-      font-size: clamp(4rem, 9.5vw, 9.5rem);
-      font-weight: 400;
-      line-height: 0.88;
-      letter-spacing: 0.02em;
-      text-transform: uppercase;
-      margin-bottom: 1rem;
-    }
-
-    .subtitle {
-      font-size: clamp(1.6rem, 2.6vw, 2.6rem);
-      line-height: 1.18;
-      max-width: 28ch;
-      margin-bottom: 1.5rem;
-    }
-
-    .cursor {
-      display: inline-block;
-      width: 0.6em;
-      height: 0.9em;
-      background: #000000;
-      vertical-align: -0.05em;
-      animation: blink 1s step-start infinite;
-    }
-
-    @keyframes blink {
-      50% { opacity: 0; }
-    }
-
-    /* Tilted, floating daemon avatar */
-    .avatar-wrapper {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 1rem;
-      user-select: none;
-      cursor: pointer;
-      flex-shrink: 0;
-      animation: floatTilted 3.8s ease-in-out infinite;
-      transform-origin: center center;
-    }
-
-    @keyframes floatTilted {
-      0%, 100% {
-        transform: rotate(-4deg) translateY(0px) scale(1);
-      }
-      50% {
-        transform: rotate(-2.5deg) translateY(-16px) scale(1.02);
-      }
-    }
-
-    .avatar-wrapper.bobbing {
-      animation: bounceTilted 0.45s cubic-bezier(0.28, 0.84, 0.42, 1) 2;
-    }
-
-    .avatar-wrapper.shiver {
-      animation: glitchTilted 0.22s steps(2, start) 3;
-    }
-
-    @keyframes bounceTilted {
-      0%, 100% { transform: rotate(-4deg) translateY(0) scale(1); }
-      40% { transform: rotate(-5deg) translateY(-22px) scale(0.96, 1.06); }
-      70% { transform: rotate(-3deg) translateY(4px) scale(1.04, 0.94); }
-    }
-
-    @keyframes glitchTilted {
-      0% { transform: rotate(-4deg) translate(-4px, 3px); }
-      25% { transform: rotate(-2deg) translate(4px, -3px); }
-      50% { transform: rotate(-5deg) translate(-3px, -4px); }
-      75% { transform: rotate(-3deg) translate(3px, 4px); }
-      100% { transform: rotate(-4deg) translate(0, 0); }
-    }
-
-    .avatar-box {
-      border: 4px solid #000000;
-      background: #ffffff;
-      padding: clamp(1.8rem, 3.2vw, 2.8rem);
-      box-shadow: 10px 10px 0px #000000;
-      position: relative;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      transition: transform 0.15s ease, box-shadow 0.15s ease;
-    }
-
-    .avatar-wrapper:hover .avatar-box {
-      transform: translate(-3px, -3px);
-      box-shadow: 13px 13px 0px #000000;
-    }
-
-    .avatar-wrapper:active .avatar-box {
-      transform: translate(4px, 4px);
-      box-shadow: 5px 5px 0px #000000;
-    }
-
-    .avatar-box::before {
-      content: "[DAEMON]";
-      position: absolute;
-      top: -15px;
-      left: 16px;
-      background: #ffffff;
-      padding: 0 8px;
-      font-size: 1.2rem;
-      letter-spacing: 0.1em;
-    }
-
-    .pixel-face-canvas {
-      width: clamp(180px, 22vw, 260px);
-      height: clamp(180px, 22vw, 260px);
-      image-rendering: pixelated;
-      image-rendering: crisp-edges;
-      display: block;
-    }
-
-    .avatar-status {
-      font-size: clamp(1.2rem, 1.6vw, 1.5rem);
-      letter-spacing: 0.08em;
-      opacity: 0.65;
-    }
-
-    footer {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      flex-wrap: wrap;
-      gap: 1.5rem;
-      font-size: clamp(1.3rem, 1.8vw, 1.8rem);
-      border-top: 3px solid #000000;
-      padding-top: 1.5rem;
-      letter-spacing: 0.08em;
-    }
-
-    .links {
-      display: flex;
-      gap: 2rem;
-      flex-wrap: wrap;
-    }
-
-    a {
-      color: #000000;
-      text-decoration: none;
-      border-bottom: 2px solid transparent;
-      text-transform: uppercase;
-    }
-
-    a:hover {
-      border-bottom: 2px solid #000000;
-    }
-
-    /* Touch & Desktop Interactive Exit Button */
-    .exit-btn {
-      font-family: inherit;
-      font-size: inherit;
-      background: transparent;
-      color: #000000;
-      border: 2px solid #000000;
-      padding: 4px 12px;
-      cursor: pointer;
-      user-select: none;
-      opacity: 0.75;
-      display: inline-flex;
-      align-items: center;
-      gap: 0.5rem;
-      transition: all 0.1s ease;
-      -webkit-tap-highlight-color: transparent;
-    }
-
-    .exit-btn:hover {
-      opacity: 1;
-      background: #000000;
-      color: #ffffff;
-    }
-
-    .exit-btn:active {
-      transform: translate(2px, 2px);
-    }
-
-    /* CRT Power-Off Animation */
-    body.shutting-down {
-      animation: crtTurnOff 0.75s cubic-bezier(0.23, 1, 0.32, 1) forwards;
-      pointer-events: none;
-    }
-
-    @keyframes crtTurnOff {
-      0% { transform: scale(1, 1); filter: brightness(1); opacity: 1; }
-      35% { transform: scale(1, 0.005); filter: brightness(2) contrast(2); opacity: 1; }
-      70% { transform: scale(0.12, 0.005); filter: brightness(3); opacity: 0.9; }
-      100% { transform: scale(0, 0); filter: brightness(0); opacity: 0; }
-    }
-
-    /* CRT Power-On Animation */
-    body.powering-on {
-      animation: crtTurnOn 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-      pointer-events: none;
-    }
-
-    @keyframes crtTurnOn {
-      0% { transform: scale(0, 0); filter: brightness(3) contrast(2); opacity: 0; }
-      30% { transform: scale(0.15, 0.005); filter: brightness(3) contrast(2); opacity: 1; }
-      60% { transform: scale(1, 0.005); filter: brightness(2); opacity: 1; }
-      80% { transform: scale(1, 1.05); filter: brightness(1.4); opacity: 1; }
-      100% { transform: scale(1, 1); filter: brightness(1); opacity: 1; }
-    }
-
-    /* Blackout / SIGINT screen */
-    .terminal-killed {
-      position: fixed;
-      inset: 0;
-      background: #000000;
-      color: #ffffff;
-      display: none;
-      align-items: center;
-      justify-content: center;
-      flex-direction: column;
-      gap: 0.75rem;
-      padding: 1.5rem;
-      text-align: center;
-      font-size: clamp(1.3rem, 2.5vw, 2.5rem);
-      letter-spacing: 0.08em;
-      z-index: 9999;
-      user-select: none;
-      cursor: pointer;
-      -webkit-tap-highlight-color: transparent;
-    }
-
-    .terminal-killed.active {
-      display: flex;
-    }
-
-    .terminal-killed span {
-      opacity: 0.5;
-      font-size: clamp(1rem, 1.5vw, 1.3rem);
-    }
-
-    /* Responsive adjustments for phones */
-    @media (max-width: 860px) {
-      body {
-        padding: 1.5rem;
-      }
-
-      .content-container {
-        grid-template-columns: 1fr;
-        justify-items: center;
-        gap: 2.5rem;
-        margin: 2rem 0;
-      }
-
-      .avatar-wrapper {
-        order: 2;
-      }
-
-      main {
-        order: 1;
-      }
-
-      footer {
-        flex-direction: column-reverse;
-        align-items: flex-start;
-        gap: 1.25rem;
-        margin-top: 1rem;
-      }
-
-      .exit-btn {
-        width: 100%;
-        justify-content: center;
-        padding: 8px 16px;
-      }
-    }
-  </style>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>HoldTheCameraa — film direction, videography, photography</title>
+<meta name="description" content="HoldTheCameraa. Film direction, videography and photography out of Dorohoi. Six films, 2023 to 2026. Commissions open.">
+<meta name="theme-color" content="#0C0C0D">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500&family=Archivo+Black&family=Caveat:wght@400;600&family=Permanent+Marker&family=Space+Mono:wght@400;700&display=swap">
+<link rel="stylesheet" href="styles.css">
 </head>
 <body>
 
-  <header class="top-bar">
-    [TTY1] // 200_OK // ROOT_SESSION
-  </header>
+<!-- =========================================================================
+     4. TEXTURE FILTERS. All inline, no libraries, fragment-only refs so they
+     work from file:// as well as http://
+     ========================================================================= -->
+<svg class="defs" aria-hidden="true" focusable="false" width="0" height="0">
+  <defs>
+    <!-- 4.3 xerox: posterise after the CSS grayscale/contrast pass -->
+    <filter id="f-xerox" color-interpolation-filters="sRGB">
+      <feComponentTransfer>
+        <feFuncR type="discrete" tableValues="0 .14 .3 .46 .62 .8 1"/>
+        <feFuncG type="discrete" tableValues="0 .14 .3 .46 .62 .8 1"/>
+        <feFuncB type="discrete" tableValues="0 .14 .3 .46 .62 .8 1"/>
+      </feComponentTransfer>
+    </filter>
 
-  <div class="content-container">
-    <main>
-      <div class="prompt">guest@db:~# whoami</div>
-      <h1>David Barbu</h1>
-      <p class="subtitle">
-        Frontend-heavy Engineer with full-stack instincts & years of shipping production code.<span class="cursor"></span>
-      </p>
-    </main>
+    <!-- 4.4 torn edge: turbulence displacing the source, used on scraps -->
+    <filter id="f-torn" x="-6%" y="-6%" width="112%" height="112%" color-interpolation-filters="sRGB">
+      <feTurbulence type="fractalNoise" baseFrequency="0.014 0.09" numOctaves="4" seed="7" result="n"/>
+      <feDisplacementMap in="SourceGraphic" in2="n" scale="13" xChannelSelector="R" yChannelSelector="G"/>
+    </filter>
 
-    <div class="avatar-wrapper" id="avatar-container" title="Tap or interact">
-      <div class="avatar-box">
-        <canvas class="pixel-face-canvas" id="faceCanvas" width="16" height="16"></canvas>
+    <!-- 4.4 deckle: the same trick, softer, for the postcard front -->
+    <filter id="f-deckle" x="-4%" y="-4%" width="108%" height="108%" color-interpolation-filters="sRGB">
+      <feTurbulence type="fractalNoise" baseFrequency="0.03 0.11" numOctaves="3" seed="19" result="n"/>
+      <feDisplacementMap in="SourceGraphic" in2="n" scale="6" xChannelSelector="R" yChannelSelector="G"/>
+    </filter>
+
+    <!-- 4.4 tape: a rougher tear for the two tape strips -->
+    <filter id="f-tape" x="-10%" y="-30%" width="120%" height="160%" color-interpolation-filters="sRGB">
+      <feTurbulence type="fractalNoise" baseFrequency="0.06 0.22" numOctaves="2" seed="3" result="n"/>
+      <feDisplacementMap in="SourceGraphic" in2="n" scale="7" xChannelSelector="R" yChannelSelector="G"/>
+    </filter>
+  </defs>
+</svg>
+
+<!-- 6.1 BOOT SEQUENCE. once per session -->
+<div class="boot" id="boot" role="presentation">
+  <span class="boot__count" id="boot-count">000</span>
+  <svg class="boot__leader" viewBox="0 0 200 200" aria-hidden="true">
+    <circle cx="100" cy="100" r="86" pathLength="1"/>
+    <circle cx="100" cy="100" r="62" pathLength="1"/>
+    <circle cx="100" cy="100" r="38" pathLength="1"/>
+    <line x1="100" y1="4" x2="100" y2="196" pathLength="1"/>
+    <line x1="4" y1="100" x2="196" y2="100" pathLength="1"/>
+  </svg>
+  <span class="boot__dot" id="boot-dot"></span>
+</div>
+
+<!-- 7.11 ROUTE CURTAIN -->
+<div class="curtain" id="curtain" aria-hidden="true">
+  <div class="curtain__panel" id="curtain-panel"></div>
+  <span class="curtain__tc" id="curtain-tc">00:00:00:00</span>
+</div>
+
+<!-- 4.1 GRAIN. three pre-rendered turbulence frames, swapped on a .5s cycle -->
+<div class="grain" aria-hidden="true"><i class="grain__f grain__f--1"></i><i class="grain__f grain__f--2"></i><i class="grain__f grain__f--3"></i></div>
+
+<!-- 7.2 CURSOR. one object: 44px exclusion circle on the hero, 8px difference
+     dot with a mono label everywhere else -->
+<div class="cursor" id="cursor" aria-hidden="true">
+  <span class="cursor__ring" id="cursor-ring"></span>
+  <span class="cursor__label" id="cursor-label"></span>
+</div>
+
+<!-- 7.12 SCROLL READOUT -->
+<div class="readout" aria-hidden="true">
+  <span class="readout__tc" id="readout-tc">00:00:00:00</span>
+  <i class="readout__rail"><b id="readout-bar"></b></i>
+</div>
+
+<!-- 6.5 THREAD LAYER. paths are generated in JS, coordinates are CSS pixels -->
+<svg class="threads" id="threads" aria-hidden="true" focusable="false"></svg>
+<div class="thumbs" id="thumbs" aria-hidden="true"></div>
+
+<!-- 6.2 MASTHEAD -->
+<header class="mast" id="mast">
+  <a class="mark" href="#/" data-cursor="HOME" aria-label="HoldTheCameraa, home"><span class="mark__x">H</span>oldTheCameraa</a>
+  <nav class="nav" aria-label="Primary">
+    <a href="#/" data-nav="home" data-cursor="VIEW">Films</a>
+    <a href="#/stills" data-nav="stills" data-cursor="VIEW">Stills</a>
+    <a href="#/about" data-nav="about" data-cursor="VIEW">About</a>
+    <a href="#/contact" data-nav="contact" data-cursor="VIEW">Contact</a>
+  </nav>
+</header>
+
+<main id="view" class="view" tabindex="-1"></main>
+
+<!-- 6.11 FOOTER -->
+<footer class="foot" id="foot">
+  <div class="foot__clip"><span class="foot__mark" id="foot-mark">HoldTheCameraa</span></div>
+  <div class="foot__band">
+    <span>HoldTheCameraa</span>
+    <span class="foot__mid">[2019&ndash;2026] &nbsp; Dorohoi, RO</span>
+    <button class="sound" id="sound" type="button" aria-pressed="false" data-cursor="TONE">
+      <i class="sound__led" aria-hidden="true"></i><span>room tone</span>
+    </button>
+  </div>
+</footer>
+
+<!-- =========================================================================
+     VIEW TEMPLATES. Static chrome lives here, data-driven lists are filled by
+     main.js at [data-mount]. Hash routes: #/ · #/work/:slug · #/stills ·
+     #/about · #/contact. A trailing !anchor (#/!prints) deep links a chapter.
+     ========================================================================= -->
+
+<template id="t-home">
+<article data-view="home">
+
+  <!-- 6.3 HERO -->
+  <section class="hero" id="hero" aria-label="Featured film">
+    <a class="hero__plate" href="#/work/pe-drum" data-cursor="PLAY" data-hero-plate
+       aria-label="Open Pe Drum, Nord Tapes, 2026">
+      <!-- swap: /assets/work/pe-drum.jpg -->
+      <img class="hero__img" src="https://picsum.photos/seed/pe-drum-hero/1600/900"
+           alt="a van stopped on the shoulder of a night road, headlights lit, rain in the beam" decoding="async">
+      <span class="hero__grade" aria-hidden="true"></span>
+    </a>
+    <p class="hero__sub" id="hero-sub"></p>
+    <div class="hero__slate" aria-hidden="true">
+      <span>reel 2026</span>
+      <span class="hero__slate-r">pe drum &nbsp;/&nbsp; nord tapes</span>
+    </div>
+    <span class="hero__hint" aria-hidden="true">scroll</span>
+  </section>
+
+  <!-- 6.4 CREDITS LEDGER -->
+  <section class="ledger" id="credits" aria-labelledby="credits-h">
+    <div class="ledger__lede">
+      <h1>this is dorohoi. the light is bad. we shoot anyway. &mdash; holdthecameraa</h1>
+      <p class="ledger__note">film direction, videography and photography. commissions open for 2026.</p>
+    </div>
+    <div class="ledger__body">
+      <h2 class="lbl" id="credits-h">credits &nbsp;&mdash;&nbsp; pe drum</h2>
+      <dl class="ledger__rows" data-mount="ledger"></dl>
+    </div>
+  </section>
+
+  <!-- 6.5 WORK INDEX. paper chapter, ref 8 dust field, ref 12 threads -->
+  <section class="widx" id="index" data-ground="paper" aria-labelledby="widx-h">
+    <span class="widx__dust" aria-hidden="true"></span>
+    <div class="widx__head">
+      <h2 class="marker" id="widx-h">index</h2>
+      <p class="lbl">six films &nbsp;/&nbsp; 2023&ndash;2026 &nbsp;/&nbsp; hover a title to pull a frame</p>
+    </div>
+    <ol class="widx__list" data-mount="widx"></ol>
+    <p class="widx__foot lbl">everything below the line is unreleased. ask.</p>
+  </section>
+
+  <!-- 6.8 COLLAGE CHAPTER. blood ground, physical scraps -->
+  <section class="collage" id="notebook" data-ground="blood" aria-labelledby="collage-h">
+    <div class="collage__stage" data-tilt>
+      <h2 class="marker collage__title" id="collage-h" data-depth="0.2">notebook</h2>
+
+      <div class="scrap scrap--paper-a" data-depth="1.1">
+        <div class="scrap__grid" aria-hidden="true"></div>
+        <p class="hand" data-collage="0"></p>
       </div>
-      <div class="avatar-status" id="avatar-status">&gt; idle</div>
+
+      <div class="scrap scrap--paper-b" data-depth="1.7">
+        <div class="scrap__grid" aria-hidden="true"></div>
+        <p class="hand" data-collage="1"></p>
+        <p class="hand hand--u" data-collage="2"></p>
+      </div>
+
+      <figure class="scrap scrap--polaroid" data-depth="2.3">
+        <!-- swap: /assets/notebook/polaroid.jpg -->
+        <img src="https://picsum.photos/seed/htc-polaroid/900/900" alt="a hand held up against a window, overexposed" decoding="async">
+        <figcaption class="hand">roll 03</figcaption>
+      </figure>
+
+      <div class="scrap scrap--strip" data-depth="2.9" aria-hidden="true">
+        <span class="strip__perf"></span>
+        <!-- swap: /assets/notebook/frame-01.jpg -->
+        <img src="https://picsum.photos/seed/htc-strip-1/400/300" alt="" decoding="async">
+        <!-- swap: /assets/notebook/frame-02.jpg -->
+        <img src="https://picsum.photos/seed/htc-strip-2/400/300" alt="" decoding="async">
+        <!-- swap: /assets/notebook/frame-03.jpg -->
+        <img src="https://picsum.photos/seed/htc-strip-3/400/300" alt="" decoding="async">
+        <!-- swap: /assets/notebook/frame-04.jpg -->
+        <img src="https://picsum.photos/seed/htc-strip-4/400/300" alt="" decoding="async">
+        <span class="strip__perf"></span>
+      </div>
+
+      <span class="tape tape--a" data-depth="2.6" aria-hidden="true"></span>
+      <span class="tape tape--b" data-depth="3.1" aria-hidden="true"></span>
+
+      <svg class="clip clip--collage" data-depth="3.4" viewBox="0 0 60 130" aria-hidden="true">
+        <path d="M30 122 C12 122 8 108 8 92 L8 34 C8 16 20 6 32 6 C44 6 52 16 52 30 L52 96"
+              fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round"/>
+        <path d="M30 112 C18 112 16 102 16 90 L16 36 C16 24 24 16 32 16 C40 16 44 24 44 34 L44 96"
+              fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round"/>
+      </svg>
+    </div>
+  </section>
+
+  <!-- 6.6 STILLS GRID -->
+  <section class="grid" id="stills" aria-labelledby="grid-h">
+    <div class="grid__head">
+      <h2 class="lbl" id="grid-h">stills &nbsp;/&nbsp; selected frames</h2>
+      <a class="lnk" href="#/stills" data-cursor="VIEW">all photography</a>
+    </div>
+    <div class="grid__cols">
+      <div class="grid__col" data-par="-0.06" data-mount="grid-0"></div>
+      <div class="grid__col" data-par="-0.02" data-mount="grid-1"></div>
+      <div class="grid__col" data-par="-0.10" data-mount="grid-2"></div>
+    </div>
+  </section>
+
+  <!-- 7.13 VELOCITY MARQUEE -->
+  <div class="mq" aria-hidden="true"><div class="mq__track" id="mq-track"></div></div>
+
+  <!-- 6.7 PRINT STACK -->
+  <section class="prints" id="prints" aria-labelledby="prints-h">
+    <div class="prints__head">
+      <h2 class="lbl" id="prints-h">contact sheet</h2>
+      <p class="lbl prints__hint"><span class="d-wide">drag them. arrow keys work too.</span><span class="d-narrow">swipe the sheet.</span></p>
+    </div>
+    <div class="prints__stage" data-mount="prints">
+      <svg class="clip clip--binder" viewBox="0 0 120 90" aria-hidden="true">
+        <path d="M18 46 C6 40 6 22 22 16" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>
+        <path d="M102 46 C114 40 114 22 98 16" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>
+        <path d="M14 40 L60 8 L106 40 Z" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linejoin="round"/>
+        <rect x="16" y="38" width="88" height="42" rx="2" fill="currentColor"/>
+      </svg>
+      <svg class="clip clip--pin-a" viewBox="0 0 60 130" aria-hidden="true">
+        <path d="M30 122 C12 122 8 108 8 92 L8 34 C8 16 20 6 32 6 C44 6 52 16 52 30 L52 96"
+              fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round"/>
+        <path d="M30 112 C18 112 16 102 16 90 L16 36 C16 24 24 16 32 16 C40 16 44 24 44 34 L44 96"
+              fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round"/>
+      </svg>
+      <svg class="clip clip--pin-b" viewBox="0 0 60 130" aria-hidden="true">
+        <path d="M30 122 C12 122 8 108 8 92 L8 34 C8 16 20 6 32 6 C44 6 52 16 52 30 L52 96"
+              fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round"/>
+        <path d="M30 112 C18 112 16 102 16 90 L16 36 C16 24 24 16 32 16 C40 16 44 24 44 34 L44 96"
+              fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round"/>
+      </svg>
+    </div>
+  </section>
+
+</article>
+</template>
+
+<!-- 5. CASE STUDY  #/work/:slug -->
+<template id="t-work">
+<article data-view="work">
+  <section class="case__hero">
+    <div class="case__plate">
+      <!-- swap: /assets/work/<slug>.jpg -->
+      <img data-case-hero src="" alt="" decoding="async">
+      <span class="hero__grade" aria-hidden="true"></span>
+    </div>
+    <div class="case__head">
+      <p class="lbl" data-case-kicker></p>
+      <h1 class="case__title" data-case-title></h1>
+      <p class="case__logline" data-case-logline></p>
+    </div>
+  </section>
+
+  <section class="ledger ledger--case" aria-labelledby="case-credits-h">
+    <div class="ledger__lede">
+      <p class="lbl" data-case-format></p>
+      <p class="ledger__note" data-case-role></p>
+    </div>
+    <div class="ledger__body">
+      <h2 class="lbl" id="case-credits-h">credits</h2>
+      <dl class="ledger__rows" data-mount="ledger"></dl>
+    </div>
+  </section>
+
+  <section class="plates" aria-label="Stills from this film">
+    <div class="plates__grid" data-mount="plates"></div>
+  </section>
+
+  <nav class="nextp" aria-label="Next film">
+    <a class="nextp__a" data-mount="next" href="#/" data-cursor="PLAY"></a>
+  </nav>
+</article>
+</template>
+
+<!-- 5. PHOTOGRAPHY  #/stills -->
+<template id="t-stills">
+<article data-view="stills">
+  <header class="phead">
+    <h1 class="phead__h">PHOTOGRAPHY</h1>
+    <p class="phead__note">twenty four frames that never made a cut. shot between jobs, mostly within an hour of dorohoi.</p>
+    <div class="chips" role="group" aria-label="Filter by year" data-mount="chips"></div>
+  </header>
+  <div class="masonry" data-mount="masonry"></div>
+</article>
+</template>
+
+<!-- 5. DOSSIER  #/about -->
+<template id="t-about">
+<article data-view="about">
+
+  <div class="ab">
+    <!-- 6.9 left: xerox portrait, ref 9 -->
+    <div class="ab__xerox">
+      <div class="xerox">
+        <span class="xerox__strip xerox__strip--l" aria-hidden="true">
+          <!-- swap: /assets/about/portrait.jpg -->
+          <img src="https://picsum.photos/seed/htc-portrait/900/1100" alt="" decoding="async">
+        </span>
+        <span class="xerox__strip xerox__strip--c">
+          <!-- swap: /assets/about/portrait.jpg -->
+          <img src="https://picsum.photos/seed/htc-portrait/900/1100" alt="photocopied identity photograph of the artist, high contrast, facing the camera" decoding="async">
+        </span>
+        <span class="xerox__strip xerox__strip--r" aria-hidden="true">
+          <!-- swap: /assets/about/portrait.jpg -->
+          <img src="https://picsum.photos/seed/htc-portrait/900/1100" alt="" decoding="async">
+        </span>
+        <div class="xerox__notes" data-mount="notes" aria-hidden="true"></div>
+      </div>
+      <p class="striplabel" data-about-name></p>
+      <p class="striplabel__sub" data-about-strip></p>
+      <svg class="sig" viewBox="0 0 260 70" aria-hidden="true">
+        <path d="M8 52 C26 20 38 16 42 34 C46 52 34 62 30 50 C26 38 44 22 62 30 C78 37 70 56 82 54 C96 52 96 28 110 24 C124 20 118 44 130 46 C144 48 148 22 162 22 C176 22 168 48 182 50 C198 52 206 30 222 26 C238 22 246 34 252 44"
+              fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" pathLength="1"/>
+      </svg>
+      <p class="hand sig__time" data-about-sig></p>
+    </div>
+
+    <!-- 6.9 right: marker heading + body, ref 3 -->
+    <div class="ab__text">
+      <h1 class="marker">dossier<span class="u-sr"> — HoldTheCameraa, visual artist, Dorohoi</span></h1>
+      <div class="ab__body" data-mount="about-body"></div>
+      <dl class="ab__facts">
+        <dt class="lbl">based</dt><dd>Dorohoi, Botosani county, RO</dd>
+        <dt class="lbl">works in</dt><dd>music video, short film, brand film, photography</dd>
+        <dt class="lbl">does</dt><dd>direction, camera, edit, grade</dd>
+        <dt class="lbl">since</dt><dd>2019</dd>
+      </dl>
     </div>
   </div>
 
-  <footer>
-    <nav class="links">
-      <a href="mailto:dbarbu03@gmail.com">email</a>
-      <a href="https://github.com/Davyd-crypto" target="_blank" rel="noreferrer">github</a>
-      <a href="https://www.linkedin.com/in/david-barbu-7a84ab264/" target="_blank" rel="noreferrer">linkedin</a>
-    </nav>
-    <button class="exit-btn" id="exit-btn" aria-label="Terminate session">[EXIT / ^C]</button>
-  </footer>
+  <div class="ab ab--two">
+    <!-- one continuous line portrait, drawn by scroll scrub, ref 3 -->
+    <div class="ab__line">
+      <svg class="oneline" viewBox="0 0 640 800" aria-hidden="true" focusable="false">
+        <path id="oneline-path" pathLength="1" fill="none" stroke="currentColor" stroke-width="2.2"
+              stroke-linecap="round" stroke-linejoin="round"
+              d="M300 500 C220 495 165 430 155 350 C148 292 150 240 170 200 C186 152 210 128 236 122
+                 C250 112 258 138 274 130 C288 122 292 140 308 132 C324 124 330 142 348 136
+                 C372 128 392 142 408 164 C422 184 430 190 434 202 C452 252 448 320 438 372
+                 C425 440 372 498 300 500 C286 492 272 486 262 478 C284 470 320 470 344 480
+                 C332 460 318 440 312 420 C302 404 292 396 296 386 C272 372 248 360 226 352
+                 C208 342 204 320 222 314 C244 308 264 322 258 336 C253 348 236 350 226 352
+                 C252 330 282 316 312 314 C342 312 372 316 388 328 C400 338 394 354 376 352
+                 C356 350 344 336 352 326 C361 316 378 318 388 328 C412 330 430 332 436 346
+                 C440 402 428 450 398 480 C380 504 352 514 346 540 C352 566 392 580 452 604
+                 C512 628 546 660 552 800 L88 800 C82 662 118 626 178 602 C238 578 282 566 288 540
+                 C292 526 296 512 300 500"/>
+      </svg>
+      <p class="lbl ab__linecap">one line, no lift. drawn as you scroll.</p>
+    </div>
 
-  <div class="terminal-killed" id="killed-screen">
-    <div>[PROCESS TERMINATED: SIGINT (exit code 130)]</div>
-    <span>TAP ANYWHERE OR PRESS ANY KEY TO RECONNECT</span>
+    <div class="ab__contents">
+      <h2 class="ab__ch">contents</h2>
+      <ol class="contents" data-mount="contents"></ol>
+    </div>
   </div>
 
-  <script>
-    /* Shutdown & Reconnect logic */
-    let isTerminating = false;
-    const killedScreen = document.getElementById('killed-screen');
+</article>
+</template>
 
-    function triggerShutdown() {
-      if (isTerminating) return;
-      isTerminating = true;
+<!-- 5. POSTCARD  #/contact -->
+<template id="t-contact">
+<article data-view="contact" data-ground="brick">
+  <div class="plate">
+    <div class="plate__top">
+      <h1 class="plate__h">CONTACTS</h1>
+      <nav class="plate__nav" aria-label="Secondary">
+        <a href="#/" data-cursor="VIEW">WORKS</a>
+        <a href="#/about" data-cursor="VIEW">ABOUT ME</a>
+      </nav>
+    </div>
 
-      setFaceState('dead', 'killed');
-      document.body.classList.remove('powering-on');
-      document.body.classList.add('shutting-down');
+    <div class="plate__mid">
+      <svg class="orchid orchid--l" viewBox="0 0 420 480" aria-hidden="true" focusable="false">
+        <path class="orchid__flower" pathLength="1" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"
+              d="M190 190 C158 152 112 122 92 86 C78 60 112 56 130 88 C152 126 186 166 206 186
+                 C226 152 258 106 292 78 C316 58 336 82 312 106 C284 134 232 168 210 194
+                 C172 200 108 212 74 232 C48 248 62 276 92 262 C132 244 178 214 196 204
+                 C236 210 292 220 326 240 C352 256 340 284 310 270 C272 252 224 220 204 210
+                 C200 244 190 300 196 344 C200 372 228 370 226 342 C222 300 210 246 200 208
+                 C184 202 172 216 178 232 C186 252 216 254 224 234 C232 214 216 198 200 206"/>
+        <path class="orchid__stem" pathLength="1" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"
+              d="M204 352 C212 398 240 424 288 440 C318 450 344 448 366 438"/>
+      </svg>
 
-      setTimeout(() => {
-        killedScreen.classList.add('active');
-        document.body.classList.remove('shutting-down');
-      }, 750);
-    }
+      <ul class="links" data-mount="links"></ul>
 
-    function triggerReconnect() {
-      if (!isTerminating || !killedScreen.classList.contains('active')) return;
+      <svg class="orchid orchid--r" viewBox="0 0 420 480" aria-hidden="true" focusable="false">
+        <path class="orchid__flower" pathLength="1" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"
+              d="M190 190 C158 152 112 122 92 86 C78 60 112 56 130 88 C152 126 186 166 206 186
+                 C226 152 258 106 292 78 C316 58 336 82 312 106 C284 134 232 168 210 194
+                 C172 200 108 212 74 232 C48 248 62 276 92 262 C132 244 178 214 196 204
+                 C236 210 292 220 326 240 C352 256 340 284 310 270 C272 252 224 220 204 210
+                 C200 244 190 300 196 344 C200 372 228 370 226 342 C222 300 210 246 200 208
+                 C184 202 172 216 178 232 C186 252 216 254 224 234 C232 214 216 198 200 206"/>
+        <path class="orchid__stem" pathLength="1" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"
+              d="M204 352 C212 398 240 424 288 440 C318 450 344 448 366 438"/>
+      </svg>
+    </div>
 
-      killedScreen.classList.remove('active');
-      document.body.classList.add('powering-on');
-      setFaceState('cheer', 'online');
+    <!-- 6.10 POSTCARD -->
+    <div class="pc" id="pc">
+      <div class="pc__inner">
+        <button type="button" class="pc__face pc__front" id="pc-front" data-cursor="FLIP" aria-label="Turn the postcard over to write a message">
+          <!-- swap: /assets/contact/postcard.jpg -->
+          <img src="https://picsum.photos/seed/htc-postcard/1200/800" alt="a room with the window open onto a wet garden" decoding="async">
+          <span class="pc__date" id="pc-date"></span>
+        </button>
 
-      setTimeout(() => {
-        document.body.classList.remove('powering-on');
-        isTerminating = false;
-        resetToIdle();
-      }, 800);
-    }
+        <div class="pc__face pc__back">
+          <div class="pc__left">
+            <span class="lbl pc__hint">this space for writing messages</span>
+            <label class="u-sr" for="pc-msg">your message</label>
+            <textarea id="pc-msg" class="pc__msg" rows="7" spellcheck="false"
+              placeholder="what it is, when it shoots, what it pays."></textarea>
+          </div>
+          <div class="pc__right">
+            <div class="pc__top">
+              <svg class="postmark" viewBox="0 0 200 90" aria-hidden="true">
+                <circle cx="46" cy="45" r="34" fill="none" stroke="currentColor" stroke-width="1.4"/>
+                <circle cx="46" cy="45" r="28" fill="none" stroke="currentColor" stroke-width="0.8" stroke-dasharray="3 4"/>
+                <text x="46" y="40" text-anchor="middle" class="postmark__t">DOROHOI</text>
+                <text x="46" y="56" text-anchor="middle" class="postmark__t">RO</text>
+                <path d="M86 28 C110 18 134 38 158 28 C172 22 186 26 196 32" fill="none" stroke="currentColor" stroke-width="1.2"/>
+                <path d="M86 45 C110 35 134 55 158 45 C172 39 186 43 196 49" fill="none" stroke="currentColor" stroke-width="1.2"/>
+                <path d="M86 62 C110 52 134 72 158 62 C172 56 186 60 196 66" fill="none" stroke="currentColor" stroke-width="1.2"/>
+              </svg>
+              <span class="pc__title">POST CARD</span>
+            </div>
+            <span class="lbl pc__hint">this space for address only</span>
+            <p class="hand pc__to">to a producer,<br>somewhere with a budget</p>
+            <div class="pc__fields">
+              <label class="u-sr" for="pc-from">your name</label>
+              <input id="pc-from" class="pc__in" type="text" autocomplete="name" placeholder="name">
+              <label class="u-sr" for="pc-mail">your email</label>
+              <input id="pc-mail" class="pc__in" type="email" autocomplete="email" placeholder="email">
+            </div>
+            <div class="pc__actions">
+              <button type="button" class="pc__send" id="pc-send" data-cursor="SEND">send</button>
+              <button type="button" class="pc__turn" id="pc-turn" data-cursor="FLIP">turn back</button>
+            </div>
+            <p class="pc__status" id="pc-status" role="status"></p>
+          </div>
+        </div>
+      </div>
+    </div>
 
-    // Keyboard support: Ctrl+C / Cmd+C / any key reconnect
-    window.addEventListener('keydown', (e) => {
-      if (isTerminating && killedScreen.classList.contains('active')) {
-        triggerReconnect();
-        return;
-      }
+    <div class="plate__foot">
+      <span>&copy; 2026 HoldTheCameraa. every frame on this build is a placeholder.</span>
+      <span>Dorohoi, RO &nbsp; 47.95N 26.40E</span>
+    </div>
+  </div>
+</article>
+</template>
 
-      if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === 'c') {
-        if (!window.getSelection().toString()) {
-          e.preventDefault();
-          triggerShutdown();
-        }
-      }
-    });
-
-    // Touch & Click support for Exit & Reconnect
-    document.getElementById('exit-btn').addEventListener('click', (e) => {
-      e.stopPropagation();
-      triggerShutdown();
-    });
-
-    killedScreen.addEventListener('click', triggerReconnect);
-    killedScreen.addEventListener('touchend', (e) => {
-      e.preventDefault();
-      triggerReconnect();
-    });
-
-    /* Pixel Sprite Matrix (16x16) */
-    const canvas = document.getElementById('faceCanvas');
-    const ctx = canvas.getContext('2d');
-    const statusEl = document.getElementById('avatar-status');
-    const avatarContainer = document.getElementById('avatar-container');
-
-    const SPRITES = {
-      idle: [
-        "................",
-        "................",
-        "....##....##....",
-        "....##....##....",
-        "....##....##....",
-        "................",
-        "................",
-        "................",
-        "................",
-        "...##......##...",
-        "...##......##...",
-        "...###....###...",
-        "....########....",
-        ".....######.....",
-        "................",
-        "................"
-      ],
-      blink: [
-        "................",
-        "................",
-        "................",
-        "....##....##....",
-        "................",
-        "................",
-        "................",
-        "................",
-        "................",
-        "...##......##...",
-        "...##......##...",
-        "...###....###...",
-        "....########....",
-        ".....######.....",
-        "................",
-        "................"
-      ],
-      wink: [
-        "................",
-        "................",
-        "....##..........",
-        "....##....####..",
-        "....##..........",
-        "................",
-        "................",
-        "................",
-        "................",
-        "...##......##...",
-        "...##......##...",
-        "...###....###...",
-        "....########....",
-        ".....######.....",
-        "................",
-        "................"
-      ],
-      look_left: [
-        "................",
-        "................",
-        "..##....##......",
-        "..##....##......",
-        "..##....##......",
-        "................",
-        "................",
-        "................",
-        "................",
-        "..##......##....",
-        "..##......##....",
-        "..###....###....",
-        "...########.....",
-        "....######......",
-        "................",
-        "................"
-      ],
-      look_right: [
-        "................",
-        "................",
-        "......##....##..",
-        "......##....##..",
-        "......##....##..",
-        "................",
-        "................",
-        "................",
-        "................",
-        "....##......##..",
-        "....##......##..",
-        "....###....###..",
-        ".....########...",
-        "......######....",
-        "................",
-        "................"
-      ],
-      look_up: [
-        "....##....##....",
-        "....##....##....",
-        "....##....##....",
-        "................",
-        "................",
-        "................",
-        "................",
-        "................",
-        "...##......##...",
-        "...##......##...",
-        "...###....###...",
-        "....########....",
-        ".....######.....",
-        "................",
-        "................",
-        "................"
-      ],
-      look_down: [
-        "................",
-        "................",
-        "................",
-        "................",
-        "....##....##....",
-        "....##....##....",
-        "....##....##....",
-        "................",
-        "................",
-        "................",
-        "...##......##...",
-        "...##......##...",
-        "...###....###...",
-        "....########....",
-        ".....######.....",
-        "................"
-      ],
-      noticed: [
-        "................",
-        "...####..####...",
-        "...#..#..#..#...",
-        "...#..#..#..#...",
-        "...####..####...",
-        "................",
-        "................",
-        "................",
-        "................",
-        "...##......##...",
-        "...##......##...",
-        "...###....###...",
-        "....########....",
-        ".....######.....",
-        "................",
-        "................"
-      ],
-      cheer: [
-        "................",
-        "................",
-        "...#..#..#..#...",
-        "....##....##....",
-        "................",
-        "................",
-        "................",
-        "................",
-        "..##........##..",
-        "..###......###..",
-        "...############.",
-        "....##########..",
-        ".....########...",
-        "................",
-        "................",
-        "................"
-      ],
-      gasp: [
-        "................",
-        "...####..####...",
-        "...####..####...",
-        "...####..####...",
-        "................",
-        "................",
-        "................",
-        "................",
-        ".....######.....",
-        "....########....",
-        "....##....##....",
-        "....##....##....",
-        "....########....",
-        ".....######.....",
-        "................",
-        "................"
-      ],
-      sleepy: [
-        "................",
-        "................",
-        "................",
-        "...####..####...",
-        "................",
-        "................",
-        "................",
-        "................",
-        "................",
-        "................",
-        "....########....",
-        "....########....",
-        "................",
-        "................",
-        "................",
-        "................"
-      ],
-      side_eye: [
-        "................",
-        "................",
-        "..####..####....",
-        "..#..#..#..#....",
-        "................",
-        "................",
-        "................",
-        "................",
-        "................",
-        "....##....##....",
-        ".....######.....",
-        "......####......",
-        "................",
-        "................",
-        "................",
-        "................"
-      ],
-      thinking: [
-        "................",
-        "...####.........",
-        "..........####..",
-        "....##....##....",
-        "....##....##....",
-        "................",
-        "................",
-        "................",
-        "................",
-        ".....######.....",
-        "....########....",
-        ".....######.....",
-        "................",
-        "................",
-        "................",
-        "................"
-      ],
-      dead: [
-        "................",
-        "................",
-        "...#..#..#..#...",
-        "....##....##....",
-        "...#..#..#..#...",
-        "................",
-        "................",
-        "................",
-        "................",
-        "....########....",
-        "....########....",
-        "................",
-        "................",
-        "................",
-        "................",
-        "................"
-      ]
-    };
-
-    let currentSprite = 'idle';
-    let isBusy = false;
-    let idleTimer = null;
-    let sequenceTimeout = null;
-
-    function drawSprite(spriteKey) {
-      const sprite = SPRITES[spriteKey] || SPRITES.idle;
-      ctx.clearRect(0, 0, 16, 16);
-      ctx.fillStyle = '#000000';
-
-      for (let y = 0; y < 16; y++) {
-        const row = sprite[y];
-        for (let x = 0; x < 16; x++) {
-          if (row[x] === '#') {
-            ctx.fillRect(x, y, 1, 1);
-          }
-        }
-      }
-    }
-
-    function setFaceState(spriteKey, statusText) {
-      currentSprite = spriteKey;
-      drawSprite(spriteKey);
-      statusEl.textContent = `> ${statusText}`;
-    }
-
-    function resetToIdle() {
-      if (isTerminating) return;
-      avatarContainer.classList.remove('bobbing', 'shiver');
-      isBusy = false;
-      setFaceState('idle', 'idle');
-    }
-
-    setFaceState('idle', 'idle');
-
-    /* Routine Engine */
-    function runRoutineEngine() {
-      if (isTerminating) return;
-
-      const routineDelay = Math.floor(Math.random() * 2600) + 1800;
-
-      idleTimer = setTimeout(() => {
-        if (!isBusy && !isTerminating) {
-          executeRandomBehaviors();
-        }
-        runRoutineEngine();
-      }, routineDelay);
-    }
-
-    function executeRandomBehaviors() {
-      const roll = Math.random();
-
-      if (roll < 0.35) {
-        setFaceState('blink', 'blink');
-        setTimeout(() => {
-          setFaceState('idle', 'idle');
-          if (Math.random() > 0.6) {
-            setTimeout(() => {
-              setFaceState('blink', 'blink');
-              setTimeout(resetToIdle, 110);
-            }, 90);
-          }
-        }, 110);
-      } else if (roll < 0.50) {
-        setFaceState('wink', 'wink ;)');
-        setTimeout(resetToIdle, 400);
-      } else if (roll < 0.75) {
-        const glances = [
-          { s: 'look_left', l: 'scan_l' },
-          { s: 'look_right', l: 'scan_r' },
-          { s: 'look_up', l: 'daydream' },
-          { s: 'look_down', l: 'inspect' },
-          { s: 'side_eye', l: 'side_eye' }
-        ];
-        const g = glances[Math.floor(Math.random() * glances.length)];
-        setFaceState(g.s, g.l);
-        setTimeout(() => {
-          if (Math.random() > 0.5) {
-            const alt = g.s === 'look_left' ? 'look_right' : 'look_left';
-            setFaceState(alt, 'scan_opp');
-            setTimeout(resetToIdle, 450);
-          } else {
-            resetToIdle();
-          }
-        }, 650);
-      } else if (roll < 0.90) {
-        setFaceState('thinking', 'computing');
-        setTimeout(() => {
-          if (Math.random() > 0.5) {
-            setFaceState('noticed', 'idea!');
-            avatarContainer.classList.add('bobbing');
-            setTimeout(resetToIdle, 600);
-          } else {
-            resetToIdle();
-          }
-        }, 850);
-      } else {
-        setFaceState('sleepy', 'yawn');
-        setTimeout(() => {
-          setFaceState('blink', 'drowsy');
-          setTimeout(resetToIdle, 400);
-        }, 800);
-      }
-    }
-
-    runRoutineEngine();
-
-    /* Touch & Click Interaction */
-    let tapCount = 0;
-    function handleAvatarTap(e) {
-      if (isTerminating) return;
-      isBusy = true;
-      clearTimeout(sequenceTimeout);
-      tapCount++;
-
-      if (tapCount % 3 === 1) {
-        setFaceState('noticed', 'poke!');
-        avatarContainer.classList.add('bobbing');
-      } else if (tapCount % 3 === 2) {
-        setFaceState('gasp', 'woah!');
-        avatarContainer.classList.add('shiver');
-      } else {
-        setFaceState('cheer', 'yay!');
-        avatarContainer.classList.add('bobbing');
-      }
-
-      sequenceTimeout = setTimeout(() => {
-        resetToIdle();
-      }, 1000);
-    }
-
-    avatarContainer.addEventListener('click', handleAvatarTap);
-    avatarContainer.addEventListener('mouseenter', () => {
-      if (isTerminating) return;
-      isBusy = true;
-      clearTimeout(sequenceTimeout);
-      setFaceState('cheer', 'happy_hello');
-      avatarContainer.classList.add('bobbing');
-    });
-
-    avatarContainer.addEventListener('mouseleave', () => {
-      if (isTerminating) return;
-      clearTimeout(sequenceTimeout);
-      resetToIdle();
-    });
-
-    /* Pointer Tracking */
-    let moveThrottle = false;
-    window.addEventListener('mousemove', (e) => {
-      if (isBusy || isTerminating || moveThrottle) return;
-      moveThrottle = true;
-      setTimeout(() => { moveThrottle = false; }, 70);
-
-      const rect = avatarContainer.getBoundingClientRect();
-      const cx = rect.left + rect.width / 2;
-      const cy = rect.top + rect.height / 2;
-
-      const dx = e.clientX - cx;
-      const dy = e.clientY - cy;
-      const dist = Math.hypot(dx, dy);
-
-      if (dist < 420) {
-        if (Math.abs(dx) > Math.abs(dy)) {
-          if (dx < -70) setFaceState('look_left', 'watching_l');
-          else if (dx > 70) setFaceState('look_right', 'watching_r');
-        } else {
-          if (dy < -70) setFaceState('look_up', 'watching_u');
-          else if (dy > 70) setFaceState('look_down', 'watching_d');
-        }
-      } else {
-        if (['look_left', 'look_right', 'look_up', 'look_down'].includes(currentSprite)) {
-          resetToIdle();
-        }
-      }
-    });
-  </script>
-
+<script src="data.js"></script>
+<script src="main.js"></script>
 </body>
 </html>

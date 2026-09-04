@@ -1,462 +1,812 @@
 <!DOCTYPE html>
-<html lang="de">
+<html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-  <title>HELLO WORLD // MATRIX_ERR</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>David Barbu</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet">
   <style>
-    :root {
-      --neon-pink: #ff007f;
-      --neon-cyan: #00f3ff;
-      --neon-lime: #00ff66;
-      --bg-dark: #07070c;
-    }
-
     * {
       box-sizing: border-box;
       margin: 0;
       padding: 0;
-      user-select: none;
-      -webkit-tap-highlight-color: transparent;
     }
 
     body {
-      background-color: var(--bg-dark);
+      background: #ffffff;
+      color: #000000;
+      font-family: "VT323", monospace;
       min-height: 100vh;
       display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      padding: clamp(1.5rem, 4vw, 3.5rem);
+      image-rendering: pixelated;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .top-bar {
+      font-size: clamp(1.2rem, 1.6vw, 1.5rem);
+      letter-spacing: 0.1em;
+      opacity: 0.55;
+    }
+
+    /* Balanced layout with avatar shifted inward towards center */
+    .content-container {
+      margin: auto 0;
+      display: grid;
+      grid-template-columns: 1.15fr 0.85fr;
       align-items: center;
-      justify-content: center;
-      font-family: 'Courier New', Courier, monospace;
-      overflow: hidden;
-      perspective: 1200px;
-      color: #fff;
-    }
-
-    /* Dynamischer Noise- & Grid-Hintergrund */
-    .grid-bg {
-      position: fixed;
-      inset: -50%;
-      width: 200%;
-      height: 200%;
-      background-image: 
-        linear-gradient(to right, rgba(0, 243, 255, 0.08) 1px, transparent 1px),
-        linear-gradient(to bottom, rgba(255, 0, 127, 0.08) 1px, transparent 1px);
-      background-size: 40px 40px;
-      transform: rotateX(60deg) translateZ(-200px);
-      animation: grid-scroll 12s linear infinite;
-      pointer-events: none;
-      z-index: 1;
-    }
-
-    @keyframes grid-scroll {
-      0% { transform: rotateX(60deg) translateY(0); }
-      100% { transform: rotateX(60deg) translateY(40px); }
-    }
-
-    /* Partikel Canvas */
-    canvas#particles {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      pointer-events: none;
-      z-index: 2;
-    }
-
-    /* Floating Blobs */
-    .blob {
-      position: absolute;
-      border-radius: 50%;
-      filter: blur(80px);
-      opacity: 0.6;
-      pointer-events: none;
-      z-index: 1;
-      animation: pulse-drift 8s ease-in-out infinite alternate;
-    }
-    .blob-1 {
-      top: 10%;
-      left: 15%;
-      width: 280px;
-      height: 280px;
-      background: var(--neon-pink);
-    }
-    .blob-2 {
-      bottom: 10%;
-      right: 15%;
-      width: 320px;
-      height: 320px;
-      background: var(--neon-cyan);
-      animation-delay: -4s;
-    }
-
-    @keyframes pulse-drift {
-      0% { transform: scale(0.9) translate(0, 0); }
-      100% { transform: scale(1.2) translate(30px, -40px); }
-    }
-
-    /* 3D Glass Card Container */
-    .card-wrapper {
+      justify-items: center;
+      gap: clamp(2rem, 4vw, 4.5rem);
       position: relative;
-      z-index: 10;
-      padding: 1rem;
       width: 100%;
-      max-width: 520px;
-      transform-style: preserve-3d;
-      transition: transform 0.15s ease-out;
     }
 
-    .card {
-      position: relative;
-      background: rgba(15, 15, 25, 0.65);
-      backdrop-filter: blur(20px);
-      -webkit-backdrop-filter: blur(20px);
-      border: 1px solid rgba(255, 255, 255, 0.15);
-      border-radius: 24px;
-      padding: 2.5rem 1.75rem;
-      text-align: center;
-      box-shadow: 
-        0 20px 50px rgba(0, 0, 0, 0.8),
-        0 0 30px rgba(0, 243, 255, 0.2),
-        inset 0 0 20px rgba(255, 0, 127, 0.15);
-      overflow: hidden;
+    main {
+      width: 100%;
     }
 
-    /* Scanner-Lichtstreifen */
-    .card::after {
-      content: '';
-      position: absolute;
-      top: -150%;
-      left: -50%;
-      width: 200%;
-      height: 60%;
-      background: linear-gradient(180deg, transparent, rgba(0, 243, 255, 0.15), transparent);
-      transform: rotate(-25deg);
-      animation: scan 6s linear infinite;
-      pointer-events: none;
+    .prompt {
+      font-size: clamp(1.4rem, 2vw, 2rem);
+      opacity: 0.45;
+      margin-bottom: 0.4rem;
+      letter-spacing: 0.05em;
     }
 
-    @keyframes scan {
-      0% { top: -150%; }
-      100% { top: 200%; }
-    }
-
-    /* Badges & System Tags */
-    .system-tag {
-      font-size: 0.7rem;
-      letter-spacing: 3px;
+    h1 {
+      font-size: clamp(4rem, 9.5vw, 9.5rem);
+      font-weight: 400;
+      line-height: 0.88;
+      letter-spacing: 0.02em;
       text-transform: uppercase;
-      color: var(--neon-lime);
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      padding: 4px 12px;
-      border: 1px solid var(--neon-lime);
-      border-radius: 50px;
+      margin-bottom: 1rem;
+    }
+
+    .subtitle {
+      font-size: clamp(1.6rem, 2.6vw, 2.6rem);
+      line-height: 1.18;
+      max-width: 28ch;
       margin-bottom: 1.5rem;
     }
-    .pulse-dot {
-      width: 6px;
-      height: 6px;
-      background: var(--neon-lime);
-      border-radius: 50%;
-      animation: blink 1s infinite alternate;
+
+    .cursor {
+      display: inline-block;
+      width: 0.6em;
+      height: 0.9em;
+      background: #000000;
+      vertical-align: -0.05em;
+      animation: blink 1s step-start infinite;
     }
 
     @keyframes blink {
-      0% { opacity: 0.2; }
-      100% { opacity: 1; }
+      50% { opacity: 0; }
     }
 
-    /* Glitch Typography */
-    .glitch-title {
-      font-size: clamp(2.4rem, 8vw, 4.2rem);
-      font-weight: 900;
-      letter-spacing: -2px;
-      text-transform: uppercase;
-      line-height: 1;
+    /* Bigger, tilted, floating daemon avatar */
+    .avatar-wrapper {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1rem;
+      user-select: none;
+      cursor: pointer;
+      flex-shrink: 0;
+      /* Base tilt with continuous floating motion */
+      animation: floatTilted 3.8s ease-in-out infinite;
+      transform-origin: center center;
+    }
+
+    @keyframes floatTilted {
+      0%, 100% {
+        transform: rotate(-4deg) translateY(0px) scale(1);
+      }
+      50% {
+        transform: rotate(-2.5deg) translateY(-16px) scale(1.02);
+      }
+    }
+
+    .avatar-wrapper.bobbing {
+      animation: bounceTilted 0.45s cubic-bezier(0.28, 0.84, 0.42, 1) 2;
+    }
+
+    .avatar-wrapper.shiver {
+      animation: glitchTilted 0.22s steps(2, start) 3;
+    }
+
+    @keyframes bounceTilted {
+      0%, 100% { transform: rotate(-4deg) translateY(0) scale(1); }
+      40% { transform: rotate(-5deg) translateY(-22px) scale(0.96, 1.06); }
+      70% { transform: rotate(-3deg) translateY(4px) scale(1.04, 0.94); }
+    }
+
+    @keyframes glitchTilted {
+      0% { transform: rotate(-4deg) translate(-4px, 3px); }
+      25% { transform: rotate(-2deg) translate(4px, -3px); }
+      50% { transform: rotate(-5deg) translate(-3px, -4px); }
+      75% { transform: rotate(-3deg) translate(3px, 4px); }
+      100% { transform: rotate(-4deg) translate(0, 0); }
+    }
+
+    /* Substantially scaled-up container */
+    .avatar-box {
+      border: 4px solid #000000;
+      background: #ffffff;
+      padding: clamp(1.8rem, 3.2vw, 2.8rem);
+      box-shadow: 10px 10px 0px #000000;
       position: relative;
-      color: #fff;
-      text-shadow: 0 0 10px rgba(255,255,255,0.8);
-      margin-bottom: 1.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: transform 0.15s ease, box-shadow 0.15s ease;
     }
 
-    .glitch-title::before,
-    .glitch-title::after {
-      content: attr(data-text);
+    .avatar-wrapper:hover .avatar-box {
+      transform: translate(-3px, -3px);
+      box-shadow: 13px 13px 0px #000000;
+    }
+
+    .avatar-wrapper:active .avatar-box {
+      transform: translate(4px, 4px);
+      box-shadow: 5px 5px 0px #000000;
+    }
+
+    .avatar-box::before {
+      content: "[DAEMON]";
       position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      clip: rect(0, 0, 0, 0);
+      top: -15px;
+      left: 16px;
+      background: #ffffff;
+      padding: 0 8px;
+      font-size: 1.2rem;
+      letter-spacing: 0.1em;
     }
 
-    .glitch-title::before {
-      left: 2px;
-      text-shadow: -2px 0 var(--neon-pink);
-      animation: glitch-anim-1 3s infinite linear alternate-reverse;
+    /* Expanded canvas footprint */
+    .pixel-face-canvas {
+      width: clamp(190px, 22vw, 260px);
+      height: clamp(190px, 22vw, 260px);
+      image-rendering: pixelated;
+      image-rendering: crisp-edges;
+      display: block;
     }
 
-    .glitch-title::after {
-      left: -2px;
-      text-shadow: 2px 0 var(--neon-cyan);
-      animation: glitch-anim-2 2.5s infinite linear alternate-reverse;
+    .avatar-status {
+      font-size: clamp(1.2rem, 1.6vw, 1.5rem);
+      letter-spacing: 0.08em;
+      opacity: 0.65;
     }
 
-    @keyframes glitch-anim-1 {
-      0% { clip: rect(10px, 9999px, 30px, 0); }
-      20% { clip: rect(65px, 9999px, 85px, 0); }
-      40% { clip: rect(20px, 9999px, 50px, 0); }
-      60% { clip: rect(80px, 9999px, 95px, 0); }
-      80% { clip: rect(40px, 9999px, 60px, 0); }
-      100% { clip: rect(0, 9999px, 20px, 0); }
-    }
-
-    @keyframes glitch-anim-2 {
-      0% { clip: rect(50px, 9999px, 70px, 0); }
-      20% { clip: rect(15px, 9999px, 35px, 0); }
-      40% { clip: rect(75px, 9999px, 90px, 0); }
-      60% { clip: rect(30px, 9999px, 45px, 0); }
-      80% { clip: rect(90px, 9999px, 110px, 0); }
-      100% { clip: rect(5px, 9999px, 25px, 0); }
-    }
-
-    /* Subtext & Interactive Terminal */
-    .terminal-box {
-      background: rgba(0, 0, 0, 0.45);
-      border: 1px dashed rgba(255, 255, 255, 0.2);
-      border-radius: 12px;
-      padding: 0.9rem;
-      font-size: 0.8rem;
-      color: #aaa;
-      margin-bottom: 2rem;
+    footer {
       display: flex;
       justify-content: space-between;
-      align-items: center;
+      align-items: flex-end;
+      flex-wrap: wrap;
+      gap: 1.5rem;
+      font-size: clamp(1.4rem, 2vw, 2rem);
+      border-top: 3px solid #000000;
+      padding-top: 1.5rem;
+      letter-spacing: 0.08em;
     }
 
-    /* Neomorphism / Cyberpunk Button */
-    .crazy-btn {
-      appearance: none;
-      border: none;
-      background: linear-gradient(135deg, var(--neon-pink), var(--neon-cyan));
-      color: #000;
-      font-family: inherit;
-      font-size: 0.95rem;
-      font-weight: 800;
+    .links {
+      display: flex;
+      gap: 2.5rem;
+    }
+
+    a {
+      color: #000000;
+      text-decoration: none;
+      border-bottom: 2px solid transparent;
       text-transform: uppercase;
-      letter-spacing: 2px;
-      padding: 1rem 2rem;
-      border-radius: 14px;
+    }
+
+    a:hover {
+      border-bottom: 2px solid #000000;
+    }
+
+    .exit {
+      opacity: 0.45;
       cursor: pointer;
-      position: relative;
-      transition: all 0.2s ease;
-      box-shadow: 0 0 20px rgba(0, 243, 255, 0.4);
-      width: 100%;
-      overflow: hidden;
+      user-select: none;
     }
 
-    .crazy-btn:active {
-      transform: scale(0.96);
-      box-shadow: 0 0 35px rgba(255, 0, 127, 0.7);
+    .exit:hover {
+      opacity: 1;
     }
 
-    /* Floating Deco Rings */
-    .ring {
-      position: absolute;
-      border: 1px dashed rgba(255, 255, 255, 0.15);
-      border-radius: 50%;
+    /* CRT Power-Off Animation */
+    body.shutting-down {
+      animation: crtTurnOff 0.75s cubic-bezier(0.23, 1, 0.32, 1) forwards;
       pointer-events: none;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-    }
-    .ring-1 { width: 380px; height: 380px; animation: spin 24s linear infinite; }
-    .ring-2 { width: 480px; height: 480px; animation: spin-rev 32s linear infinite; }
-
-    @keyframes spin {
-      100% { transform: translate(-50%, -50%) rotate(360deg); }
-    }
-    @keyframes spin-rev {
-      100% { transform: translate(-50%, -50%) rotate(-360deg); }
     }
 
-    @media (max-width: 480px) {
-      .card {
-        padding: 2rem 1.25rem;
+    @keyframes crtTurnOff {
+      0% { transform: scale(1, 1); filter: brightness(1); opacity: 1; }
+      35% { transform: scale(1, 0.005); filter: brightness(2) contrast(2); opacity: 1; }
+      70% { transform: scale(0.12, 0.005); filter: brightness(3); opacity: 0.9; }
+      100% { transform: scale(0, 0); filter: brightness(0); opacity: 0; }
+    }
+
+    /* CRT Power-On Animation */
+    body.powering-on {
+      animation: crtTurnOn 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+      pointer-events: none;
+    }
+
+    @keyframes crtTurnOn {
+      0% { transform: scale(0, 0); filter: brightness(3) contrast(2); opacity: 0; }
+      30% { transform: scale(0.15, 0.005); filter: brightness(3) contrast(2); opacity: 1; }
+      60% { transform: scale(1, 0.005); filter: brightness(2); opacity: 1; }
+      80% { transform: scale(1, 1.05); filter: brightness(1.4); opacity: 1; }
+      100% { transform: scale(1, 1); filter: brightness(1); opacity: 1; }
+    }
+
+    .terminal-killed {
+      position: fixed;
+      inset: 0;
+      background: #000000;
+      color: #ffffff;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      gap: 0.75rem;
+      font-size: clamp(1.4rem, 2.5vw, 2.5rem);
+      letter-spacing: 0.08em;
+      z-index: 9999;
+      user-select: none;
+      cursor: pointer;
+    }
+
+    .terminal-killed.active {
+      display: flex;
+    }
+
+    .terminal-killed span {
+      opacity: 0.5;
+      font-size: clamp(1rem, 1.5vw, 1.3rem);
+    }
+
+    @media (max-width: 900px) {
+      .content-container {
+        grid-template-columns: 1fr;
+        justify-items: center;
+        gap: 2.5rem;
+        margin: 2rem 0;
       }
-      .ring-2 {
-        display: none;
+      .avatar-wrapper {
+        animation: floatTilted 3.8s ease-in-out infinite;
       }
     }
   </style>
 </head>
 <body>
 
-  <div class="grid-bg"></div>
-  <canvas id="particles"></canvas>
-  <div class="blob blob-1"></div>
-  <div class="blob blob-2"></div>
+  <header class="top-bar">
+    [TTY1] // 200_OK // ROOT_SESSION
+  </header>
 
-  <div class="ring ring-1"></div>
-  <div class="ring ring-2"></div>
+  <div class="content-container">
+    <main>
+      <div class="prompt">guest@db:~# whoami</div>
+      <h1>David Barbu</h1>
+      <p class="subtitle">
+        Frontend-heavy Engineer with full-stack instincts & years of shipping production code.<span class="cursor"></span>
+      </p>
+    </main>
 
-  <div class="card-wrapper" id="cardWrapper">
-    <div class="card">
-      <div class="system-tag">
-        <span class="pulse-dot"></span>
-        <span>SYS_INIT // LIVE</span>
+    <div class="avatar-wrapper" id="avatar-container" title="Click or interact">
+      <div class="avatar-box">
+        <canvas class="pixel-face-canvas" id="faceCanvas" width="16" height="16"></canvas>
       </div>
-
-      <h1 class="glitch-title" data-text="HELLO WORLD">HELLO WORLD</h1>
-
-      <div class="terminal-box">
-        <span>&gt; ENTITY: VISITOR</span>
-        <span id="coords">X: 00 | Y: 00</span>
-      </div>
-
-      <button class="crazy-btn" id="warpBtn">INITIATE OVERLOAD</button>
+      <div class="avatar-status" id="avatar-status">&gt; idle</div>
     </div>
   </div>
 
+  <footer>
+    <nav class="links">
+      <a href="mailto:dbarbu03@gmail.com">email</a>
+      <a href="https://github.com/Davyd-crypto" target="_blank" rel="noreferrer">github</a>
+      <a href="https://www.linkedin.com/in/david-barbu-7a84ab264/" target="_blank" rel="noreferrer">linkedin</a>
+    </nav>
+    <div class="exit" id="exit-btn">^C TO EXIT</div>
+  </footer>
+
+  <div class="terminal-killed" id="killed-screen">
+    <div>[PROCESS TERMINATED: SIGINT (exit code 130)]</div>
+    <span>PRESS ANY KEY TO RECONNECT</span>
+  </div>
+
   <script>
-    const wrapper = document.getElementById('cardWrapper');
-    const coords = document.getElementById('coords');
-    const warpBtn = document.getElementById('warpBtn');
-    const canvas = document.getElementById('particles');
-    const ctx = canvas.getContext('2d');
+    /* Shutdown & Reconnect logic */
+    let isTerminating = false;
+    const killedScreen = document.getElementById('killed-screen');
 
-    // Canvas Resize
-    let width, height;
-    function resizeCanvas() {
-      width = canvas.width = window.innerWidth;
-      height = canvas.height = window.innerHeight;
-    }
-    window.addEventListener('resize', resizeCanvas);
-    resizeCanvas();
+    function triggerShutdown() {
+      if (isTerminating) return;
+      isTerminating = true;
 
-    // 3D Parallax Tilt Effect
-    function handleMove(x, y) {
-      const cx = window.innerWidth / 2;
-      const cy = window.innerHeight / 2;
-      const dx = (x - cx) / cx;
-      const dy = (y - cy) / cy;
+      setFaceState('dead', 'killed');
+      document.body.classList.remove('powering-on');
+      document.body.classList.add('shutting-down');
 
-      wrapper.style.transform = `rotateY(${dx * 14}deg) rotateX(${-dy * 14}deg)`;
-      coords.innerText = `X: ${Math.round(x)} | Y: ${Math.round(y)}`;
-
-      addParticle(x, y);
+      setTimeout(() => {
+        killedScreen.classList.add('active');
+        document.body.classList.remove('shutting-down');
+      }, 750);
     }
 
-    window.addEventListener('mousemove', (e) => handleMove(e.clientX, e.clientY));
-    window.addEventListener('touchmove', (e) => {
-      if (e.touches.length > 0) {
-        handleMove(e.touches[0].clientX, e.touches[0].clientY);
+    function triggerReconnect() {
+      if (!isTerminating || !killedScreen.classList.contains('active')) return;
+
+      killedScreen.classList.remove('active');
+      document.body.classList.add('powering-on');
+      setFaceState('cheer', 'online');
+
+      setTimeout(() => {
+        document.body.classList.remove('powering-on');
+        isTerminating = false;
+        resetToIdle();
+      }, 800);
+    }
+
+    window.addEventListener('keydown', (e) => {
+      if (isTerminating && killedScreen.classList.contains('active')) {
+        triggerReconnect();
+        return;
       }
-    }, { passive: true });
 
-    // Gyroskop-Support für mobile Geräte (falls freigegeben)
-    if (window.DeviceOrientationEvent) {
-      window.addEventListener('deviceorientation', (e) => {
-        if (!e.gamma || !e.beta) return;
-        const tiltX = Math.min(Math.max(e.gamma, -30), 30);
-        const tiltY = Math.min(Math.max(e.beta - 45, -30), 30);
-        wrapper.style.transform = `rotateY(${tiltX * 0.6}deg) rotateX(${-tiltY * 0.6}deg)`;
-      });
-    }
-
-    // Partikelsystem
-    const particles = [];
-    function addParticle(x, y) {
-      particles.push({
-        x: x,
-        y: y,
-        vx: (Math.random() - 0.5) * 4,
-        vy: (Math.random() - 0.5) * 4,
-        size: Math.random() * 4 + 2,
-        life: 1,
-        color: Math.random() > 0.5 ? '#00f3ff' : '#ff007f'
-      });
-      if (particles.length > 60) particles.shift();
-    }
-
-    function renderParticles() {
-      ctx.clearRect(0, 0, width, height);
-      for (let i = 0; i < particles.length; i++) {
-        const p = particles[i];
-        p.x += p.vx;
-        p.y += p.vy;
-        p.life -= 0.02;
-
-        ctx.fillStyle = p.color;
-        ctx.globalAlpha = Math.max(p.life, 0);
-        ctx.shadowBlur = 10;
-        ctx.shadowColor = p.color;
-        ctx.beginPath();
-        ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
-        ctx.fill();
-
-        if (p.life <= 0) {
-          particles.splice(i, 1);
-          i--;
+      if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === 'c') {
+        if (!window.getSelection().toString()) {
+          e.preventDefault();
+          triggerShutdown();
         }
       }
-      requestAnimationFrame(renderParticles);
+    });
+
+    document.getElementById('exit-btn').addEventListener('click', triggerShutdown);
+    killedScreen.addEventListener('click', triggerReconnect);
+
+    /* 16x16 Pixel Art Sprite Engine */
+    const canvas = document.getElementById('faceCanvas');
+    const ctx = canvas.getContext('2d');
+    const statusEl = document.getElementById('avatar-status');
+    const avatarContainer = document.getElementById('avatar-container');
+
+    const SPRITES = {
+      idle: [
+        "................",
+        "................",
+        "....##....##....",
+        "....##....##....",
+        "....##....##....",
+        "................",
+        "................",
+        "................",
+        "................",
+        "...##......##...",
+        "...##......##...",
+        "...###....###...",
+        "....########....",
+        ".....######.....",
+        "................",
+        "................"
+      ],
+      blink: [
+        "................",
+        "................",
+        "................",
+        "....##....##....",
+        "................",
+        "................",
+        "................",
+        "................",
+        "................",
+        "...##......##...",
+        "...##......##...",
+        "...###....###...",
+        "....########....",
+        ".....######.....",
+        "................",
+        "................"
+      ],
+      wink: [
+        "................",
+        "................",
+        "....##..........",
+        "....##....####..",
+        "....##..........",
+        "................",
+        "................",
+        "................",
+        "................",
+        "...##......##...",
+        "...##......##...",
+        "...###....###...",
+        "....########....",
+        ".....######.....",
+        "................",
+        "................"
+      ],
+      look_left: [
+        "................",
+        "................",
+        "..##....##......",
+        "..##....##......",
+        "..##....##......",
+        "................",
+        "................",
+        "................",
+        "................",
+        "..##......##....",
+        "..##......##....",
+        "..###....###....",
+        "...########.....",
+        "....######......",
+        "................",
+        "................"
+      ],
+      look_right: [
+        "................",
+        "................",
+        "......##....##..",
+        "......##....##..",
+        "......##....##..",
+        "................",
+        "................",
+        "................",
+        "................",
+        "....##......##..",
+        "....##......##..",
+        "....###....###..",
+        ".....########...",
+        "......######....",
+        "................",
+        "................"
+      ],
+      look_up: [
+        "....##....##....",
+        "....##....##....",
+        "....##....##....",
+        "................",
+        "................",
+        "................",
+        "................",
+        "................",
+        "...##......##...",
+        "...##......##...",
+        "...###....###...",
+        "....########....",
+        ".....######.....",
+        "................",
+        "................",
+        "................"
+      ],
+      look_down: [
+        "................",
+        "................",
+        "................",
+        "................",
+        "....##....##....",
+        "....##....##....",
+        "....##....##....",
+        "................",
+        "................",
+        "................",
+        "...##......##...",
+        "...##......##...",
+        "...###....###...",
+        "....########....",
+        ".....######.....",
+        "................"
+      ],
+      noticed: [
+        "................",
+        "...####..####...",
+        "...#..#..#..#...",
+        "...#..#..#..#...",
+        "...####..####...",
+        "................",
+        "................",
+        "................",
+        "................",
+        "...##......##...",
+        "...##......##...",
+        "...###....###...",
+        "....########....",
+        ".....######.....",
+        "................",
+        "................"
+      ],
+      cheer: [
+        "................",
+        "................",
+        "...#..#..#..#...",
+        "....##....##....",
+        "................",
+        "................",
+        "................",
+        "................",
+        "..##........##..",
+        "..###......###..",
+        "...############.",
+        "....##########..",
+        ".....########...",
+        "................",
+        "................",
+        "................"
+      ],
+      gasp: [
+        "................",
+        "...####..####...",
+        "...####..####...",
+        "...####..####...",
+        "................",
+        "................",
+        "................",
+        "................",
+        ".....######.....",
+        "....########....",
+        "....##....##....",
+        "....##....##....",
+        "....########....",
+        ".....######.....",
+        "................",
+        "................"
+      ],
+      sleepy: [
+        "................",
+        "................",
+        "................",
+        "...####..####...",
+        "................",
+        "................",
+        "................",
+        "................",
+        "................",
+        "................",
+        "....########....",
+        "....########....",
+        "................",
+        "................",
+        "................",
+        "................"
+      ],
+      side_eye: [
+        "................",
+        "................",
+        "..####..####....",
+        "..#..#..#..#....",
+        "................",
+        "................",
+        "................",
+        "................",
+        "................",
+        "....##....##....",
+        ".....######.....",
+        "......####......",
+        "................",
+        "................",
+        "................",
+        "................"
+      ],
+      thinking: [
+        "................",
+        "...####.........",
+        "..........####..",
+        "....##....##....",
+        "....##....##....",
+        "................",
+        "................",
+        "................",
+        "................",
+        ".....######.....",
+        "....########....",
+        ".....######.....",
+        "................",
+        "................",
+        "................",
+        "................"
+      ],
+      dead: [
+        "................",
+        "................",
+        "...#..#..#..#...",
+        "....##....##....",
+        "...#..#..#..#...",
+        "................",
+        "................",
+        "................",
+        "................",
+        "....########....",
+        "....########....",
+        "................",
+        "................",
+        "................",
+        "................",
+        "................"
+      ]
+    };
+
+    let currentSprite = 'idle';
+    let isBusy = false;
+    let idleTimer = null;
+    let sequenceTimeout = null;
+
+    function drawSprite(spriteKey) {
+      const sprite = SPRITES[spriteKey] || SPRITES.idle;
+      ctx.clearRect(0, 0, 16, 16);
+      ctx.fillStyle = '#000000';
+
+      for (let y = 0; y < 16; y++) {
+        const row = sprite[y];
+        for (let x = 0; x < 16; x++) {
+          if (row[x] === '#') {
+            ctx.fillRect(x, y, 1, 1);
+          }
+        }
+      }
     }
-    renderParticles();
 
-    // Synthesizer Audio-Feedback ohne externe Assets
-    const AudioCtx = window.AudioContext || window.webkitAudioContext;
-    let audioCtx = null;
-
-    function playTone(freq, duration) {
-      if (!audioCtx) audioCtx = new AudioCtx();
-      const osc = audioCtx.createOscillator();
-      const gain = audioCtx.createGain();
-      osc.type = 'sawtooth';
-      osc.frequency.setValueAtTime(freq, audioCtx.currentTime);
-      osc.frequency.exponentialRampToValueAtTime(40, audioCtx.currentTime + duration);
-      gain.gain.setValueAtTime(0.3, audioCtx.currentTime);
-      gain.gain.linearRampToValueAtTime(0.01, audioCtx.currentTime + duration);
-      osc.connect(gain);
-      gain.connect(audioCtx.destination);
-      osc.start();
-      osc.stop(audioCtx.currentTime + duration);
+    function setFaceState(spriteKey, statusText) {
+      currentSprite = spriteKey;
+      drawSprite(spriteKey);
+      statusEl.textContent = `> ${statusText}`;
     }
 
-    // Shockwave Overload Effekt
-    warpBtn.addEventListener('click', () => {
-      playTone(520, 0.4);
+    function resetToIdle() {
+      if (isTerminating) return;
+      avatarContainer.classList.remove('bobbing', 'shiver');
+      isBusy = false;
+      setFaceState('idle', 'idle');
+    }
 
-      // Partikel-Explosion
-      const rect = warpBtn.getBoundingClientRect();
-      const originX = rect.left + rect.width / 2;
-      const originY = rect.top + rect.height / 2;
+    setFaceState('idle', 'idle');
 
-      for (let i = 0; i < 40; i++) {
-        const angle = Math.random() * Math.PI * 2;
-        const speed = Math.random() * 8 + 2;
-        particles.push({
-          x: originX,
-          y: originY,
-          vx: Math.cos(angle) * speed,
-          vy: Math.sin(angle) * speed,
-          size: Math.random() * 5 + 3,
-          life: 1.2,
-          color: '#00ff66'
-        });
+    /* Routine Micro-Animations */
+    function runRoutineEngine() {
+      if (isTerminating) return;
+
+      const routineDelay = Math.floor(Math.random() * 2600) + 1800;
+
+      idleTimer = setTimeout(() => {
+        if (!isBusy && !isTerminating) {
+          executeRandomBehaviors();
+        }
+        runRoutineEngine();
+      }, routineDelay);
+    }
+
+    function executeRandomBehaviors() {
+      const roll = Math.random();
+
+      if (roll < 0.35) {
+        setFaceState('blink', 'blink');
+        setTimeout(() => {
+          setFaceState('idle', 'idle');
+          if (Math.random() > 0.6) {
+            setTimeout(() => {
+              setFaceState('blink', 'blink');
+              setTimeout(resetToIdle, 110);
+            }, 90);
+          }
+        }, 110);
+      } else if (roll < 0.50) {
+        setFaceState('wink', 'wink ;)');
+        setTimeout(resetToIdle, 400);
+      } else if (roll < 0.75) {
+        const glances = [
+          { s: 'look_left', l: 'scan_l' },
+          { s: 'look_right', l: 'scan_r' },
+          { s: 'look_up', l: 'daydream' },
+          { s: 'look_down', l: 'inspect' },
+          { s: 'side_eye', l: 'side_eye' }
+        ];
+        const g = glances[Math.floor(Math.random() * glances.length)];
+        setFaceState(g.s, g.l);
+        setTimeout(() => {
+          if (Math.random() > 0.5) {
+            const alt = g.s === 'look_left' ? 'look_right' : 'look_left';
+            setFaceState(alt, 'scan_opp');
+            setTimeout(resetToIdle, 450);
+          } else {
+            resetToIdle();
+          }
+        }, 650);
+      } else if (roll < 0.90) {
+        setFaceState('thinking', 'computing');
+        setTimeout(() => {
+          if (Math.random() > 0.5) {
+            setFaceState('noticed', 'idea!');
+            avatarContainer.classList.add('bobbing');
+            setTimeout(resetToIdle, 600);
+          } else {
+            resetToIdle();
+          }
+        }, 850);
+      } else {
+        setFaceState('sleepy', 'yawn');
+        setTimeout(() => {
+          setFaceState('blink', 'drowsy');
+          setTimeout(resetToIdle, 400);
+        }, 800);
+      }
+    }
+
+    runRoutineEngine();
+
+    /* Interactive User Events */
+    avatarContainer.addEventListener('mouseenter', () => {
+      if (isTerminating) return;
+      isBusy = true;
+      clearTimeout(sequenceTimeout);
+      setFaceState('cheer', 'happy_hello');
+      avatarContainer.classList.add('bobbing');
+    });
+
+    avatarContainer.addEventListener('mouseleave', () => {
+      if (isTerminating) return;
+      clearTimeout(sequenceTimeout);
+      resetToIdle();
+    });
+
+    let clickCount = 0;
+    avatarContainer.addEventListener('click', () => {
+      if (isTerminating) return;
+      isBusy = true;
+      clearTimeout(sequenceTimeout);
+      clickCount++;
+
+      if (clickCount % 3 === 1) {
+        setFaceState('noticed', 'poke!');
+        avatarContainer.classList.add('bobbing');
+      } else if (clickCount % 3 === 2) {
+        setFaceState('gasp', 'woah!');
+        avatarContainer.classList.add('shiver');
+      } else {
+        setFaceState('cheer', 'yay!');
+        avatarContainer.classList.add('bobbing');
       }
 
-      // Card Glitch Pulse
-      wrapper.style.transform = 'scale(0.92) rotateY(15deg)';
-      setTimeout(() => {
-        wrapper.style.transform = 'scale(1.05) rotateY(-10deg)';
-      }, 100);
-      setTimeout(() => {
-        wrapper.style.transform = '';
-      }, 250);
+      sequenceTimeout = setTimeout(() => {
+        resetToIdle();
+      }, 1000);
+    });
+
+    /* Global Cursor Tracking */
+    let moveThrottle = false;
+    window.addEventListener('mousemove', (e) => {
+      if (isBusy || isTerminating || moveThrottle) return;
+      moveThrottle = true;
+      setTimeout(() => { moveThrottle = false; }, 70);
+
+      const rect = avatarContainer.getBoundingClientRect();
+      const cx = rect.left + rect.width / 2;
+      const cy = rect.top + rect.height / 2;
+
+      const dx = e.clientX - cx;
+      const dy = e.clientY - cy;
+      const dist = Math.hypot(dx, dy);
+
+      if (dist < 420) {
+        if (Math.abs(dx) > Math.abs(dy)) {
+          if (dx < -70) setFaceState('look_left', 'watching_l');
+          else if (dx > 70) setFaceState('look_right', 'watching_r');
+        } else {
+          if (dy < -70) setFaceState('look_up', 'watching_u');
+          else if (dy > 70) setFaceState('look_down', 'watching_d');
+        }
+      } else {
+        if (['look_left', 'look_right', 'look_up', 'look_down'].includes(currentSprite)) {
+          resetToIdle();
+        }
+      }
     });
   </script>
+
 </body>
 </html>

@@ -14,17 +14,25 @@
       padding: 0;
     }
 
+    /* Scrollable document setup for any screen height */
+    html {
+      background: #ffffff;
+      min-height: 100%;
+    }
+
     body {
       background: #ffffff;
       color: #000000;
       font-family: "VT323", monospace;
       min-height: 100vh;
+      min-height: 100dvh;
       display: flex;
       flex-direction: column;
       justify-content: space-between;
       padding: clamp(1.5rem, 4vw, 3.5rem);
       image-rendering: pixelated;
-      overflow: hidden;
+      overflow-x: hidden;
+      overflow-y: auto;
       position: relative;
     }
 
@@ -36,7 +44,7 @@
 
     /* Balanced layout with avatar shifted inward towards center */
     .content-container {
-      margin: auto 0;
+      margin: 2.5rem 0;
       display: grid;
       grid-template-columns: 1.15fr 0.85fr;
       align-items: center;
@@ -86,7 +94,7 @@
       50% { opacity: 0; }
     }
 
-    /* Bigger, tilted, floating daemon avatar */
+    /* Tilted, floating daemon avatar */
     .avatar-wrapper {
       display: flex;
       flex-direction: column;
@@ -95,7 +103,6 @@
       user-select: none;
       cursor: pointer;
       flex-shrink: 0;
-      /* Base tilt with continuous floating motion */
       animation: floatTilted 3.8s ease-in-out infinite;
       transform-origin: center center;
     }
@@ -131,7 +138,6 @@
       100% { transform: rotate(-4deg) translate(0, 0); }
     }
 
-    /* Substantially scaled-up container */
     .avatar-box {
       border: 4px solid #000000;
       background: #ffffff;
@@ -165,10 +171,9 @@
       letter-spacing: 0.1em;
     }
 
-    /* Expanded canvas footprint */
     .pixel-face-canvas {
-      width: clamp(190px, 22vw, 260px);
-      height: clamp(190px, 22vw, 260px);
+      width: clamp(180px, 22vw, 260px);
+      height: clamp(180px, 22vw, 260px);
       image-rendering: pixelated;
       image-rendering: crisp-edges;
       display: block;
@@ -183,10 +188,10 @@
     footer {
       display: flex;
       justify-content: space-between;
-      align-items: flex-end;
+      align-items: center;
       flex-wrap: wrap;
       gap: 1.5rem;
-      font-size: clamp(1.4rem, 2vw, 2rem);
+      font-size: clamp(1.3rem, 1.8vw, 1.8rem);
       border-top: 3px solid #000000;
       padding-top: 1.5rem;
       letter-spacing: 0.08em;
@@ -194,7 +199,8 @@
 
     .links {
       display: flex;
-      gap: 2.5rem;
+      gap: 2rem;
+      flex-wrap: wrap;
     }
 
     a {
@@ -208,14 +214,32 @@
       border-bottom: 2px solid #000000;
     }
 
-    .exit {
-      opacity: 0.45;
+    /* Touch & Desktop Interactive Exit Button */
+    .exit-btn {
+      font-family: inherit;
+      font-size: inherit;
+      background: transparent;
+      color: #000000;
+      border: 2px solid #000000;
+      padding: 4px 12px;
       cursor: pointer;
       user-select: none;
+      opacity: 0.75;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      transition: all 0.1s ease;
+      -webkit-tap-highlight-color: transparent;
     }
 
-    .exit:hover {
+    .exit-btn:hover {
       opacity: 1;
+      background: #000000;
+      color: #ffffff;
+    }
+
+    .exit-btn:active {
+      transform: translate(2px, 2px);
     }
 
     /* CRT Power-Off Animation */
@@ -245,6 +269,7 @@
       100% { transform: scale(1, 1); filter: brightness(1); opacity: 1; }
     }
 
+    /* Blackout / SIGINT screen */
     .terminal-killed {
       position: fixed;
       inset: 0;
@@ -255,11 +280,14 @@
       justify-content: center;
       flex-direction: column;
       gap: 0.75rem;
-      font-size: clamp(1.4rem, 2.5vw, 2.5rem);
+      padding: 1.5rem;
+      text-align: center;
+      font-size: clamp(1.3rem, 2.5vw, 2.5rem);
       letter-spacing: 0.08em;
       z-index: 9999;
       user-select: none;
       cursor: pointer;
+      -webkit-tap-highlight-color: transparent;
     }
 
     .terminal-killed.active {
@@ -271,15 +299,38 @@
       font-size: clamp(1rem, 1.5vw, 1.3rem);
     }
 
-    @media (max-width: 900px) {
+    /* Responsive adjustments for phones */
+    @media (max-width: 860px) {
+      body {
+        padding: 1.5rem;
+      }
+
       .content-container {
         grid-template-columns: 1fr;
         justify-items: center;
         gap: 2.5rem;
         margin: 2rem 0;
       }
+
       .avatar-wrapper {
-        animation: floatTilted 3.8s ease-in-out infinite;
+        order: 2;
+      }
+
+      main {
+        order: 1;
+      }
+
+      footer {
+        flex-direction: column-reverse;
+        align-items: flex-start;
+        gap: 1.25rem;
+        margin-top: 1rem;
+      }
+
+      .exit-btn {
+        width: 100%;
+        justify-content: center;
+        padding: 8px 16px;
       }
     }
   </style>
@@ -299,7 +350,7 @@
       </p>
     </main>
 
-    <div class="avatar-wrapper" id="avatar-container" title="Click or interact">
+    <div class="avatar-wrapper" id="avatar-container" title="Tap or interact">
       <div class="avatar-box">
         <canvas class="pixel-face-canvas" id="faceCanvas" width="16" height="16"></canvas>
       </div>
@@ -313,12 +364,12 @@
       <a href="https://github.com/Davyd-crypto" target="_blank" rel="noreferrer">github</a>
       <a href="https://www.linkedin.com/in/david-barbu-7a84ab264/" target="_blank" rel="noreferrer">linkedin</a>
     </nav>
-    <div class="exit" id="exit-btn">^C TO EXIT</div>
+    <button class="exit-btn" id="exit-btn" aria-label="Terminate session">[EXIT / ^C]</button>
   </footer>
 
   <div class="terminal-killed" id="killed-screen">
     <div>[PROCESS TERMINATED: SIGINT (exit code 130)]</div>
-    <span>PRESS ANY KEY TO RECONNECT</span>
+    <span>TAP ANYWHERE OR PRESS ANY KEY TO RECONNECT</span>
   </div>
 
   <script>
@@ -354,6 +405,7 @@
       }, 800);
     }
 
+    // Keyboard support: Ctrl+C / Cmd+C / any key reconnect
     window.addEventListener('keydown', (e) => {
       if (isTerminating && killedScreen.classList.contains('active')) {
         triggerReconnect();
@@ -368,10 +420,19 @@
       }
     });
 
-    document.getElementById('exit-btn').addEventListener('click', triggerShutdown);
-    killedScreen.addEventListener('click', triggerReconnect);
+    // Touch & Click support for Exit & Reconnect
+    document.getElementById('exit-btn').addEventListener('click', (e) => {
+      e.stopPropagation();
+      triggerShutdown();
+    });
 
-    /* 16x16 Pixel Art Sprite Engine */
+    killedScreen.addEventListener('click', triggerReconnect);
+    killedScreen.addEventListener('touchend', (e) => {
+      e.preventDefault();
+      triggerReconnect();
+    });
+
+    /* Pixel Sprite Matrix (16x16) */
     const canvas = document.getElementById('faceCanvas');
     const ctx = canvas.getContext('2d');
     const statusEl = document.getElementById('avatar-status');
@@ -667,7 +728,7 @@
 
     setFaceState('idle', 'idle');
 
-    /* Routine Micro-Animations */
+    /* Routine Engine */
     function runRoutineEngine() {
       if (isTerminating) return;
 
@@ -739,7 +800,31 @@
 
     runRoutineEngine();
 
-    /* Interactive User Events */
+    /* Touch & Click Interaction */
+    let tapCount = 0;
+    function handleAvatarTap(e) {
+      if (isTerminating) return;
+      isBusy = true;
+      clearTimeout(sequenceTimeout);
+      tapCount++;
+
+      if (tapCount % 3 === 1) {
+        setFaceState('noticed', 'poke!');
+        avatarContainer.classList.add('bobbing');
+      } else if (tapCount % 3 === 2) {
+        setFaceState('gasp', 'woah!');
+        avatarContainer.classList.add('shiver');
+      } else {
+        setFaceState('cheer', 'yay!');
+        avatarContainer.classList.add('bobbing');
+      }
+
+      sequenceTimeout = setTimeout(() => {
+        resetToIdle();
+      }, 1000);
+    }
+
+    avatarContainer.addEventListener('click', handleAvatarTap);
     avatarContainer.addEventListener('mouseenter', () => {
       if (isTerminating) return;
       isBusy = true;
@@ -754,30 +839,7 @@
       resetToIdle();
     });
 
-    let clickCount = 0;
-    avatarContainer.addEventListener('click', () => {
-      if (isTerminating) return;
-      isBusy = true;
-      clearTimeout(sequenceTimeout);
-      clickCount++;
-
-      if (clickCount % 3 === 1) {
-        setFaceState('noticed', 'poke!');
-        avatarContainer.classList.add('bobbing');
-      } else if (clickCount % 3 === 2) {
-        setFaceState('gasp', 'woah!');
-        avatarContainer.classList.add('shiver');
-      } else {
-        setFaceState('cheer', 'yay!');
-        avatarContainer.classList.add('bobbing');
-      }
-
-      sequenceTimeout = setTimeout(() => {
-        resetToIdle();
-      }, 1000);
-    });
-
-    /* Global Cursor Tracking */
+    /* Pointer Tracking */
     let moveThrottle = false;
     window.addEventListener('mousemove', (e) => {
       if (isBusy || isTerminating || moveThrottle) return;

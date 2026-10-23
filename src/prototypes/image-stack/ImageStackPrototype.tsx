@@ -2,6 +2,7 @@ import { useEffect, useMemo, useRef, useState, type CSSProperties } from 'react'
 import { BendCard } from './BendCard.tsx'
 import { Caption } from './Caption.tsx'
 import { IMAGE_ASPECT, IMAGE_COUNT, randomTitle, stackImages } from './images.ts'
+import { ScrollHint } from './ScrollHint.tsx'
 import { SoundHint } from './SoundHint.tsx'
 import clickSound from './sounds/click.mp3'
 import flipSound2 from './sounds/flip2.mp3'
@@ -23,7 +24,7 @@ const FOCUS_SOUNDS = [
   { src: flipSound3, volume: QUIETER },
 ]
 // Whenever an image leaves the center (flip1/4/5 are in sounds/ to swap in, with pick 'random')
-const TICK_SOUNDS = [{ src: clickSound, volume: QUIETER }]
+const TICK_SOUNDS = [{ src: clickSound, volume: 0.1 }]
 const TICK_PICK = 'random'
 
 const GAP = 1.35 // distance between the centered image and each stack, in card widths
@@ -46,6 +47,8 @@ const FOCUS_BEND_DEG = 40 // how far the image curves mid-turn (right side leads
 const CAPTION_RISE_PX = 12 // the caption slides up this far while fading in
 const CAPTION_INSET = 0.23 // caption starts this far into the image width, from the left
 const LOADER_FADE_MS = 600
+const HINT_MS = 3000 // the intro animation plays twice (2 × 1.4s, see .scroll-hint in CSS)
+const HINT_FADE_MS = 400
 const FOCUS_DELAY_MS = 600
 
 const rad = (deg: number) => (deg * Math.PI) / 180
@@ -111,9 +114,22 @@ export function ImageStackPrototype() {
   const { progress, ready, infos } = usePreload(images)
   const appear = useEased(ready ? 1 : 0, LOADER_FADE_MS)
 
-  const { position, resting, restIndex } = useStackScroll(pageRef, lockRef)
+  const { position, resting, restIndex, moved } = useStackScroll(pageRef, lockRef)
   useTickSound(position, TICK_SOUNDS, TICK_PICK)
-  const focused = useDwell(resting && ready, FOCUS_DELAY_MS)
+
+  // One-time intro showing how to scroll (swipe on touch screens), until it has
+  // played or the visitor scrolls; the first focus waits for it
+  const [touch] = useState(() => window.matchMedia('(pointer: coarse)').matches)
+  const [hintTimeUp, setHintTimeUp] = useState(false)
+  useEffect(() => {
+    if (!ready) return
+    const timer = window.setTimeout(() => setHintTimeUp(true), HINT_MS)
+    return () => clearTimeout(timer)
+  }, [ready])
+  const hintVisible = ready && !moved && !hintTimeUp
+  const hint = useEased(hintVisible ? 1 : 0, HINT_FADE_MS)
+
+  const focused = useDwell(resting && ready && !hintVisible, FOCUS_DELAY_MS)
   useRandomSound(focused, FOCUS_SOUNDS)
   const focus = useEased(focused ? 1 : 0, focused ? FOCUS_IN_MS : FOCUS_OUT_MS) // 0 = isometric, 1 = focused
   // In drawn card widths, so the smaller images keep the same on-screen distance
@@ -212,6 +228,7 @@ export function ImageStackPrototype() {
               }}
             />
           )}
+          {hint > 0 && <ScrollHint touch={touch} style={{ opacity: hint }} />}
         </>
       )}
 

@@ -15,6 +15,7 @@ const MOMENTUM_MS = 140 // how far a touch flick carries on
  *
  * `resting` is true once the position has come to rest on `restIndex` (no
  * gesture or snap pending); `restIndex` keeps the last resting position.
+ * `moved` turns true with the first scroll input and stays true.
  *
  * While `lockRef.current` is true the position holds still: input is still
  * collected and the stack moves on once the lock is released.
@@ -23,6 +24,7 @@ export function useStackScroll(ref: RefObject<HTMLElement | null>, lockRef?: Ref
   const [position, setPosition] = useState(0)
   const [resting, setResting] = useState(true)
   const [restIndex, setRestIndex] = useState(0)
+  const [moved, setMoved] = useState(false)
 
   useEffect(() => {
     const el = ref.current!
@@ -57,7 +59,10 @@ export function useStackScroll(ref: RefObject<HTMLElement | null>, lockRef?: Ref
     function moveTo(value: number) {
       target = value
       // A click without movement keeps the focus instead of flickering out and back in
-      if (target !== current) setResting(false)
+      if (target !== current) {
+        setResting(false)
+        setMoved(true)
+      }
       if (!frame) frame = requestAnimationFrame(animate)
     }
 
@@ -162,5 +167,5 @@ export function useStackScroll(ref: RefObject<HTMLElement | null>, lockRef?: Ref
     }
   }, [ref, lockRef])
 
-  return { position, resting, restIndex }
+  return { position, resting, restIndex, moved }
 }

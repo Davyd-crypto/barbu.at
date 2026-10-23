@@ -1,0 +1,190 @@
+/* Isometric image stack: only the images move, the page itself never scrolls */
+.stack-page {
+  position: fixed;
+  inset: 0;
+  overflow: hidden;
+  background: #ededeb;
+  image-rendering: auto;
+  touch-action: none;
+  user-select: none;
+  cursor: grab;
+}
+
+.stack-page:active {
+  cursor: grabbing;
+}
+
+/* Flat full-page layer around a world, so a filter (blur) doesn't flatten the 3D inside */
+.stack-layer {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+/* Orthographic (no perspective) world; tilt and --card-w are set inline from the component */
+.stack-world {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform-style: preserve-3d;
+  pointer-events: none;
+}
+
+.stack-card {
+  position: absolute;
+  width: var(--card-w);
+  aspect-ratio: 3 / 2;
+  left: calc(var(--card-w) / -2);
+  top: calc(var(--card-w) / -3);
+  object-fit: cover;
+  background: #d9d9d6; /* shows until the photo has loaded */
+  /* --turn-x/--turn-y/--zoom are only set on the focused image */
+  transform: translateZ(calc(var(--z) * var(--card-w))) rotateY(var(--turn-y, 0deg)) rotateX(var(--turn-x, 0deg))
+    scale(var(--zoom, 1));
+}
+
+/* Title block below the focused image, hanging from it with a thin rule on the left;
+   position and fade are set inline */
+.stack-caption {
+  position: absolute;
+  padding: 0.75rem 0 0.25rem 0.9rem;
+  border-left: 1px solid rgba(29, 29, 27, 0.55);
+  color: #1d1d1b;
+  font-family: system-ui, -apple-system, "Helvetica Neue", Arial, sans-serif;
+  font-size: clamp(0.7rem, 0.85vw, 0.85rem);
+  line-height: 1.45;
+  white-space: nowrap;
+}
+
+.stack-caption-title {
+  font-weight: 600;
+}
+
+.stack-caption-meta {
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+}
+
+.stack-caption-actions {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.2rem;
+  margin-top: 0.9rem;
+}
+
+.stack-caption-actions a,
+.stack-caption-actions button {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6em;
+  padding: 0;
+  border: 0;
+  background: none;
+  color: inherit;
+  font: inherit;
+  text-transform: none;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.stack-caption-actions a:hover,
+.stack-caption-actions button:hover {
+  border: 0;
+  text-decoration: underline;
+  text-underline-offset: 0.2em;
+}
+
+.stack-caption-actions svg {
+  width: 0.9em;
+  height: 0.9em;
+  flex: none;
+}
+
+/* Loader shown until every image is decoded */
+.stack-loader {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  font-family: system-ui, -apple-system, "Helvetica Neue", Arial, sans-serif;
+  color: #1d1d1b;
+  pointer-events: none;
+}
+
+.stack-loader-bar {
+  width: min(220px, 60vw);
+  height: 2px;
+  background: rgba(29, 29, 27, 0.12);
+  overflow: hidden;
+}
+
+.stack-loader-fill {
+  height: 100%;
+  background: #1d1d1b;
+  transform-origin: left center;
+  transition: transform 0.3s ease-in-out;
+}
+
+.stack-loader-label {
+  font-size: 0.8rem;
+  letter-spacing: 0.08em;
+  opacity: 0.55;
+  font-variant-numeric: tabular-nums;
+}
+
+/* Focused image while it bends: a container of hinged strips (see BendCard.tsx) */
+.bend-card {
+  background: none;
+  transform-style: preserve-3d;
+}
+
+.bend-strip {
+  position: absolute;
+  top: 0;
+  height: 100%;
+  background-repeat: no-repeat;
+}
+
+/* "best with sound on" note, top left */
+.stack-sound-hint {
+  position: absolute;
+  top: clamp(1rem, 3vw, 2.5rem);
+  left: clamp(1rem, 3vw, 2.5rem);
+  display: flex;
+  align-items: center;
+  gap: 0.5em;
+  color: #1d1d1b;
+  font-family: system-ui, -apple-system, "Helvetica Neue", Arial, sans-serif;
+  font-size: clamp(0.75rem, 0.9vw, 0.9rem);
+  letter-spacing: 0.01em;
+  pointer-events: none;
+}
+
+.stack-sound-hint svg {
+  width: 1.15em;
+  height: 1.15em;
+  flex: none;
+}
+
+.stack-sound-wave {
+  animation: stack-sound-wave 1.6s ease-in-out infinite;
+}
+
+.stack-sound-wave-outer {
+  animation-delay: 0.2s;
+}
+
+@keyframes stack-sound-wave {
+  0%, 100% { opacity: 0.25; }
+  50% { opacity: 1; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .stack-sound-wave {
+    animation: none;
+  }
+}

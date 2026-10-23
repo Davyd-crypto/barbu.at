@@ -1,0 +1,28 @@
+/* Styles for the protected area; shipped inside the encrypted bundle */
+.proto-index {
+  margin: 2.5rem 0;
+}
+
+.proto-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  font-size: clamp(1.4rem, 2vw, 2rem);
+}
+
+.proto-list li {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0 1.5rem;
+  align-items: baseline;
+}
+
+.proto-list span {
+  opacity: 0.55;
+  font-size: 0.8em;
+}
+
+.proto-counter {
+  opacity: 1;
+}

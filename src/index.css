@@ -306,8 +306,12 @@ a:hover {
     order: 2;
   }
 
-  main {
+  .content-container > main {
     order: 1;
+  }
+
+  .gate-row {
+    flex-direction: column;
   }
 
   footer {
@@ -322,4 +326,51 @@ a:hover {
     justify-content: center;
     padding: 8px 16px;
   }
+}
+
+/* Password gate for /prototypes */
+.gate {
+  margin: 2.5rem 0;
+}
+
+.gate-form {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  font-size: clamp(1.4rem, 2vw, 2rem);
+  max-width: 36rem;
+}
+
+.gate-row {
+  display: flex;
+  gap: 1rem;
+}
+
+.gate-input {
+  flex: 1;
+  min-width: 0;
+  font-family: inherit;
+  font-size: inherit;
+  color: #000000;
+  background: #ffffff;
+  border: 2px solid #000000;
+  padding: 4px 12px;
+  outline: none;
+}
+
+.gate-input:focus {
+  box-shadow: 5px 5px 0px #000000;
+}
+
+.gate-status {
+  min-height: 1.5em;
+  margin-top: 1rem;
+  font-size: clamp(1.3rem, 1.8vw, 1.8rem);
+  letter-spacing: 0.08em;
+  opacity: 0.65;
+}
+
+.exit-btn:disabled {
+  opacity: 0.4;
+  cursor: wait;
 }

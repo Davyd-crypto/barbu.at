@@ -5,6 +5,7 @@
  */
 import type { ComponentType } from 'react'
 import { Link, Navigate, Route, Routes } from 'react-router'
+import { CalendarPrototype } from './calendar/CalendarPrototype.tsx'
 import { ExamplePrototype } from './example/ExamplePrototype.tsx'
 import { ImageStackPrototype } from './image-stack/ImageStackPrototype.tsx'
 import './prototypes.css'
@@ -28,6 +29,12 @@ const PROTOTYPES: Prototype[] = [
     title: 'image-stack',
     description: 'Isometric photo stack, scroll through 30 images.',
     Component: ImageStackPrototype,
+  },
+  {
+    path: 'calendar',
+    title: 'calendar',
+    description: 'Uni deadlines and calendar from the .ics files in calendar/ics.',
+    Component: CalendarPrototype,
   },
 ]
 

@@ -1,0 +1,544 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Claude//TU Wien Kurse//DE
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+X-WR-CALNAME:TU: Verteilte Systeme 2026W
+X-WR-TIMEZONE:Europe/Vienna
+BEGIN:VTIMEZONE
+TZID:Europe/Vienna
+BEGIN:DAYLIGHT
+TZOFFSETFROM:+0100
+TZOFFSETTO:+0200
+TZNAME:CEST
+DTSTART:19700329T020000
+RRULE:FREQ=YEARLY;BYMONTH=3;BYDAY=-1SU
+END:DAYLIGHT
+BEGIN:STANDARD
+TZOFFSETFROM:+0200
+TZOFFSETTO:+0100
+TZNAME:CET
+DTSTART:19701025T030000
+RRULE:FREQ=YEARLY;BYMONTH=10;BYDAY=-1SU
+END:STANDARD
+END:VTIMEZONE
+BEGIN:VEVENT
+UID:df2fa490af45ca0526c0541f3f54c32c183edf79@tuwien-kurse
+DTSTAMP:20261030T160301Z
+DTSTART;TZID=Europe/Vienna:20261005T180000
+DTEND;TZID=Europe/Vienna:20261005T183000
+SUMMARY:VS: Assignment 0 (MC-Test) öffnet
+DESCRIPTION:Registrierungs-MC-Test\, Voraussetzung für die Assignments.\
+ nStatus: fest\nQuelle: TUWEL Assignment 0
+LOCATION:TUWEL
+CATEGORIES:registration
+END:VEVENT
+BEGIN:VEVENT
+UID:90a324cc355fa82b70a962b857bfa80ddc66b086@tuwien-kurse
+DTSTAMP:20261030T160301Z
+DTSTART;TZID=Europe/Vienna:20261008T180000
+DTEND;TZID=Europe/Vienna:20261008T183000
+SUMMARY:VS: Assignment 1 verfügbar
+DESCRIPTION:Client für Message Broker (SMQP).\nStatus: fest\nQuelle: TUW
+ EL Assignment 1
+LOCATION:GitLab
+CATEGORIES:other
+END:VEVENT
+BEGIN:VEVENT
+UID:0fa065b290b854fb23698a95b625d5df3666a56a@tuwien-kurse
+DTSTAMP:20261030T160301Z
+DTSTART;VALUE=DATE:20261016
+DTEND;VALUE=DATE:20261017
+TRANSP:TRANSPARENT
+SUMMARY:VS: LVA-Abmeldung Ende
+DESCRIPTION:Abmeldung von der LVA war bis 16.10.2026 möglich.\nStatus: f
+ est\nQuelle: TISS LVA-Anmeldung
+LOCATION:TISS
+CATEGORIES:deadline
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:VS: LVA-Abmeldung Ende morgen
+TRIGGER:-P1D
+END:VALARM
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:VS: LVA-Abmeldung Ende in 2 Stunden
+TRIGGER:-PT2H
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:f6d3608a8ee51729731a8754f3c196f75f979538@tuwien-kurse
+DTSTAMP:20261030T160301Z
+DTSTART;TZID=Europe/Vienna:20261023T180000
+DTEND;TZID=Europe/Vienna:20261023T183000
+SUMMARY:VS: Assignment 2 verfügbar
+DESCRIPTION:Message Broker + DNS-Server (SDP).\nStatus: fest\nQuelle: TUW
+ EL Assignment 2
+LOCATION:TUWEL / GitLab
+CATEGORIES:other
+END:VEVENT
+BEGIN:VEVENT
+UID:bb52012d1c03719d31aef7f0b58590392ed3278e@tuwien-kurse
+DTSTAMP:20261030T160301Z
+DTSTART;TZID=Europe/Vienna:20261023T180000
+DTEND;TZID=Europe/Vienna:20261023T183000
+SUMMARY:VS: Assignment 0 (MC-Test) Frist
+DESCRIPTION:FRIST: 23.10.2026 18:30. Verlängert (ursprünglich 12.10. bz
+ w. 16.10.). Bei David erledigt (1\,00/1\,00).\nStatus: fest\nQuelle: TUWE
+ L Assignment 0\, Announcement 13.10.
+LOCATION:TUWEL
+CATEGORIES:deadline
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:VS: Assignment 0 (MC-Test) Frist morgen
+TRIGGER:-P1D
+END:VALARM
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:VS: Assignment 0 (MC-Test) Frist in 2 Stunden
+TRIGGER:-PT2H
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:bb467fa79bf8660a8e0c42679f9d965724a23d09@tuwien-kurse
+DTSTAMP:20261030T160301Z
+DTSTART;TZID=Europe/Vienna:20261025T232900
+DTEND;TZID=Europe/Vienna:20261025T235900
+SUMMARY:VS: Assignment 1 Abgabe
+DESCRIPTION:FRIST: 25.10.2026 23:59. Harte Deadline. A1-PDF nannte 18:00\
+ ; GitLab sperrte um 18:00\, laut Announcement 25.10. Pushes nach Wiederhe
+ rstellung bis 23:59 möglich.\nStatus: fest\nQuelle: TUWEL Assignment 1\,
+  Announcement 25.10.
+LOCATION:GitLab
+CATEGORIES:deadline
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:VS: Assignment 1 Abgabe morgen
+TRIGGER:-P1D
+END:VALARM
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:VS: Assignment 1 Abgabe in 2 Stunden
+TRIGGER:-PT2H
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:fbe555d90f3d2eac45ca3c4eb7f22c6a01007c95@tuwien-kurse
+DTSTAMP:20261030T160301Z
+DTSTART;TZID=Europe/Vienna:20261123T180000
+DTEND;TZID=Europe/Vienna:20261123T183000
+SUMMARY:VS: A2-Interview-Slot buchen – Beginn
+DESCRIPTION:Terminplaner „Assignment 2 Interviews“ öffnet. Pflicht: 
+ 1 Slot buchen.\nStatus: fest\nQuelle: TUWEL Assignment 2 Interviews
+LOCATION:TUWEL
+CATEGORIES:registration
+END:VEVENT
+BEGIN:VEVENT
+UID:1bf1352f6dc346a971e7854591f773853db58bcb@tuwien-kurse
+DTSTAMP:20261030T160301Z
+DTSTART;TZID=Europe/Vienna:20261127T173000
+DTEND;TZID=Europe/Vienna:20261127T180000
+SUMMARY:VS: Assignment 2 Abgabe
+DESCRIPTION:FRIST: 27.11.2026 18:00. Harte Deadline (CET). Push auf main\
+ , Grading Workflow prüfen. Widerspruch: A2-PDF spricht von GitHub Classr
+ oom\, TUWEL von GitLab.\nStatus: fest\nQuelle: TUWEL Assignment 2\, A2-PD
+ F
+LOCATION:GitLab
+CATEGORIES:deadline
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:VS: Assignment 2 Abgabe morgen
+TRIGGER:-P1D
+END:VALARM
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:VS: Assignment 2 Abgabe in 2 Stunden
+TRIGGER:-PT2H
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:c1f740dc0754e1c2c44b3f893d96219d0d233114@tuwien-kurse
+DTSTAMP:20261030T160301Z
+DTSTART;TZID=Europe/Vienna:20261127T180000
+DTEND;TZID=Europe/Vienna:20261127T183000
+SUMMARY:VS: Assignment 3 verfügbar [vorläufig]
+DESCRIPTION:Leader Election\, Monitoring.\nStatus: vorläufig\nQuelle: TU
+ WEL Course Timetable
+LOCATION:TUWEL / GitLab
+CATEGORIES:other
+END:VEVENT
+BEGIN:VEVENT
+UID:a10f461fdcb0c35023c9f6c460441c1874b5fb3a@tuwien-kurse
+DTSTAMP:20261030T160301Z
+DTSTART;TZID=Europe/Vienna:20261129T173000
+DTEND;TZID=Europe/Vienna:20261129T180000
+SUMMARY:VS: A2-Interview-Slot buchen – Ende
+DESCRIPTION:FRIST: 29.11.2026 18:00. Pflicht. Nicht angemeldet oder ohne 
+ triftigen Grund nicht erschienen = voller Punkteabzug für A2.\nStatus: f
+ est\nQuelle: TUWEL Assignment 2 Interviews\, A2-PDF
+LOCATION:TUWEL
+CATEGORIES:deadline
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:VS: A2-Interview-Slot buchen – Ende morgen
+TRIGGER:-P1D
+END:VALARM
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:VS: A2-Interview-Slot buchen – Ende in 2 Stunden
+TRIGGER:-PT2H
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:9b09b7d82dad9ebc943fc2d20e7c33c8060e571f@tuwien-kurse
+DTSTAMP:20261030T160301Z
+DTSTART;VALUE=DATE:20261130
+DTEND;VALUE=DATE:20261205
+TRANSP:TRANSPARENT
+SUMMARY:VS: Abgabegespräche Assignment 2 [widersprüchlich]
+DESCRIPTION:Pflicht\, ca. 15 Min.\, Einzelgespräch. Zeitraum laut Timeta
+ ble/TISS 30.11.–04.12.\; laut Kickoff-Folien 1.–5. Dez. Ort: A2-PDF 
+ „in DSLab“\, Handbook „online via Zoom“. Konkreter Slot über Ter
+ minplaner.\nStatus: widersprüchlich\nQuelle: TUWEL Course Timetable\, TI
+ SS\, Kickoff Slides\, A2-PDF\, DSLab Handbook
+LOCATION:DSLab (laut A2-PDF) bzw. Zoom (laut Handbook)
+CATEGORIES:interview
+END:VEVENT
+BEGIN:VEVENT
+UID:d951dde1d1221c08004f8b6481aec9ce1f95ba82@tuwien-kurse
+DTSTAMP:20261030T160301Z
+DTSTART;TZID=Europe/Vienna:20261218T000000
+DTEND;TZID=Europe/Vienna:20261218T003000
+SUMMARY:VS: Prüfungsanmeldung Hauptprüfung – Beginn
+DESCRIPTION:TISS-Anmeldung Pflicht für jeden Antritt.\nStatus: fest\nQue
+ lle: TISS Prüfungen
+LOCATION:TISS
+CATEGORIES:registration
+END:VEVENT
+BEGIN:VEVENT
+UID:c591f4d72b961fa4e945435ea323988f0a65ec97@tuwien-kurse
+DTSTAMP:20261030T160301Z
+DTSTART;TZID=Europe/Vienna:20270108T232900
+DTEND;TZID=Europe/Vienna:20270108T235900
+SUMMARY:VS: Prüfungsanmeldung Hauptprüfung – Ende
+DESCRIPTION:FRIST: 08.01.2027 23:59. Anmeldung gibt Zugang zur TUWEL-Prü
+ fungsgruppe (Sync nicht automatisch).\nStatus: fest\nQuelle: TISS Prüfun
+ gen
+LOCATION:TISS
+CATEGORIES:deadline
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:VS: Prüfungsanmeldung Hauptprüfung – Ende morgen
+TRIGGER:-P1D
+END:VALARM
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:VS: Prüfungsanmeldung Hauptprüfung – Ende in 2 Stunden
+TRIGGER:-PT2H
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:104a7dc651c6078a4e72e5ec0391aebbb8d7a30e@tuwien-kurse
+DTSTAMP:20261030T160301Z
+DTSTART;TZID=Europe/Vienna:20270110T232900
+DTEND;TZID=Europe/Vienna:20270110T235900
+SUMMARY:VS: Online-Abmeldung Hauptprüfung – Ende
+DESCRIPTION:FRIST: 10.01.2027 23:59. TISS-Online-Abmeldefrist. Laut TUWEL
+  Abmeldung spätestens 2 Werktage vor Prüfung\, sonst 8 Wochen Sperre.\n
+ Status: fest\nQuelle: TISS Prüfungen\, TUWEL Online VO Exam
+LOCATION:TISS
+CATEGORIES:deadline
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:VS: Online-Abmeldung Hauptprüfung – Ende morgen
+TRIGGER:-P1D
+END:VALARM
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:VS: Online-Abmeldung Hauptprüfung – Ende in 2 Stunden
+TRIGGER:-PT2H
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:a4ff73c7ea1451397511f9a0ec87f309209ae3ae@tuwien-kurse
+DTSTAMP:20261030T160301Z
+DTSTART;TZID=Europe/Vienna:20270115T173000
+DTEND;TZID=Europe/Vienna:20270115T180000
+SUMMARY:VS: Assignment 3 Abgabe
+DESCRIPTION:FRIST: 15.01.2027 18:00. Harte Deadline.\nStatus: fest\nQuell
+ e: TUWEL Course Timetable
+LOCATION:GitLab
+CATEGORIES:deadline
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:VS: Assignment 3 Abgabe morgen
+TRIGGER:-P1D
+END:VALARM
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:VS: Assignment 3 Abgabe in 2 Stunden
+TRIGGER:-PT2H
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:638933c84af9e72c5411384ab088f572e1d1c8ad@tuwien-kurse
+DTSTAMP:20261030T160301Z
+DTSTART;VALUE=DATE:20270118
+DTEND;VALUE=DATE:20270123
+TRANSP:TRANSPARENT
+SUMMARY:VS: Abgabegespräche Assignment 3 [widersprüchlich]
+DESCRIPTION:Pflicht. Laut Timetable/TISS 18.–22.01.\; laut Kickoff-Foli
+ en 19.–23. Jan. Buchungszeitraum für Terminplaner „Assignment 3 Inte
+ rviews“ noch nicht bekannt.\nStatus: widersprüchlich\nQuelle: TUWEL Co
+ urse Timetable\, TISS\, Kickoff Slides
+LOCATION:DSLab/Zoom (Timetable)
+CATEGORIES:interview
+END:VEVENT
+BEGIN:VEVENT
+UID:fcea12df0b8a8db73bd6a020cb3cface627da2aa@tuwien-kurse
+DTSTAMP:20261030T160301Z
+DTSTART;VALUE=DATE:20270124
+DTEND;VALUE=DATE:20270125
+TRANSP:TRANSPARENT
+SUMMARY:VS: Kein Zugriff auf Prüfungsblock? Mail bis
+DESCRIPTION:Wer trotz Anmeldung bis 24.01.2027 keinen Zugriff auf den TUW
+ EL-Prüfungsblock hat\, mailt den Lehrenden.\nStatus: fest\nQuelle: TUWEL
+  Online VO Exam - General Info
+LOCATION:Mail an ds-vo@dsg.tuwien.ac.at
+CATEGORIES:deadline
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:VS: Kein Zugriff auf Prüfungsblock? Mail bis morgen
+TRIGGER:-P1D
+END:VALARM
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:VS: Kein Zugriff auf Prüfungsblock? Mail bis in 2 Stunden
+TRIGGER:-PT2H
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:838a214ed9ae43b1b7b29c0a5b06042802399cf6@tuwien-kurse
+DTSTAMP:20261030T160301Z
+DTSTART;TZID=Europe/Vienna:20270125T124500
+DTEND;TZID=Europe/Vienna:20270125T131500
+SUMMARY:VS: Selfie mit Studierendenausweis hochladen (Hauptprüfung) [wid
+ ersprüchlich]
+DESCRIPTION:FRIST: 25.01.2027 13:15. Bis exakt Prüfungsbeginn\; JPG/PNG\
+ , nicht gespiegelt. Ohne Selfie Entfernung von der Prüfung. Zeit hängt 
+ an möglicher Verschiebung der Prüfung (Option 16–18 h). „Details fo
+ r Online Exam“ nennt noch 15.06.2026\, 13:15 (Vorjahresrest).\nStatus: 
+ widersprüchlich\nQuelle: TUWEL Online VO Exam - General Info / Details f
+ or Online Exam
+LOCATION:TUWEL-Prüfungsblock
+CATEGORIES:deadline
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:VS: Selfie mit Studierendenausweis hochladen (Hauptprüfung) 
+ morgen
+TRIGGER:-P1D
+END:VALARM
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:VS: Selfie mit Studierendenausweis hochladen (Hauptprüfung) 
+ in 2 Stunden
+TRIGGER:-PT2H
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:aa0fc27ffd8ab4d00a9e8d702c89df5bdbb4fd26@tuwien-kurse
+DTSTAMP:20261030T160301Z
+DTSTART;TZID=Europe/Vienna:20270125T131500
+DTEND;TZID=Europe/Vienna:20270125T143500
+SUMMARY:VS: Hauptprüfung (VO\, online) [widersprüchlich]
+DESCRIPTION:80 Min.\, open book\, 10–14 Fragen. TUWEL: Start 13:15\, Zo
+ om ab 13:00\; TISS: 13:00–15:00. Announcement 27.10.: Verschiebung auf 
+ 16–18 h möglich\, noch nicht entschieden.\nStatus: widersprüchlich\nQ
+ uelle: TUWEL Online VO Exam\, TISS Prüfungen\, Announcement 27.10.
+LOCATION:Online (TUWEL-Quiz + Zoom)
+CATEGORIES:exam
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:VS: Hauptprüfung (VO\, online) in 2 Tagen
+TRIGGER:-P2D
+END:VALARM
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:VS: Hauptprüfung (VO\, online) in 2 Stunden
+TRIGGER:-PT2H
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:ccc24ddf2e511de3c0f56285547d8dd3549d9812@tuwien-kurse
+DTSTAMP:20261030T160301Z
+DTSTART;TZID=Europe/Vienna:20270201T000000
+DTEND;TZID=Europe/Vienna:20270201T003000
+SUMMARY:VS: Prüfungsanmeldung 2. Prüfung – Beginn
+DESCRIPTION:TISS-Anmeldung Pflicht.\nStatus: fest\nQuelle: TISS Prüfunge
+ n
+LOCATION:TISS
+CATEGORIES:registration
+END:VEVENT
+BEGIN:VEVENT
+UID:a47e9e739b3ecbe6be4f52b0bdeadb57ca57c7f2@tuwien-kurse
+DTSTAMP:20261030T160301Z
+DTSTART;TZID=Europe/Vienna:20270219T232900
+DTEND;TZID=Europe/Vienna:20270219T235900
+SUMMARY:VS: Prüfungsanmeldung 2. Prüfung – Ende
+DESCRIPTION:FRIST: 19.02.2027 23:59. \nStatus: fest\nQuelle: TISS Prüfun
+ gen
+LOCATION:TISS
+CATEGORIES:deadline
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:VS: Prüfungsanmeldung 2. Prüfung – Ende morgen
+TRIGGER:-P1D
+END:VALARM
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:VS: Prüfungsanmeldung 2. Prüfung – Ende in 2 Stunden
+TRIGGER:-PT2H
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:45a2bb7535eb49c88b6a2e7f539efb2b99b1fea3@tuwien-kurse
+DTSTAMP:20261030T160301Z
+DTSTART;TZID=Europe/Vienna:20270221T232900
+DTEND;TZID=Europe/Vienna:20270221T235900
+SUMMARY:VS: Online-Abmeldung 2. Prüfung – Ende
+DESCRIPTION:FRIST: 21.02.2027 23:59. TISS-Online-Abmeldefrist\; laut TUWE
+ L spätestens 2 Werktage vorher.\nStatus: fest\nQuelle: TISS Prüfungen
+LOCATION:TISS
+CATEGORIES:deadline
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:VS: Online-Abmeldung 2. Prüfung – Ende morgen
+TRIGGER:-P1D
+END:VALARM
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:VS: Online-Abmeldung 2. Prüfung – Ende in 2 Stunden
+TRIGGER:-PT2H
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:0adc49185b67b3c485e540aa40797aa19f928a8d@tuwien-kurse
+DTSTAMP:20261030T160301Z
+DTSTART;TZID=Europe/Vienna:20270222T123000
+DTEND;TZID=Europe/Vienna:20270222T130000
+SUMMARY:VS: Selfie mit Studierendenausweis hochladen (2. Prüfung) [vorl
+ äufig]
+DESCRIPTION:FRIST: 22.02.2027 13:00. Bis Prüfungsbeginn (TISS nennt 13:0
+ 0\; TUWEL-Regeln nennen allgemein Start 13:15).\nStatus: vorläufig\nQuel
+ le: TUWEL Online VO Exam\, TISS Prüfungen
+LOCATION:TUWEL-Prüfungsblock
+CATEGORIES:deadline
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:VS: Selfie mit Studierendenausweis hochladen (2. Prüfung) mo
+ rgen
+TRIGGER:-P1D
+END:VALARM
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:VS: Selfie mit Studierendenausweis hochladen (2. Prüfung) in
+  2 Stunden
+TRIGGER:-PT2H
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:e8ddd9490176dbb933a6beaa404890d3885e16bb@tuwien-kurse
+DTSTAMP:20261030T160301Z
+DTSTART;TZID=Europe/Vienna:20270222T130000
+DTEND;TZID=Europe/Vienna:20270222T150000
+SUMMARY:VS: 2. Prüfung (VO\, online)
+DESCRIPTION:Beide Wintertermine nutzbar\, das bessere Ergebnis zählt.\nS
+ tatus: fest\nQuelle: TISS Prüfungen
+LOCATION:Online (via Zoom)
+CATEGORIES:exam
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:VS: 2. Prüfung (VO\, online) in 2 Tagen
+TRIGGER:-P2D
+END:VALARM
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:VS: 2. Prüfung (VO\, online) in 2 Stunden
+TRIGGER:-PT2H
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:bf042323f38837a1e0d2ac5a452f2f69785f3d62@tuwien-kurse
+DTSTAMP:20261030T160301Z
+DTSTART;TZID=Europe/Vienna:20270530T000000
+DTEND;TZID=Europe/Vienna:20270530T003000
+SUMMARY:VS: Prüfungsanmeldung 3. Prüfung – Beginn
+DESCRIPTION:\nStatus: fest\nQuelle: TISS Prüfungen
+LOCATION:TISS
+CATEGORIES:registration
+END:VEVENT
+BEGIN:VEVENT
+UID:60fe0c0d64ae569697413599cf9321bd16b65397@tuwien-kurse
+DTSTAMP:20261030T160301Z
+DTSTART;TZID=Europe/Vienna:20270611T232900
+DTEND;TZID=Europe/Vienna:20270611T235900
+SUMMARY:VS: Prüfungsanmeldung 3. Prüfung – Ende
+DESCRIPTION:FRIST: 11.06.2027 23:59. \nStatus: fest\nQuelle: TISS Prüfun
+ gen
+LOCATION:TISS
+CATEGORIES:deadline
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:VS: Prüfungsanmeldung 3. Prüfung – Ende morgen
+TRIGGER:-P1D
+END:VALARM
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:VS: Prüfungsanmeldung 3. Prüfung – Ende in 2 Stunden
+TRIGGER:-PT2H
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:998da812be9888702dac34d22c94e2da752f6590@tuwien-kurse
+DTSTAMP:20261030T160301Z
+DTSTART;TZID=Europe/Vienna:20270613T232900
+DTEND;TZID=Europe/Vienna:20270613T235900
+SUMMARY:VS: Online-Abmeldung 3. Prüfung – Ende
+DESCRIPTION:FRIST: 13.06.2027 23:59. \nStatus: fest\nQuelle: TISS Prüfun
+ gen
+LOCATION:TISS
+CATEGORIES:deadline
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:VS: Online-Abmeldung 3. Prüfung – Ende morgen
+TRIGGER:-P1D
+END:VALARM
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:VS: Online-Abmeldung 3. Prüfung – Ende in 2 Stunden
+TRIGGER:-PT2H
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:9c6d31c5c9f077f96da394e0439ed933ec586ac7@tuwien-kurse
+DTSTAMP:20261030T160301Z
+DTSTART;VALUE=DATE:20270614
+DTEND;VALUE=DATE:20270615
+TRANSP:TRANSPARENT
+SUMMARY:VS: 3. Prüfung (Juni-Zusatztermin) [vorläufig]
+DESCRIPTION:Uhrzeit noch nicht bekannt. Löst ein neues Zeugnis aus.\nSta
+ tus: vorläufig\nQuelle: TISS Prüfungen\, TUWEL
+LOCATION:Online (laut TUWEL)
+CATEGORIES:exam
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:VS: 3. Prüfung (Juni-Zusatztermin) in 2 Tagen
+TRIGGER:-P2D
+END:VALARM
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:VS: 3. Prüfung (Juni-Zusatztermin) in 2 Stunden
+TRIGGER:-PT2H
+END:VALARM
+END:VEVENT
+END:VCALENDAR

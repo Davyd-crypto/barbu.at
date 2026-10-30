@@ -1,0 +1,330 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Claude//TU Wien Kurse//DE
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+X-WR-CALNAME:TU: Blockchain Technologies 2026W
+X-WR-TIMEZONE:Europe/Vienna
+BEGIN:VTIMEZONE
+TZID:Europe/Vienna
+BEGIN:DAYLIGHT
+TZOFFSETFROM:+0100
+TZOFFSETTO:+0200
+TZNAME:CEST
+DTSTART:19700329T020000
+RRULE:FREQ=YEARLY;BYMONTH=3;BYDAY=-1SU
+END:DAYLIGHT
+BEGIN:STANDARD
+TZOFFSETFROM:+0200
+TZOFFSETTO:+0100
+TZNAME:CET
+DTSTART:19701025T030000
+RRULE:FREQ=YEARLY;BYMONTH=10;BYDAY=-1SU
+END:STANDARD
+END:VTIMEZONE
+BEGIN:VEVENT
+UID:de81a971733ccbeff10c6aa1db094e636c2c57fe@tuwien-kurse
+DTSTAMP:20261030T155818Z
+DTSTART;TZID=Europe/Vienna:20261014T120000
+DTEND;TZID=Europe/Vienna:20261014T123000
+SUMMARY:BC: Gruppenanmeldung Kerma öffnet
+DESCRIPTION:Gruppen mit max. 3 Personen.\nStatus: fest\nQuelle: TUWEL Gro
+ ups (grouptool id=3049441)
+LOCATION:TUWEL → Groups
+CATEGORIES:registration
+END:VEVENT
+BEGIN:VEVENT
+UID:3c13fbd3f3f99a39b820474a7f9db24395cce652@tuwien-kurse
+DTSTAMP:20261030T155818Z
+DTSTART;TZID=Europe/Vienna:20261014T200000
+DTEND;TZID=Europe/Vienna:20261014T203000
+SUMMARY:BC: Task 1 Abgabe öffnet
+DESCRIPTION:Task 1 (P2P-Netzwerk\, Handshake\, Peer Discovery)\; Angabe i
+ n „Task 1 Resources“.\nStatus: fest\nQuelle: TUWEL Solution for Task 
+ 1
+LOCATION:TUWEL
+CATEGORIES:other
+END:VEVENT
+BEGIN:VEVENT
+UID:0337ca92ddbe06070f2cbeb22801169842a2e64c@tuwien-kurse
+DTSTAMP:20261030T155818Z
+DTSTART;TZID=Europe/Vienna:20261018T232900
+DTEND;TZID=Europe/Vienna:20261018T235900
+SUMMARY:BC: LVA-Anmeldung/Abmeldung Ende
+DESCRIPTION:FRIST: 18.10.2026 23:59. An- und Abmeldung zur LVA bis 18.10.
+ 2026 23:59 (du bist angemeldet).\nStatus: fest\nQuelle: TISS LVA-Anmeldun
+ g
+LOCATION:TISS
+CATEGORIES:deadline
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:BC: LVA-Anmeldung/Abmeldung Ende morgen
+TRIGGER:-P1D
+END:VALARM
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:BC: LVA-Anmeldung/Abmeldung Ende in 2 Stunden
+TRIGGER:-PT2H
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:f5e36a33ae6099a0e9b2d944a0339e8244e13661@tuwien-kurse
+DTSTAMP:20261030T155818Z
+DTSTART;TZID=Europe/Vienna:20261021T112900
+DTEND;TZID=Europe/Vienna:20261021T115900
+SUMMARY:BC: Task 1 early feedback (optional) [widersprüchlich]
+DESCRIPTION:FRIST: 21.10.2026 11:59. Optional\, zählt nicht zur Note. Wi
+ derspruch: TUWEL 11:59\, Announcement/Kerma-Task-1.pdf „12:00 noon“. 
+ Group 40 hat nicht abgegeben.\nStatus: widersprüchlich\nQuelle: TUWEL So
+ lution for Task 1 (early feedback)\; Kerma-Task-1.pdf S. 7\; Announcement
+  14.10.
+LOCATION:TUWEL (tar-Datei)
+CATEGORIES:deadline
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:BC: Task 1 early feedback (optional) morgen
+TRIGGER:-P1D
+END:VALARM
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:BC: Task 1 early feedback (optional) in 2 Stunden
+TRIGGER:-PT2H
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:8c319ed513df1af225f0054478b1c132b5121252@tuwien-kurse
+DTSTAMP:20261030T155818Z
+DTSTART;TZID=Europe/Vienna:20261028T232900
+DTEND;TZID=Europe/Vienna:20261028T235900
+SUMMARY:BC: Task 1 finale Abgabe
+DESCRIPTION:FRIST: 28.10.2026 23:59. Abgegeben 28.10. 15:45\, bewertet 24
+ /24. Keine späten Abgaben.\nStatus: fest\nQuelle: TUWEL Solution for Tas
+ k 1\; Kerma-Task-1.pdf S. 7
+LOCATION:TUWEL (tar-Datei)
+CATEGORIES:deadline
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:BC: Task 1 finale Abgabe morgen
+TRIGGER:-P1D
+END:VALARM
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:BC: Task 1 finale Abgabe in 2 Stunden
+TRIGGER:-PT2H
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:bff0e3dd825e1cb294738b07cc4ec7d995bd29fa@tuwien-kurse
+DTSTAMP:20261030T155818Z
+DTSTART;TZID=Europe/Vienna:20261029T235900
+DTEND;TZID=Europe/Vienna:20261030T002900
+SUMMARY:BC: Task 2 Abgabe öffnet
+DESCRIPTION:Task 2 (Objektaustausch\, Gossiping\, Transaktionsvalidierung
+ )\; Angabe Kerma-Task-2.pdf in „Task 2 Resources“.\nStatus: fest\nQue
+ lle: TUWEL Solution for Task 2\; Announcement 29.10.
+LOCATION:TUWEL
+CATEGORIES:other
+END:VEVENT
+BEGIN:VEVENT
+UID:3f06f1fedca667e02d79c643343b745777e64403@tuwien-kurse
+DTSTAMP:20261030T155818Z
+DTSTART;TZID=Europe/Vienna:20261030T232900
+DTEND;TZID=Europe/Vienna:20261030T235900
+SUMMARY:BC: Gruppenanmeldung Kerma Ende
+DESCRIPTION:FRIST: 30.10.2026 23:59. Max. 3 Personen/Gruppe\; wer keine G
+ ruppe findet\, meldet sich bei den TAs und wird zugeteilt. Du: Group 40 (
+ 2/3).\nStatus: fest\nQuelle: TUWEL Groups\; TUWEL-Kalender
+LOCATION:TUWEL → Groups
+CATEGORIES:deadline
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:BC: Gruppenanmeldung Kerma Ende morgen
+TRIGGER:-P1D
+END:VALARM
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:BC: Gruppenanmeldung Kerma Ende in 2 Stunden
+TRIGGER:-PT2H
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:c30503aa0a4760274517b3b7d590f0c743bb9eca@tuwien-kurse
+DTSTAMP:20261030T155818Z
+DTSTART;TZID=Europe/Vienna:20261105T112900
+DTEND;TZID=Europe/Vienna:20261105T115900
+SUMMARY:BC: Task 2 early feedback (optional) [widersprüchlich]
+DESCRIPTION:FRIST: 05.11.2026 11:59. Optional\, zählt nicht zur Note\; i
+ hr bekommt aktuelle Punkte + Grader-Logs. Widerspruch: TUWEL-Aufgabe/Kale
+ nder 11:59\, Announcement 29.10. und Kerma-Task-2.pdf „12:00 noon“. t
+ ar im Root mit docker-compose.yml\; kein Netzwerkzugang beim Grading.\nSt
+ atus: widersprüchlich\nQuelle: TUWEL Solution for Task 2 (early feedback
+ )\; Kerma-Task-2.pdf S. 8\; Announcement 29.10.
+LOCATION:TUWEL (tar-Datei)
+CATEGORIES:deadline
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:BC: Task 2 early feedback (optional) morgen
+TRIGGER:-P1D
+END:VALARM
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:BC: Task 2 early feedback (optional) in 2 Stunden
+TRIGGER:-PT2H
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:29aa7f4811e00478f49da94618f975557b9ad2f8@tuwien-kurse
+DTSTAMP:20261030T155818Z
+DTSTART;TZID=Europe/Vienna:20261112T232900
+DTEND;TZID=Europe/Vienna:20261112T235900
+SUMMARY:BC: Task 2 finale Abgabe
+DESCRIPTION:FRIST: 12.11.2026 23:59. Eine Lösung pro Gruppe\, keine spä
+ ten Abgaben. tar (kein zip)\, docker-compose.yml im Root\; Node ohne Netz
+ werkzugang beim Grading. TUWEL-Bereich 0–18 Punkte.\nStatus: fest\nQuel
+ le: TUWEL Solution for Task 2\; Kerma-Task-2.pdf S. 8\; Announcement 29.1
+ 0.
+LOCATION:TUWEL (tar-Datei)
+CATEGORIES:deadline
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:BC: Task 2 finale Abgabe morgen
+TRIGGER:-P1D
+END:VALARM
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:BC: Task 2 finale Abgabe in 2 Stunden
+TRIGGER:-PT2H
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:b4d1d350875ad78701f8687e84f632cf5ccb1648@tuwien-kurse
+DTSTAMP:20261030T155818Z
+DTSTART;TZID=Europe/Vienna:20270113T090000
+DTEND;TZID=Europe/Vienna:20270113T093000
+SUMMARY:BC: Prüfungsanmeldung 1. Termin Beginn
+DESCRIPTION:Anmeldung zur 1. Prüfung (27.01.2027).\nStatus: fest\nQuelle
+ : TISS Prüfungen
+LOCATION:TISS
+CATEGORIES:registration
+END:VEVENT
+BEGIN:VEVENT
+UID:5fbfb6d41b58ad0ab4a121df2f2283f7979e4cdd@tuwien-kurse
+DTSTAMP:20261030T155818Z
+DTSTART;TZID=Europe/Vienna:20270126T113000
+DTEND;TZID=Europe/Vienna:20270126T120000
+SUMMARY:BC: Prüfungsanmeldung 1. Termin Ende
+DESCRIPTION:FRIST: 26.01.2027 12:00. Anmeldeschluss 1. Prüfung\; Online-
+ Abmeldung bis 26.01.2027 13:00.\nStatus: fest\nQuelle: TISS Prüfungen
+LOCATION:TISS
+CATEGORIES:deadline
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:BC: Prüfungsanmeldung 1. Termin Ende morgen
+TRIGGER:-P1D
+END:VALARM
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:BC: Prüfungsanmeldung 1. Termin Ende in 2 Stunden
+TRIGGER:-PT2H
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:5f9dfaff3c72996563e31422a9e4b8b26bea1ee2@tuwien-kurse
+DTSTAMP:20261030T155818Z
+DTSTART;TZID=Europe/Vienna:20270126T123000
+DTEND;TZID=Europe/Vienna:20270126T130000
+SUMMARY:BC: Prüfungsabmeldung 1. Termin Ende
+DESCRIPTION:FRIST: 26.01.2027 13:00. Online-Abmeldung von der 1. Prüfung
+  bis 13:00.\nStatus: fest\nQuelle: TISS Prüfungen
+LOCATION:TISS
+CATEGORIES:deadline
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:BC: Prüfungsabmeldung 1. Termin Ende morgen
+TRIGGER:-P1D
+END:VALARM
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:BC: Prüfungsabmeldung 1. Termin Ende in 2 Stunden
+TRIGGER:-PT2H
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:2c78d8947d52dc1eb77f0d163437eb64f4ed9170@tuwien-kurse
+DTSTAMP:20261030T155818Z
+DTSTART;TZID=Europe/Vienna:20270127T130000
+DTEND;TZID=Europe/Vienna:20270127T160000
+SUMMARY:BC: 1. Prüfung (Theorie + Projekt)
+DESCRIPTION:Schriftlich\, in Präsenz. Theorie (50 P.\, MC ohne Minuspunk
+ te) und Projektprüfung (30 P.) zur selben Zeit\; je ≥ 60 % nötig. Pr
+ üferin: Georgia Avarikioti.\nStatus: fest\nQuelle: TISS Prüfungen\; TUW
+ EL General Info\; Forum Project 16.10.
+LOCATION:EI 7 Hörsaal – ETIT
+CATEGORIES:exam
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:BC: 1. Prüfung (Theorie + Projekt) in 2 Tagen
+TRIGGER:-P2D
+END:VALARM
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:BC: 1. Prüfung (Theorie + Projekt) in 2 Stunden
+TRIGGER:-PT2H
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:cbcd50a8d1b17352e5d9e678d864e91c8c45f1d1@tuwien-kurse
+DTSTAMP:20261030T155818Z
+DTSTART;TZID=Europe/Vienna:20270128T090000
+DTEND;TZID=Europe/Vienna:20270128T093000
+SUMMARY:BC: Prüfungsanmeldung 2. Termin Beginn
+DESCRIPTION:Anmeldung zum Retake (24.02.2027).\nStatus: fest\nQuelle: TIS
+ S Prüfungen
+LOCATION:TISS
+CATEGORIES:registration
+END:VEVENT
+BEGIN:VEVENT
+UID:a29caeb17c10e91fee2c1e913ba73f4a1db79c44@tuwien-kurse
+DTSTAMP:20261030T155818Z
+DTSTART;TZID=Europe/Vienna:20270223T113000
+DTEND;TZID=Europe/Vienna:20270223T120000
+SUMMARY:BC: Prüfungsanmeldung 2. Termin Ende
+DESCRIPTION:FRIST: 23.02.2027 12:00. Anmeldeschluss Retake\; Online-Abmel
+ dung ebenfalls bis 23.02.2027 12:00.\nStatus: fest\nQuelle: TISS Prüfung
+ en
+LOCATION:TISS
+CATEGORIES:deadline
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:BC: Prüfungsanmeldung 2. Termin Ende morgen
+TRIGGER:-P1D
+END:VALARM
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:BC: Prüfungsanmeldung 2. Termin Ende in 2 Stunden
+TRIGGER:-PT2H
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:e683d018219fef4394ff52ff0a0b889077673a23@tuwien-kurse
+DTSTAMP:20261030T155818Z
+DTSTART;TZID=Europe/Vienna:20270224T090000
+DTEND;TZID=Europe/Vienna:20270224T120000
+SUMMARY:BC: 2. Prüfung (Retake)
+DESCRIPTION:Schriftlich\, in Präsenz. Bei Antritt zu beiden Terminen zä
+ hlt der letzte Antritt\, nicht der bessere.\nStatus: fest\nQuelle: TISS P
+ rüfungen\; TUWEL General Info
+LOCATION:EI 7 Hörsaal – ETIT
+CATEGORIES:exam
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:BC: 2. Prüfung (Retake) in 2 Tagen
+TRIGGER:-P2D
+END:VALARM
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:BC: 2. Prüfung (Retake) in 2 Stunden
+TRIGGER:-PT2H
+END:VALARM
+END:VEVENT
+END:VCALENDAR

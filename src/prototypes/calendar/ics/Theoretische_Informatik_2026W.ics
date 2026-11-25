@@ -23,102 +23,99 @@ RRULE:FREQ=YEARLY;BYMONTH=10;BYDAY=-1SU
 END:STANDARD
 END:VTIMEZONE
 BEGIN:VEVENT
-UID:d78f97ee54934d42b08f7fcb7c07c89243c837b1@tuwien-kurse
-DTSTAMP:20261030T155818Z
+UID:6a644e98fc38414a5a67ec68c22dcd211d22bf81@tuwien-kurse
+DTSTAMP:20261125T160310Z
 DTSTART;TZID=Europe/Vienna:20261012T232900
 DTEND;TZID=Europe/Vienna:20261012T235900
-SUMMARY:TI: LVA-Anmeldung TISS Ende
-DESCRIPTION:FRIST: 12.10.2026 23:59. Ende An-/Abmeldung zur LVA in TISS (
- David ist angemeldet).\nStatus: fest\nQuelle: TISS LVA-Anmeldung\; Vorbes
- prechung S. 2
+SUMMARY:TI: LVA-Anmeldung/-Abmeldung Ende
+DESCRIPTION:FRIST: 12.10.2026 23:59. David ist angemeldet (653 Teilnehmen
+ de).\nStatus: fest\nQuelle: TISS LVA-Anmeldung
 LOCATION:TISS
 CATEGORIES:deadline
 BEGIN:VALARM
 ACTION:DISPLAY
-DESCRIPTION:TI: LVA-Anmeldung TISS Ende morgen
+DESCRIPTION:TI: LVA-Anmeldung/-Abmeldung Ende morgen
 TRIGGER:-P1D
 END:VALARM
 BEGIN:VALARM
 ACTION:DISPLAY
-DESCRIPTION:TI: LVA-Anmeldung TISS Ende in 2 Stunden
+DESCRIPTION:TI: LVA-Anmeldung/-Abmeldung Ende in 2 Stunden
 TRIGGER:-PT2H
 END:VALARM
 END:VEVENT
 BEGIN:VEVENT
 UID:4bf1a942be6d46ea1bf5e45d571dd25f3976f184@tuwien-kurse
-DTSTAMP:20261030T155818Z
+DTSTAMP:20261125T160310Z
 DTSTART;TZID=Europe/Vienna:20261014T150000
 DTEND;TZID=Europe/Vienna:20261014T153000
 SUMMARY:TI: UE1 Abgabe öffnet
-DESCRIPTION:Abgabe UE1 (Teil 1) öffnet in TUWEL. max. 100 Punkte\, 10 Au
- fgaben. Abgegeben am 25.10.2026\, 21:42 (UE1_DB.pdf)\, in Bewertung.\nSta
- tus: fest\nQuelle: TUWEL Aufgabe „UE1 - Abgabe“
+DESCRIPTION:Ab diesem Zeitpunkt ist der Upload in TUWEL möglich.\nStatus
+ : fest\nQuelle: TUWEL Aufgabe (Geöffnet/Öffnet)
 LOCATION:TUWEL
 CATEGORIES:other
 END:VEVENT
 BEGIN:VEVENT
-UID:7554ef136c1355f9db02970011b966f5a6780cfc@tuwien-kurse
-DTSTAMP:20261030T155818Z
+UID:115bf7c27d5fe6b8238bfee26ad0b138e304b093@tuwien-kurse
+DTSTAMP:20261125T160310Z
 DTSTART;TZID=Europe/Vienna:20261020T232900
 DTEND;TZID=Europe/Vienna:20261020T235900
-SUMMARY:TI: English-Track-Registrierung Ende
-DESCRIPTION:FRIST: 20.10.2026 23:59. Ende der TUWEL-Abstimmung „Registr
- ation for English Track“ („just for our information“). Ob abgestimm
- t wurde: nicht bestätigt.\nStatus: fest\nQuelle: TUWEL Abstimmung (choic
- e id=3069616)\; Preliminary discussion S. 2
+SUMMARY:TI: English-Track-Registrierung (Abstimmung) Ende
+DESCRIPTION:FRIST: 20.10.2026 23:59. Laut Vorbesprechung nur zur Informat
+ ion der Lehrenden. Abstimmung inzwischen nicht mehr aufrufbar\; ob David 
+ abgestimmt hat\, kann ich nicht bestätigen.\nStatus: fest\nQuelle: TUWEL
+  Kursseite/Abstimmung (Stand 20.10.2026)
 LOCATION:TUWEL (Abstimmung)
 CATEGORIES:deadline
 BEGIN:VALARM
 ACTION:DISPLAY
-DESCRIPTION:TI: English-Track-Registrierung Ende morgen
+DESCRIPTION:TI: English-Track-Registrierung (Abstimmung) Ende morgen
 TRIGGER:-P1D
 END:VALARM
 BEGIN:VALARM
 ACTION:DISPLAY
-DESCRIPTION:TI: English-Track-Registrierung Ende in 2 Stunden
+DESCRIPTION:TI: English-Track-Registrierung (Abstimmung) Ende in 2 Stunde
+ n
 TRIGGER:-PT2H
 END:VALARM
 END:VEVENT
 BEGIN:VEVENT
-UID:6a3a3e11d48f09bf22a8796402637182aeaf7149@tuwien-kurse
-DTSTAMP:20261030T155818Z
+UID:19b56973e94476eaf2de35a080b08650227d8ad2@tuwien-kurse
+DTSTAMP:20261125T160310Z
 DTSTART;TZID=Europe/Vienna:20261021T151500
 DTEND;TZID=Europe/Vienna:20261021T170000
-SUMMARY:TI: Tutorium (deutsch) Teil 1 [widersprüchlich]
-DESCRIPTION:Tutorium zu Teil 1 (deutsch\, vor UE1-Abgabe). TUWEL/Vorbespr
- echung 15:15–17:00\, TISS 15:00–17:00. Nicht gestreamt/aufgezeichnet 
- (Forum 19.10.).\nStatus: widersprüchlich\nQuelle: TUWEL Kursseite\; TISS
-  Einzeltermine\; Vorbesprechung S. 3 / Preliminary discussion S. 2\; TUWE
- L News 20.10.2026
-LOCATION:HS 17 Friedrich Hartmann
+SUMMARY:TI: Tutorium Teil 1 (Deutsch) [widersprüchlich]
+DESCRIPTION:Freiwillig (keine Pflicht gefunden)\; wird laut Forum (19.10.
+ 2026) nicht gestreamt/aufgezeichnet. Widerspruch Uhrzeit: TUWEL 15:15–1
+ 7:00\, TISS 15:00–17:00.\nStatus: widersprüchlich\nQuelle: TUWEL Kurss
+ eite (Übungen/English Track)\; TISS Einzeltermine
+LOCATION:HS 17 Friedrich Hartmann (ARCH)
 CATEGORIES:tutorial
 END:VEVENT
 BEGIN:VEVENT
-UID:6966792e1f850ea9e5b412d5c5d387b9e459f71a@tuwien-kurse
-DTSTAMP:20261030T155818Z
+UID:29dfb2ca2d8fc5d1a17c34ba3f0610d64ab33f1d@tuwien-kurse
+DTSTAMP:20261125T160310Z
 DTSTART;TZID=Europe/Vienna:20261022T131500
 DTEND;TZID=Europe/Vienna:20261022T150000
-SUMMARY:TI: Tutorial (englisch) Teil 1 [widersprüchlich]
-DESCRIPTION:Englisches Tutorium Teil 1\, wegen Demo verschoben (News 20.1
- 0.2026): TUWEL 13:15–15:00\, TISS 13:00–15:00. Ursprünglich laut Pre
- liminary discussion 15:15–17:00.\nStatus: widersprüchlich\nQuelle: TUW
- EL Kursseite\; TISS Einzeltermine\; Vorbesprechung S. 3 / Preliminary dis
- cussion S. 2\; TUWEL News 20.10.2026
+SUMMARY:TI: Tutorial Teil 1 (Englisch) [widersprüchlich]
+DESCRIPTION:Freiwillig (keine Pflicht gefunden)\; wird laut Forum (19.10.
+ 2026) nicht gestreamt/aufgezeichnet. Widerspruch Uhrzeit: Wegen Demo vers
+ choben (News 20.10.2026\, ursprünglich 15:15–17:00). TUWEL 13:15–15:
+ 00\, TISS 13:00–15:00.\nStatus: widersprüchlich\nQuelle: TUWEL Kurssei
+ te (Übungen/English Track)\; TISS Einzeltermine
 LOCATION:EI 3A Hörsaal
 CATEGORIES:tutorial
 END:VEVENT
 BEGIN:VEVENT
 UID:8ded894b3a920e3749977bfe17fbfb1d6d5382d7@tuwien-kurse
-DTSTAMP:20261030T155818Z
+DTSTAMP:20261125T160310Z
 DTSTART;TZID=Europe/Vienna:20261026T232500
 DTEND;TZID=Europe/Vienna:20261026T235500
 SUMMARY:TI: UE1 Abgabe
-DESCRIPTION:FRIST: 26.10.2026 23:55. Abgabefrist UE1 (Teil 1): eine PDF-D
- atei\, A4-Hochformat\; mehrmaliges Hochladen bis zur Deadline möglich. m
- ax. 100 Punkte\, 10 Aufgaben. Abgegeben am 25.10.2026\, 21:42 (UE1_DB.pdf
- )\, in Bewertung. Vorbesprechung S. 7 nennt dasselbe Datum als „vorauss
- ichtlich“.\nStatus: fest\nQuelle: TUWEL Aufgabe „UE1 - Abgabe“\; Vo
- rbesprechung S. 7
+DESCRIPTION:FRIST: 26.10.2026 23:55. Übungsblatt 1 (Teil 1)\, 10 Aufgabe
+ n\, max. 100 Punkte\, 1 PDF A4. David: abgegeben 25.10.2026 21:42 (UE1_DB
+ .pdf)\, Bewertung abgeschlossen\, Punkte in TUWEL noch nicht sichtbar (St
+ and 25.11.).\nStatus: fest\nQuelle: TUWEL Aufgabe (Fälligkeit)\; Bewertu
+ ngsübersicht
 LOCATION:TUWEL
 CATEGORIES:deadline
 BEGIN:VALARM
@@ -134,53 +131,51 @@ END:VALARM
 END:VEVENT
 BEGIN:VEVENT
 UID:91698df31fbd06da4d9e74b17b7b225089bdb0b2@tuwien-kurse
-DTSTAMP:20261030T155818Z
+DTSTAMP:20261125T160310Z
 DTSTART;TZID=Europe/Vienna:20261108T150000
 DTEND;TZID=Europe/Vienna:20261108T153000
 SUMMARY:TI: UE2-3 Abgabe öffnet
-DESCRIPTION:Abgabe UE2-3 (Teil 2+3) öffnet in TUWEL. max. 120 Punkte. An
- gabe am 30.10. noch nicht online.\nStatus: fest\nQuelle: TUWEL Aufgabe 
- „UE2-3 - Abgabe“
+DESCRIPTION:Ab diesem Zeitpunkt ist der Upload in TUWEL möglich.\nStatus
+ : fest\nQuelle: TUWEL Aufgabe (Geöffnet/Öffnet)
 LOCATION:TUWEL
 CATEGORIES:other
 END:VEVENT
 BEGIN:VEVENT
-UID:2a4968fcbc8ac3e332ed835a93083fa3211631e9@tuwien-kurse
-DTSTAMP:20261030T155818Z
+UID:24ca11fb2c0a42c005c00d77977bb91de0d1b354@tuwien-kurse
+DTSTAMP:20261125T160310Z
 DTSTART;TZID=Europe/Vienna:20261118T151500
 DTEND;TZID=Europe/Vienna:20261118T170000
-SUMMARY:TI: Tutorium (deutsch) Teil 2-3 [widersprüchlich]
-DESCRIPTION:Tutorium zu Teil 2 und 3 (deutsch\, vor UE2-3-Abgabe). TUWEL 
- 15:15–17:00\, TISS 15:00–17:00. Nicht aufgezeichnet.\nStatus: widersp
- rüchlich\nQuelle: TUWEL Kursseite\; TISS Einzeltermine\; Vorbesprechung 
- S. 3 / Preliminary discussion S. 2\; TUWEL News 20.10.2026
-LOCATION:HS 17 Friedrich Hartmann
+SUMMARY:TI: Tutorium Teil 2-3 (Deutsch) [widersprüchlich]
+DESCRIPTION:Freiwillig (keine Pflicht gefunden)\; wird laut Forum (19.10.
+ 2026) nicht gestreamt/aufgezeichnet. Widerspruch Uhrzeit: TUWEL 15:15–1
+ 7:00\, TISS 15:00–17:00.\nStatus: widersprüchlich\nQuelle: TUWEL Kurss
+ eite (Übungen/English Track)\; TISS Einzeltermine
+LOCATION:HS 17 Friedrich Hartmann (ARCH)
 CATEGORIES:tutorial
 END:VEVENT
 BEGIN:VEVENT
-UID:40c0390e7871d75858810db047e47a8b4d2320c5@tuwien-kurse
-DTSTAMP:20261030T155818Z
+UID:984e4599153a5eb2b359d79aadc29c1741820a09@tuwien-kurse
+DTSTAMP:20261125T160310Z
 DTSTART;TZID=Europe/Vienna:20261119T151500
 DTEND;TZID=Europe/Vienna:20261119T170000
-SUMMARY:TI: Tutorial (englisch) Teil 2-3 [widersprüchlich]
-DESCRIPTION:English tutorial part 2-3. Preliminary discussion/TUWEL 15:15
- –17:00\, TISS 15:00–17:00. Nicht aufgezeichnet.\nStatus: widersprüch
- lich\nQuelle: TUWEL Kursseite\; TISS Einzeltermine\; Vorbesprechung S. 3 
- / Preliminary discussion S. 2\; TUWEL News 20.10.2026
+SUMMARY:TI: Tutorial Teil 2-3 (Englisch) [widersprüchlich]
+DESCRIPTION:Freiwillig (keine Pflicht gefunden)\; wird laut Forum (19.10.
+ 2026) nicht gestreamt/aufgezeichnet. Widerspruch Uhrzeit: TUWEL 15:15–1
+ 7:00\, TISS 15:00–17:00.\nStatus: widersprüchlich\nQuelle: TUWEL Kurss
+ eite (Übungen/English Track)\; TISS Einzeltermine
 LOCATION:EI 3A Hörsaal
 CATEGORIES:tutorial
 END:VEVENT
 BEGIN:VEVENT
 UID:663e03b5af1204fb4290e7d579b7114303ea11f3@tuwien-kurse
-DTSTAMP:20261030T155818Z
+DTSTAMP:20261125T160310Z
 DTSTART;TZID=Europe/Vienna:20261122T232500
 DTEND;TZID=Europe/Vienna:20261122T235500
 SUMMARY:TI: UE2-3 Abgabe
-DESCRIPTION:FRIST: 22.11.2026 23:55. Abgabefrist UE2-3 (Teil 2+3): eine P
- DF-Datei\, A4-Hochformat\; mehrmaliges Hochladen bis zur Deadline möglic
- h. max. 120 Punkte. Angabe am 30.10. noch nicht online. Vorbesprechung S.
-  7 nennt dasselbe Datum als „voraussichtlich“.\nStatus: fest\nQuelle:
-  TUWEL Aufgabe „UE2-3 - Abgabe“\; Vorbesprechung S. 7
+DESCRIPTION:FRIST: 22.11.2026 23:55. Übungsblatt 2-3 (Teil 2+3)\, 12 Auf
+ gaben\, max. 120 Punkte\, 1 PDF A4. David: NICHT abgegeben (TUWEL: 'Bishe
+ r wurden keine Aufgaben abgegeben'\, Frist überschritten).\nStatus: fest
+ \nQuelle: TUWEL Aufgabe (Fälligkeit)\; Bewertungsübersicht
 LOCATION:TUWEL
 CATEGORIES:deadline
 BEGIN:VALARM
@@ -196,53 +191,51 @@ END:VALARM
 END:VEVENT
 BEGIN:VEVENT
 UID:bb41564bccb44130a98c7884bbb66be45f4fade7@tuwien-kurse
-DTSTAMP:20261030T155818Z
+DTSTAMP:20261125T160310Z
 DTSTART;TZID=Europe/Vienna:20261128T150000
 DTEND;TZID=Europe/Vienna:20261128T153000
 SUMMARY:TI: UE4 Abgabe öffnet
-DESCRIPTION:Abgabe UE4 (Teil 4) öffnet in TUWEL. max. 100 Punkte. Angabe
-  noch nicht online.\nStatus: fest\nQuelle: TUWEL Aufgabe „UE4 - Abgabe
- “
+DESCRIPTION:Ab diesem Zeitpunkt ist der Upload in TUWEL möglich.\nStatus
+ : fest\nQuelle: TUWEL Aufgabe (Geöffnet/Öffnet)
 LOCATION:TUWEL
 CATEGORIES:other
 END:VEVENT
 BEGIN:VEVENT
-UID:a2cd7dd0b0db49e3f7c972b549e270473d137851@tuwien-kurse
-DTSTAMP:20261030T155818Z
+UID:d67a6c979029e1bfa32bf132a874c8cc18c0da64@tuwien-kurse
+DTSTAMP:20261125T160310Z
 DTSTART;TZID=Europe/Vienna:20261209T151500
 DTEND;TZID=Europe/Vienna:20261209T170000
-SUMMARY:TI: Tutorium (deutsch) Teil 4 [widersprüchlich]
-DESCRIPTION:Tutorium zu Teil 4 (deutsch\, vor UE4-Abgabe). TUWEL 15:15–
- 17:00\, TISS 15:00–17:00.\nStatus: widersprüchlich\nQuelle: TUWEL Kurs
- seite\; TISS Einzeltermine\; Vorbesprechung S. 3 / Preliminary discussion
-  S. 2\; TUWEL News 20.10.2026
-LOCATION:EI 7 Hörsaal – ETIT
+SUMMARY:TI: Tutorium Teil 4 (Deutsch) [widersprüchlich]
+DESCRIPTION:Freiwillig (keine Pflicht gefunden)\; wird laut Forum (19.10.
+ 2026) nicht gestreamt/aufgezeichnet. Widerspruch Uhrzeit: TUWEL 15:15–1
+ 7:00\, TISS 15:00–17:00. Vor UE4-Frist 13.12.\nStatus: widersprüchlich
+ \nQuelle: TUWEL Kursseite (Übungen/English Track)\; TISS Einzeltermine
+LOCATION:EI 7 Hörsaal (ETIT)
 CATEGORIES:tutorial
 END:VEVENT
 BEGIN:VEVENT
-UID:9280bf0f55b975cdacd448078978357fa1314b92@tuwien-kurse
-DTSTAMP:20261030T155818Z
+UID:dbbe2a8d0abd16dad1995eb4cb5411b1fcb849ed@tuwien-kurse
+DTSTAMP:20261125T160310Z
 DTSTART;TZID=Europe/Vienna:20261210T151500
 DTEND;TZID=Europe/Vienna:20261210T170000
-SUMMARY:TI: Tutorial (englisch) Teil 4 [widersprüchlich]
-DESCRIPTION:English tutorial part 4. Preliminary discussion/TUWEL 15:15
- –17:00\, TISS 15:00–17:00.\nStatus: widersprüchlich\nQuelle: TUWEL K
- ursseite\; TISS Einzeltermine\; Vorbesprechung S. 3 / Preliminary discuss
- ion S. 2\; TUWEL News 20.10.2026
-LOCATION:FH Hörsaal 3 – MATH
+SUMMARY:TI: Tutorial Teil 4 (Englisch) [widersprüchlich]
+DESCRIPTION:Freiwillig (keine Pflicht gefunden)\; wird laut Forum (19.10.
+ 2026) nicht gestreamt/aufgezeichnet. Widerspruch Uhrzeit: TUWEL 15:15–1
+ 7:00\, TISS 15:00–17:00. Vor UE4-Frist 13.12.\nStatus: widersprüchlich
+ \nQuelle: TUWEL Kursseite (Übungen/English Track)\; TISS Einzeltermine
+LOCATION:FH Hörsaal 3 (MATH)
 CATEGORIES:tutorial
 END:VEVENT
 BEGIN:VEVENT
 UID:d0d864158cfd4533657a2dea14944fa59c9c9900@tuwien-kurse
-DTSTAMP:20261030T155818Z
+DTSTAMP:20261125T160310Z
 DTSTART;TZID=Europe/Vienna:20261213T232500
 DTEND;TZID=Europe/Vienna:20261213T235500
 SUMMARY:TI: UE4 Abgabe
-DESCRIPTION:FRIST: 13.12.2026 23:55. Abgabefrist UE4 (Teil 4): eine PDF-D
- atei\, A4-Hochformat\; mehrmaliges Hochladen bis zur Deadline möglich. m
- ax. 100 Punkte. Angabe noch nicht online. Vorbesprechung S. 7 nennt dasse
- lbe Datum als „voraussichtlich“.\nStatus: fest\nQuelle: TUWEL Aufgabe
-  „UE4 - Abgabe“\; Vorbesprechung S. 7
+DESCRIPTION:FRIST: 13.12.2026 23:55. Übungsblatt 4 (Komplexitätstheorie
+ )\, 9 Aufgaben (7x10 + 2x15)\, max. 100 Punkte\, 1 PDF A4. Angabe seit 23
+ .11.2026 in TUWEL (DE+EN). Abgabe öffnet 28.11.2026 15:00.\nStatus: fest
+ \nQuelle: TUWEL Aufgabe (Fälligkeit)\; Bewertungsübersicht
 LOCATION:TUWEL
 CATEGORIES:deadline
 BEGIN:VALARM
@@ -258,53 +251,53 @@ END:VALARM
 END:VEVENT
 BEGIN:VEVENT
 UID:731cf3becb418a99f05265b33f2f12ca0e07e732@tuwien-kurse
-DTSTAMP:20261030T155818Z
+DTSTAMP:20261125T160310Z
 DTSTART;TZID=Europe/Vienna:20261216T150000
 DTEND;TZID=Europe/Vienna:20261216T153000
 SUMMARY:TI: UE5 Abgabe öffnet
-DESCRIPTION:Abgabe UE5 (Teil 5) öffnet in TUWEL. max. 80 Punkte. Achtung
- : 23:59 statt 23:55. Angabe noch nicht online.\nStatus: fest\nQuelle: TUW
- EL Aufgabe „UE5 - Abgabe“
+DESCRIPTION:Ab diesem Zeitpunkt ist der Upload in TUWEL möglich.\nStatus
+ : fest\nQuelle: TUWEL Aufgabe (Geöffnet/Öffnet)
 LOCATION:TUWEL
 CATEGORIES:other
 END:VEVENT
 BEGIN:VEVENT
-UID:d37b831688b848fa8e0cdbc5dd4bb99e5933c36d@tuwien-kurse
-DTSTAMP:20261030T155818Z
+UID:1739c5b8bd723466c4c87cacde8b37fbb2d0d02c@tuwien-kurse
+DTSTAMP:20261125T160310Z
 DTSTART;TZID=Europe/Vienna:20261216T151500
 DTEND;TZID=Europe/Vienna:20261216T170000
-SUMMARY:TI: Tutorium (deutsch) Teil 5 [widersprüchlich]
-DESCRIPTION:Tutorium zu Teil 5 (deutsch\, vor UE5-Abgabe). TUWEL 15:15–
- 17:00\, TISS 15:00–17:00.\nStatus: widersprüchlich\nQuelle: TUWEL Kurs
- seite\; TISS Einzeltermine\; Vorbesprechung S. 3 / Preliminary discussion
-  S. 2\; TUWEL News 20.10.2026
-LOCATION:EI 7 Hörsaal – ETIT
+SUMMARY:TI: Tutorium Teil 5 (Deutsch) [widersprüchlich]
+DESCRIPTION:Freiwillig (keine Pflicht gefunden)\; wird laut Forum (19.10.
+ 2026) nicht gestreamt/aufgezeichnet. Widerspruch Uhrzeit: TUWEL 15:15–1
+ 7:00\, TISS 15:00–17:00. Vor UE5-Frist 06.01.2027.\nStatus: widersprüc
+ hlich\nQuelle: TUWEL Kursseite (Übungen/English Track)\; TISS Einzelterm
+ ine
+LOCATION:EI 7 Hörsaal (ETIT)
 CATEGORIES:tutorial
 END:VEVENT
 BEGIN:VEVENT
-UID:1e1c61cd796995802fc5756527a1e82cff1fb43f@tuwien-kurse
-DTSTAMP:20261030T155818Z
+UID:f1e0ec5431edf0207a6ff524d90de0e6154e2da1@tuwien-kurse
+DTSTAMP:20261125T160310Z
 DTSTART;TZID=Europe/Vienna:20261217T151500
 DTEND;TZID=Europe/Vienna:20261217T170000
-SUMMARY:TI: Tutorial (englisch) Teil 5 [widersprüchlich]
-DESCRIPTION:English tutorial part 5. Preliminary discussion/TUWEL 15:15
- –17:00\, TISS 15:00–17:00.\nStatus: widersprüchlich\nQuelle: TUWEL K
- ursseite\; TISS Einzeltermine\; Vorbesprechung S. 3 / Preliminary discuss
- ion S. 2\; TUWEL News 20.10.2026
+SUMMARY:TI: Tutorial Teil 5 (Englisch) [widersprüchlich]
+DESCRIPTION:Freiwillig (keine Pflicht gefunden)\; wird laut Forum (19.10.
+ 2026) nicht gestreamt/aufgezeichnet. Widerspruch Uhrzeit: TUWEL 15:15–1
+ 7:00\, TISS 15:00–17:00. Vor UE5-Frist 06.01.2027.\nStatus: widersprüc
+ hlich\nQuelle: TUWEL Kursseite (Übungen/English Track)\; TISS Einzelterm
+ ine
 LOCATION:EI 3A Hörsaal
 CATEGORIES:tutorial
 END:VEVENT
 BEGIN:VEVENT
 UID:4fecb4d60495f60ea198b8bc42b9e0d15265c889@tuwien-kurse
-DTSTAMP:20261030T155818Z
+DTSTAMP:20261125T160310Z
 DTSTART;TZID=Europe/Vienna:20270106T232900
 DTEND;TZID=Europe/Vienna:20270106T235900
 SUMMARY:TI: UE5 Abgabe
-DESCRIPTION:FRIST: 06.01.2027 23:59. Abgabefrist UE5 (Teil 5): eine PDF-D
- atei\, A4-Hochformat\; mehrmaliges Hochladen bis zur Deadline möglich. m
- ax. 80 Punkte. Achtung: 23:59 statt 23:55. Angabe noch nicht online. Vorb
- esprechung S. 7 nennt dasselbe Datum als „voraussichtlich“.\nStatus: 
- fest\nQuelle: TUWEL Aufgabe „UE5 - Abgabe“\; Vorbesprechung S. 7
+DESCRIPTION:FRIST: 06.01.2027 23:59. Übungsblatt 5 (Formale Korrektheit)
+ \, max. 80 Punkte\, 1 PDF A4. Achtung 23:59 (nicht 23:55). Angabe noch ni
+ cht online (Stand 25.11.).\nStatus: fest\nQuelle: TUWEL Aufgabe (Fälligk
+ eit)\; Bewertungsübersicht
 LOCATION:TUWEL
 CATEGORIES:deadline
 BEGIN:VALARM
@@ -319,429 +312,414 @@ TRIGGER:-PT2H
 END:VALARM
 END:VEVENT
 BEGIN:VEVENT
-UID:e8d5c563613853d896db95805fed439bdec1f895@tuwien-kurse
-DTSTAMP:20261030T155818Z
+UID:44e2ba84a5405a595ada90d7c46fdc605b648958@tuwien-kurse
+DTSTAMP:20261125T160310Z
 DTSTART;TZID=Europe/Vienna:20270112T000000
 DTEND;TZID=Europe/Vienna:20270112T003000
-SUMMARY:TI: Abschlusstest 1. Termin (Haupttermin) Anmeldung Beginn
-DESCRIPTION:Beginn der Prüfungsanmeldung in TISS für den Abschlusstest 
- am 2027-01-27 (deutscher und englischer Termin\, in TISS getrennt\, gleic
- he Fristen).\nStatus: fest\nQuelle: TISS Prüfungen
+SUMMARY:TI: Prüfungsanmeldung Abschlusstest 1. Termin beginnt (DE+EN)
+DESCRIPTION:Anmeldung für Abschlusstest 1. Termin (deutsch und englisch)
+  öffnet. Bestätigung automatisch.\nStatus: fest\nQuelle: TISS Prüfunge
+ n
 LOCATION:TISS
 CATEGORIES:registration
 END:VEVENT
 BEGIN:VEVENT
-UID:5288ba6daac8bf486297a947b37889b9da038eed@tuwien-kurse
-DTSTAMP:20261030T155818Z
+UID:f8ca76b6fd2791dc15105159b181afd2a5a6cf92@tuwien-kurse
+DTSTAMP:20261125T160310Z
 DTSTART;TZID=Europe/Vienna:20270125T232900
 DTEND;TZID=Europe/Vienna:20270125T235900
-SUMMARY:TI: Abschlusstest 1. Termin (Haupttermin) Anmeldung Ende
-DESCRIPTION:FRIST: 25.01.2027 23:59. Ende der Prüfungsanmeldung in TISS 
- für den Abschlusstest am 2027-01-27 (deutsch und englisch).\nStatus: fes
- t\nQuelle: TISS Prüfungen
+SUMMARY:TI: Prüfungsanmeldung Abschlusstest 1. Termin endet (DE+EN)
+DESCRIPTION:FRIST: 25.01.2027 23:59. Letzter Zeitpunkt zur Anmeldung zum 
+ Abschlusstest 1. Termin.\nStatus: fest\nQuelle: TISS Prüfungen
 LOCATION:TISS
 CATEGORIES:deadline
 BEGIN:VALARM
 ACTION:DISPLAY
-DESCRIPTION:TI: Abschlusstest 1. Termin (Haupttermin) Anmeldung Ende morg
- en
+DESCRIPTION:TI: Prüfungsanmeldung Abschlusstest 1. Termin endet (DE+EN) 
+ morgen
 TRIGGER:-P1D
 END:VALARM
 BEGIN:VALARM
 ACTION:DISPLAY
-DESCRIPTION:TI: Abschlusstest 1. Termin (Haupttermin) Anmeldung Ende in 2
-  Stunden
+DESCRIPTION:TI: Prüfungsanmeldung Abschlusstest 1. Termin endet (DE+EN) 
+ in 2 Stunden
 TRIGGER:-PT2H
 END:VALARM
 END:VEVENT
 BEGIN:VEVENT
-UID:f85ae05cad14d74a1719637dac53db3472c4a3f1@tuwien-kurse
-DTSTAMP:20261030T155818Z
+UID:7d46a07571ec10d51f5a92df71be0bc93148e985@tuwien-kurse
+DTSTAMP:20261125T160310Z
 DTSTART;TZID=Europe/Vienna:20270126T232900
 DTEND;TZID=Europe/Vienna:20270126T235900
-SUMMARY:TI: Abschlusstest 1. Termin (Haupttermin) Online-Abmeldung Ende
-DESCRIPTION:FRIST: 26.01.2027 23:59. Letzte Möglichkeit zur Online-Abmel
- dung vom Abschlusstest am 2027-01-27.\nStatus: fest\nQuelle: TISS Prüfun
- gen
+SUMMARY:TI: Online-Abmeldung Abschlusstest 1. Termin endet
+DESCRIPTION:FRIST: 26.01.2027 23:59. Bis hier online abmelden möglich.\n
+ Status: fest\nQuelle: TISS Prüfungen
 LOCATION:TISS
 CATEGORIES:deadline
 BEGIN:VALARM
 ACTION:DISPLAY
-DESCRIPTION:TI: Abschlusstest 1. Termin (Haupttermin) Online-Abmeldung En
- de morgen
+DESCRIPTION:TI: Online-Abmeldung Abschlusstest 1. Termin endet morgen
 TRIGGER:-P1D
 END:VALARM
 BEGIN:VALARM
 ACTION:DISPLAY
-DESCRIPTION:TI: Abschlusstest 1. Termin (Haupttermin) Online-Abmeldung En
- de in 2 Stunden
+DESCRIPTION:TI: Online-Abmeldung Abschlusstest 1. Termin endet in 2 Stund
+ en
 TRIGGER:-PT2H
 END:VALARM
 END:VEVENT
 BEGIN:VEVENT
-UID:be676cf2bfbf089b3f4ac7cc3afe9f65e2b3b2da@tuwien-kurse
-DTSTAMP:20261030T155818Z
+UID:f7ce70a5e0896b61f4c739ffaa0456e7276dfb9e@tuwien-kurse
+DTSTAMP:20261125T160310Z
 DTSTART;TZID=Europe/Vienna:20270127T180000
 DTEND;TZID=Europe/Vienna:20270127T200000
-SUMMARY:TI: Abschlusstest 1. Termin (Haupttermin) (deutsch)
-DESCRIPTION:Schriftlich\, max. 60 Punkte (≥30 nötig)\; nur 1 handgesch
- riebener A4-Zettel (beidseitig)\, keine elektronischen Hilfsmittel\; Antr
- itt bei 2 von 4 Terminen\, besseres Ergebnis zählt. Welcher Hörsaal: no
- ch nicht bekannt.\nStatus: fest\nQuelle: TISS Prüfungen\; Vorbesprechung
-  S. 10
+SUMMARY:TI: Abschlusstest 1. Termin (Deutsch)
+DESCRIPTION:Schriftlich\, max. 60 Punkte (≥30 nötig)\, nur 1 handgesch
+ riebenes A4-Blatt (beidseitig). Antritt bei max. 2 von 4 Terminen\, besse
+ res Ergebnis zählt. TISS-Anmeldung 2027-01-12–2027-01-25 nötig. Hörs
+ aalzuteilung noch nicht bekannt.\nStatus: fest\nQuelle: TISS Prüfungen\;
+  Vorbesprechung S. 10
 LOCATION:Informatikhörsaal\, GM 1 Audi. Max.\, EI 7\, GM 5 Praktikum HS\
  , GM 2 Radinger HS
 CATEGORIES:exam
 BEGIN:VALARM
 ACTION:DISPLAY
-DESCRIPTION:TI: Abschlusstest 1. Termin (Haupttermin) (deutsch) in 2 Tage
- n
+DESCRIPTION:TI: Abschlusstest 1. Termin (Deutsch) in 2 Tagen
 TRIGGER:-P2D
 END:VALARM
 BEGIN:VALARM
 ACTION:DISPLAY
-DESCRIPTION:TI: Abschlusstest 1. Termin (Haupttermin) (deutsch) in 2 Stun
- den
+DESCRIPTION:TI: Abschlusstest 1. Termin (Deutsch) in 2 Stunden
 TRIGGER:-PT2H
 END:VALARM
 END:VEVENT
 BEGIN:VEVENT
-UID:d009269cd0821ecb6ecfa231f3dc4f819e42bd72@tuwien-kurse
-DTSTAMP:20261030T155818Z
+UID:038e8e39edbd8936e415907115f728eb592c74e4@tuwien-kurse
+DTSTAMP:20261125T160310Z
 DTSTART;TZID=Europe/Vienna:20270127T180000
 DTEND;TZID=Europe/Vienna:20270127T200000
-SUMMARY:TI: Final exam 1. Termin (Haupttermin) (englisch) [vorläufig]
-DESCRIPTION:English Track final exam. Uhrzeit laut Preliminary discussion
-  S. 9 („Wed\, 27.1.2027\, 18:00-20:00“)\; in TISS beim englischen Ter
- min noch keine Uhrzeit und kein Ort.\nStatus: vorläufig\nQuelle: Prelimi
- nary discussion S. 9\; TISS Prüfungen
+SUMMARY:TI: Final exam 1st date (English) [vorläufig]
+DESCRIPTION:Uhrzeit laut Preliminary discussion S. 9 'Wed\, 27.1.2027\, 1
+ 8:00-20:00'\; TISS nennt weder Uhrzeit noch Ort. Anmeldung TISS 12.01.–
+ 25.01.2027.\nStatus: vorläufig\nQuelle: TISS Prüfungen\; Preliminary di
+ scussion S. 9
 LOCATION:noch nicht bekannt
 CATEGORIES:exam
 BEGIN:VALARM
 ACTION:DISPLAY
-DESCRIPTION:TI: Final exam 1. Termin (Haupttermin) (englisch) in 2 Tagen
+DESCRIPTION:TI: Final exam 1st date (English) in 2 Tagen
 TRIGGER:-P2D
 END:VALARM
 BEGIN:VALARM
 ACTION:DISPLAY
-DESCRIPTION:TI: Final exam 1. Termin (Haupttermin) (englisch) in 2 Stunde
- n
+DESCRIPTION:TI: Final exam 1st date (English) in 2 Stunden
 TRIGGER:-PT2H
 END:VALARM
 END:VEVENT
 BEGIN:VEVENT
-UID:bf730e1818eef0d00de614ef8740f1c265c361e6@tuwien-kurse
-DTSTAMP:20261030T155818Z
+UID:af8e8dcfa6ebbcceaf76191d514c82ede710d802@tuwien-kurse
+DTSTAMP:20261125T160310Z
 DTSTART;TZID=Europe/Vienna:20270210T000000
 DTEND;TZID=Europe/Vienna:20270210T003000
-SUMMARY:TI: Abschlusstest 2. Termin Anmeldung Beginn
-DESCRIPTION:Beginn der Prüfungsanmeldung in TISS für den Abschlusstest 
- am 2027-02-25 (deutscher und englischer Termin\, in TISS getrennt\, gleic
- he Fristen).\nStatus: fest\nQuelle: TISS Prüfungen
+SUMMARY:TI: Prüfungsanmeldung Abschlusstest 2. Termin beginnt (DE+EN)
+DESCRIPTION:Anmeldung für Abschlusstest 2. Termin (deutsch und englisch)
+  öffnet. Bestätigung automatisch.\nStatus: fest\nQuelle: TISS Prüfunge
+ n
 LOCATION:TISS
 CATEGORIES:registration
 END:VEVENT
 BEGIN:VEVENT
-UID:8d50ab9381240a616746d06ee786659b4a76a9ce@tuwien-kurse
-DTSTAMP:20261030T155818Z
+UID:6926bd6feba49b415c3ab355a1159173f7b20714@tuwien-kurse
+DTSTAMP:20261125T160310Z
 DTSTART;TZID=Europe/Vienna:20270223T232900
 DTEND;TZID=Europe/Vienna:20270223T235900
-SUMMARY:TI: Abschlusstest 2. Termin Anmeldung Ende
-DESCRIPTION:FRIST: 23.02.2027 23:59. Ende der Prüfungsanmeldung in TISS 
- für den Abschlusstest am 2027-02-25 (deutsch und englisch).\nStatus: fes
- t\nQuelle: TISS Prüfungen
+SUMMARY:TI: Prüfungsanmeldung Abschlusstest 2. Termin endet (DE+EN)
+DESCRIPTION:FRIST: 23.02.2027 23:59. Letzter Zeitpunkt zur Anmeldung zum 
+ Abschlusstest 2. Termin.\nStatus: fest\nQuelle: TISS Prüfungen
 LOCATION:TISS
 CATEGORIES:deadline
 BEGIN:VALARM
 ACTION:DISPLAY
-DESCRIPTION:TI: Abschlusstest 2. Termin Anmeldung Ende morgen
+DESCRIPTION:TI: Prüfungsanmeldung Abschlusstest 2. Termin endet (DE+EN) 
+ morgen
 TRIGGER:-P1D
 END:VALARM
 BEGIN:VALARM
 ACTION:DISPLAY
-DESCRIPTION:TI: Abschlusstest 2. Termin Anmeldung Ende in 2 Stunden
+DESCRIPTION:TI: Prüfungsanmeldung Abschlusstest 2. Termin endet (DE+EN) 
+ in 2 Stunden
 TRIGGER:-PT2H
 END:VALARM
 END:VEVENT
 BEGIN:VEVENT
-UID:7aa0371525fb9bdd6b2abc810dbfd6795a6bebcd@tuwien-kurse
-DTSTAMP:20261030T155818Z
+UID:1ee2d2826f6c1f0d212874eb4e45d0d0a3179748@tuwien-kurse
+DTSTAMP:20261125T160310Z
 DTSTART;TZID=Europe/Vienna:20270224T232900
 DTEND;TZID=Europe/Vienna:20270224T235900
-SUMMARY:TI: Abschlusstest 2. Termin Online-Abmeldung Ende
-DESCRIPTION:FRIST: 24.02.2027 23:59. Letzte Möglichkeit zur Online-Abmel
- dung vom Abschlusstest am 2027-02-25.\nStatus: fest\nQuelle: TISS Prüfun
- gen
+SUMMARY:TI: Online-Abmeldung Abschlusstest 2. Termin endet
+DESCRIPTION:FRIST: 24.02.2027 23:59. Bis hier online abmelden möglich.\n
+ Status: fest\nQuelle: TISS Prüfungen
 LOCATION:TISS
 CATEGORIES:deadline
 BEGIN:VALARM
 ACTION:DISPLAY
-DESCRIPTION:TI: Abschlusstest 2. Termin Online-Abmeldung Ende morgen
+DESCRIPTION:TI: Online-Abmeldung Abschlusstest 2. Termin endet morgen
 TRIGGER:-P1D
 END:VALARM
 BEGIN:VALARM
 ACTION:DISPLAY
-DESCRIPTION:TI: Abschlusstest 2. Termin Online-Abmeldung Ende in 2 Stunde
- n
+DESCRIPTION:TI: Online-Abmeldung Abschlusstest 2. Termin endet in 2 Stund
+ en
 TRIGGER:-PT2H
 END:VALARM
 END:VEVENT
 BEGIN:VEVENT
-UID:5b5fc7de3b4b1f14eab10ecb84880e872dde27b9@tuwien-kurse
-DTSTAMP:20261030T155818Z
+UID:cb61f7bb758a179d8ea339c56faee07460589612@tuwien-kurse
+DTSTAMP:20261125T160310Z
 DTSTART;VALUE=DATE:20270225
 DTEND;VALUE=DATE:20270226
 TRANSP:TRANSPARENT
-SUMMARY:TI: Final exam 2. Termin (englisch) [vorläufig]
-DESCRIPTION:English Track final exam. In TISS ohne Uhrzeit und Ort (Stand
-  30.10.2026)\; der deutsche Termin ist 17:00–19:00.\nStatus: vorläufig
- \nQuelle: TISS Prüfungen\; Preliminary discussion S. 9
+SUMMARY:TI: Final exam 2nd date (English) [vorläufig]
+DESCRIPTION:TISS: Datum ohne Uhrzeit/Ort. Anmeldung TISS 2027-02-10–202
+ 7-02-23.\nStatus: vorläufig\nQuelle: TISS Prüfungen
 LOCATION:noch nicht bekannt
 CATEGORIES:exam
 BEGIN:VALARM
 ACTION:DISPLAY
-DESCRIPTION:TI: Final exam 2. Termin (englisch) in 2 Tagen
+DESCRIPTION:TI: Final exam 2nd date (English) in 2 Tagen
 TRIGGER:-P2D
 END:VALARM
 BEGIN:VALARM
 ACTION:DISPLAY
-DESCRIPTION:TI: Final exam 2. Termin (englisch) in 2 Stunden
+DESCRIPTION:TI: Final exam 2nd date (English) in 2 Stunden
 TRIGGER:-PT2H
 END:VALARM
 END:VEVENT
 BEGIN:VEVENT
-UID:f92c4f353e923cd8e191e5e309846db5eb0659a4@tuwien-kurse
-DTSTAMP:20261030T155818Z
+UID:cfba13796a9ce6a48533e86de52ccce6bb69a58f@tuwien-kurse
+DTSTAMP:20261125T160310Z
 DTSTART;TZID=Europe/Vienna:20270225T170000
 DTEND;TZID=Europe/Vienna:20270225T190000
-SUMMARY:TI: Abschlusstest 2. Termin (deutsch)
-DESCRIPTION:Schriftlich\, max. 60 Punkte (≥30 nötig)\; nur 1 handgesch
- riebener A4-Zettel (beidseitig)\, keine elektronischen Hilfsmittel\; Antr
- itt bei 2 von 4 Terminen\, besseres Ergebnis zählt. Welcher Hörsaal: no
- ch nicht bekannt.\nStatus: fest\nQuelle: TISS Prüfungen\; Vorbesprechung
-  S. 10
+SUMMARY:TI: Abschlusstest 2. Termin (Deutsch)
+DESCRIPTION:Schriftlich\, max. 60 Punkte (≥30 nötig)\, nur 1 handgesch
+ riebenes A4-Blatt (beidseitig). Antritt bei max. 2 von 4 Terminen\, besse
+ res Ergebnis zählt. TISS-Anmeldung 2027-02-10–2027-02-23 nötig. Hörs
+ aalzuteilung noch nicht bekannt.\nStatus: fest\nQuelle: TISS Prüfungen\;
+  Vorbesprechung S. 10
 LOCATION:GM 1 Audi. Max.\, Informatikhörsaal\, FH 1 Peter Skalicky HS
 CATEGORIES:exam
 BEGIN:VALARM
 ACTION:DISPLAY
-DESCRIPTION:TI: Abschlusstest 2. Termin (deutsch) in 2 Tagen
+DESCRIPTION:TI: Abschlusstest 2. Termin (Deutsch) in 2 Tagen
 TRIGGER:-P2D
 END:VALARM
 BEGIN:VALARM
 ACTION:DISPLAY
-DESCRIPTION:TI: Abschlusstest 2. Termin (deutsch) in 2 Stunden
+DESCRIPTION:TI: Abschlusstest 2. Termin (Deutsch) in 2 Stunden
 TRIGGER:-PT2H
 END:VALARM
 END:VEVENT
 BEGIN:VEVENT
-UID:bb18f63125f5a3cc14cd0ec03cd960116cbb006b@tuwien-kurse
-DTSTAMP:20261030T155818Z
+UID:118e6f54d1948a3dc1162082a572faee1d052ba8@tuwien-kurse
+DTSTAMP:20261125T160310Z
 DTSTART;TZID=Europe/Vienna:20270329T000000
 DTEND;TZID=Europe/Vienna:20270329T003000
-SUMMARY:TI: Abschlusstest 3. Termin Anmeldung Beginn
-DESCRIPTION:Beginn der Prüfungsanmeldung in TISS für den Abschlusstest 
- am 2027-04-13 (deutscher und englischer Termin\, in TISS getrennt\, gleic
- he Fristen). Bestätigung der Anmeldung manuell.\nStatus: fest\nQuelle: T
- ISS Prüfungen
+SUMMARY:TI: Prüfungsanmeldung Abschlusstest 3. Termin beginnt (DE+EN)
+DESCRIPTION:Anmeldung für Abschlusstest 3. Termin (deutsch und englisch)
+  öffnet. Bestätigung manuell.\nStatus: fest\nQuelle: TISS Prüfungen
 LOCATION:TISS
 CATEGORIES:registration
 END:VEVENT
 BEGIN:VEVENT
-UID:bb87bc9bdd7e0fe1a68befd53af6dbed3c1e788f@tuwien-kurse
-DTSTAMP:20261030T155818Z
+UID:741407eb5c2e5dc0928e82f3543b022e7f2e3b2a@tuwien-kurse
+DTSTAMP:20261125T160310Z
 DTSTART;TZID=Europe/Vienna:20270411T232900
 DTEND;TZID=Europe/Vienna:20270411T235900
-SUMMARY:TI: Abschlusstest 3. Termin Anmeldung Ende
-DESCRIPTION:FRIST: 11.04.2027 23:59. Ende der Prüfungsanmeldung in TISS 
- für den Abschlusstest am 2027-04-13 (deutsch und englisch).\nStatus: fes
- t\nQuelle: TISS Prüfungen
+SUMMARY:TI: Prüfungsanmeldung Abschlusstest 3. Termin endet (DE+EN)
+DESCRIPTION:FRIST: 11.04.2027 23:59. Letzter Zeitpunkt zur Anmeldung zum 
+ Abschlusstest 3. Termin.\nStatus: fest\nQuelle: TISS Prüfungen
 LOCATION:TISS
 CATEGORIES:deadline
 BEGIN:VALARM
 ACTION:DISPLAY
-DESCRIPTION:TI: Abschlusstest 3. Termin Anmeldung Ende morgen
+DESCRIPTION:TI: Prüfungsanmeldung Abschlusstest 3. Termin endet (DE+EN) 
+ morgen
 TRIGGER:-P1D
 END:VALARM
 BEGIN:VALARM
 ACTION:DISPLAY
-DESCRIPTION:TI: Abschlusstest 3. Termin Anmeldung Ende in 2 Stunden
+DESCRIPTION:TI: Prüfungsanmeldung Abschlusstest 3. Termin endet (DE+EN) 
+ in 2 Stunden
 TRIGGER:-PT2H
 END:VALARM
 END:VEVENT
 BEGIN:VEVENT
-UID:198ffa2b245fc31e2c645cbde85f4b8bba1b5725@tuwien-kurse
-DTSTAMP:20261030T155818Z
+UID:bda5c472a9d93870b1a7cd697c7a69d631f229cb@tuwien-kurse
+DTSTAMP:20261125T160310Z
 DTSTART;TZID=Europe/Vienna:20270412T232900
 DTEND;TZID=Europe/Vienna:20270412T235900
-SUMMARY:TI: Abschlusstest 3. Termin Online-Abmeldung Ende
-DESCRIPTION:FRIST: 12.04.2027 23:59. Letzte Möglichkeit zur Online-Abmel
- dung vom Abschlusstest am 2027-04-13.\nStatus: fest\nQuelle: TISS Prüfun
- gen
+SUMMARY:TI: Online-Abmeldung Abschlusstest 3. Termin endet
+DESCRIPTION:FRIST: 12.04.2027 23:59. Bis hier online abmelden möglich.\n
+ Status: fest\nQuelle: TISS Prüfungen
 LOCATION:TISS
 CATEGORIES:deadline
 BEGIN:VALARM
 ACTION:DISPLAY
-DESCRIPTION:TI: Abschlusstest 3. Termin Online-Abmeldung Ende morgen
+DESCRIPTION:TI: Online-Abmeldung Abschlusstest 3. Termin endet morgen
 TRIGGER:-P1D
 END:VALARM
 BEGIN:VALARM
 ACTION:DISPLAY
-DESCRIPTION:TI: Abschlusstest 3. Termin Online-Abmeldung Ende in 2 Stunde
- n
+DESCRIPTION:TI: Online-Abmeldung Abschlusstest 3. Termin endet in 2 Stund
+ en
 TRIGGER:-PT2H
 END:VALARM
 END:VEVENT
 BEGIN:VEVENT
-UID:97f1c945e835c34072168b5c6c96b2db1bf48c77@tuwien-kurse
-DTSTAMP:20261030T155818Z
+UID:9cbee6ce30ade3fb00a66ac55dabc98021945f2b@tuwien-kurse
+DTSTAMP:20261125T160310Z
 DTSTART;VALUE=DATE:20270413
 DTEND;VALUE=DATE:20270414
 TRANSP:TRANSPARENT
-SUMMARY:TI: Final exam 3. Termin (englisch) [vorläufig]
-DESCRIPTION:English Track final exam. In TISS ohne Uhrzeit und Ort (Stand
-  30.10.2026)\; der deutsche Termin ist 17:00–19:00. Bestätigung der An
- meldung manuell.\nStatus: vorläufig\nQuelle: TISS Prüfungen\; Prelimina
- ry discussion S. 9
+SUMMARY:TI: Final exam 3rd date (English) [vorläufig]
+DESCRIPTION:TISS: Datum ohne Uhrzeit/Ort. Anmeldung TISS 2027-03-29–202
+ 7-04-11.\nStatus: vorläufig\nQuelle: TISS Prüfungen
 LOCATION:noch nicht bekannt
 CATEGORIES:exam
 BEGIN:VALARM
 ACTION:DISPLAY
-DESCRIPTION:TI: Final exam 3. Termin (englisch) in 2 Tagen
+DESCRIPTION:TI: Final exam 3rd date (English) in 2 Tagen
 TRIGGER:-P2D
 END:VALARM
 BEGIN:VALARM
 ACTION:DISPLAY
-DESCRIPTION:TI: Final exam 3. Termin (englisch) in 2 Stunden
+DESCRIPTION:TI: Final exam 3rd date (English) in 2 Stunden
 TRIGGER:-PT2H
 END:VALARM
 END:VEVENT
 BEGIN:VEVENT
-UID:cda36f675ecdb55e4a314932f107372c9c928bab@tuwien-kurse
-DTSTAMP:20261030T155818Z
+UID:febf751d21a173bb2e860eca4d4e7dced89a0b74@tuwien-kurse
+DTSTAMP:20261125T160310Z
 DTSTART;TZID=Europe/Vienna:20270413T170000
 DTEND;TZID=Europe/Vienna:20270413T190000
-SUMMARY:TI: Abschlusstest 3. Termin (deutsch)
-DESCRIPTION:Schriftlich\, max. 60 Punkte (≥30 nötig)\; nur 1 handgesch
- riebener A4-Zettel (beidseitig)\, keine elektronischen Hilfsmittel\; Antr
- itt bei 2 von 4 Terminen\, besseres Ergebnis zählt. Welcher Hörsaal: no
- ch nicht bekannt. Bestätigung der Anmeldung manuell.\nStatus: fest\nQuel
- le: TISS Prüfungen\; Vorbesprechung S. 10
-LOCATION:EI 7\, Informatikhörsaal\, FH 1 Peter Skalicky HS
+SUMMARY:TI: Abschlusstest 3. Termin (Deutsch)
+DESCRIPTION:Schriftlich\, max. 60 Punkte (≥30 nötig)\, nur 1 handgesch
+ riebenes A4-Blatt (beidseitig). Antritt bei max. 2 von 4 Terminen\, besse
+ res Ergebnis zählt. TISS-Anmeldung 2027-03-29–2027-04-11 nötig. Hörs
+ aalzuteilung noch nicht bekannt.\nStatus: fest\nQuelle: TISS Prüfungen\;
+  Vorbesprechung S. 10
+LOCATION:EI 7 Hörsaal\, Informatikhörsaal\, FH 1 Peter Skalicky HS
 CATEGORIES:exam
 BEGIN:VALARM
 ACTION:DISPLAY
-DESCRIPTION:TI: Abschlusstest 3. Termin (deutsch) in 2 Tagen
+DESCRIPTION:TI: Abschlusstest 3. Termin (Deutsch) in 2 Tagen
 TRIGGER:-P2D
 END:VALARM
 BEGIN:VALARM
 ACTION:DISPLAY
-DESCRIPTION:TI: Abschlusstest 3. Termin (deutsch) in 2 Stunden
+DESCRIPTION:TI: Abschlusstest 3. Termin (Deutsch) in 2 Stunden
 TRIGGER:-PT2H
 END:VALARM
 END:VEVENT
 BEGIN:VEVENT
-UID:7120e218c907cb355fbb497c5b8f3d4e6ed14996@tuwien-kurse
-DTSTAMP:20261030T155818Z
+UID:1a11dd87e0a3ebf6db4866771f2948894e7c7b8d@tuwien-kurse
+DTSTAMP:20261125T160310Z
 DTSTART;TZID=Europe/Vienna:20270506T000000
 DTEND;TZID=Europe/Vienna:20270506T003000
-SUMMARY:TI: Abschlusstest 4. Termin Anmeldung Beginn
-DESCRIPTION:Beginn der Prüfungsanmeldung in TISS für den Abschlusstest 
- am 2027-06-02 (deutscher und englischer Termin\, in TISS getrennt\, gleic
- he Fristen). Bestätigung der Anmeldung manuell.\nStatus: fest\nQuelle: T
- ISS Prüfungen
+SUMMARY:TI: Prüfungsanmeldung Abschlusstest 4. Termin beginnt (DE+EN)
+DESCRIPTION:Anmeldung für Abschlusstest 4. Termin (deutsch und englisch)
+  öffnet. Bestätigung manuell.\nStatus: fest\nQuelle: TISS Prüfungen
 LOCATION:TISS
 CATEGORIES:registration
 END:VEVENT
 BEGIN:VEVENT
-UID:5465def23e731266305e6bed065ab82f81ec01cf@tuwien-kurse
-DTSTAMP:20261030T155818Z
+UID:9fa089d7d5206810b90b4611fcdceedfbd89933a@tuwien-kurse
+DTSTAMP:20261125T160310Z
 DTSTART;TZID=Europe/Vienna:20270519T232900
 DTEND;TZID=Europe/Vienna:20270519T235900
-SUMMARY:TI: Abschlusstest 4. Termin Anmeldung Ende
-DESCRIPTION:FRIST: 19.05.2027 23:59. Ende der Prüfungsanmeldung in TISS 
- für den Abschlusstest am 2027-06-02 (deutsch und englisch).\nStatus: fes
- t\nQuelle: TISS Prüfungen
+SUMMARY:TI: Prüfungsanmeldung Abschlusstest 4. Termin endet (DE+EN)
+DESCRIPTION:FRIST: 19.05.2027 23:59. Letzter Zeitpunkt zur Anmeldung zum 
+ Abschlusstest 4. Termin.\nStatus: fest\nQuelle: TISS Prüfungen
 LOCATION:TISS
 CATEGORIES:deadline
 BEGIN:VALARM
 ACTION:DISPLAY
-DESCRIPTION:TI: Abschlusstest 4. Termin Anmeldung Ende morgen
+DESCRIPTION:TI: Prüfungsanmeldung Abschlusstest 4. Termin endet (DE+EN) 
+ morgen
 TRIGGER:-P1D
 END:VALARM
 BEGIN:VALARM
 ACTION:DISPLAY
-DESCRIPTION:TI: Abschlusstest 4. Termin Anmeldung Ende in 2 Stunden
+DESCRIPTION:TI: Prüfungsanmeldung Abschlusstest 4. Termin endet (DE+EN) 
+ in 2 Stunden
 TRIGGER:-PT2H
 END:VALARM
 END:VEVENT
 BEGIN:VEVENT
-UID:b4f51a2620b6af0d97d62284edaf108de6822a56@tuwien-kurse
-DTSTAMP:20261030T155818Z
+UID:8a4d95f5def6edd9848a6abf86887d0ba3c5e45b@tuwien-kurse
+DTSTAMP:20261125T160310Z
 DTSTART;TZID=Europe/Vienna:20270520T232900
 DTEND;TZID=Europe/Vienna:20270520T235900
-SUMMARY:TI: Abschlusstest 4. Termin Online-Abmeldung Ende
-DESCRIPTION:FRIST: 20.05.2027 23:59. Letzte Möglichkeit zur Online-Abmel
- dung vom Abschlusstest am 2027-06-02.\nStatus: fest\nQuelle: TISS Prüfun
- gen
+SUMMARY:TI: Online-Abmeldung Abschlusstest 4. Termin endet
+DESCRIPTION:FRIST: 20.05.2027 23:59. Bis hier online abmelden möglich.\n
+ Status: fest\nQuelle: TISS Prüfungen
 LOCATION:TISS
 CATEGORIES:deadline
 BEGIN:VALARM
 ACTION:DISPLAY
-DESCRIPTION:TI: Abschlusstest 4. Termin Online-Abmeldung Ende morgen
+DESCRIPTION:TI: Online-Abmeldung Abschlusstest 4. Termin endet morgen
 TRIGGER:-P1D
 END:VALARM
 BEGIN:VALARM
 ACTION:DISPLAY
-DESCRIPTION:TI: Abschlusstest 4. Termin Online-Abmeldung Ende in 2 Stunde
- n
+DESCRIPTION:TI: Online-Abmeldung Abschlusstest 4. Termin endet in 2 Stund
+ en
 TRIGGER:-PT2H
 END:VALARM
 END:VEVENT
 BEGIN:VEVENT
-UID:6faf7c10a6aa2ca3fe636ad9d0a7d2b69c97bcdc@tuwien-kurse
-DTSTAMP:20261030T155818Z
+UID:1215a72bc567dfc138e1fae6b31b78356a560e32@tuwien-kurse
+DTSTAMP:20261125T160310Z
 DTSTART;VALUE=DATE:20270602
 DTEND;VALUE=DATE:20270603
 TRANSP:TRANSPARENT
-SUMMARY:TI: Final exam 4. Termin (englisch) [vorläufig]
-DESCRIPTION:English Track final exam. In TISS ohne Uhrzeit und Ort (Stand
-  30.10.2026)\; der deutsche Termin ist 17:00–19:00. Bestätigung der An
- meldung manuell.\nStatus: vorläufig\nQuelle: TISS Prüfungen\; Prelimina
- ry discussion S. 9
+SUMMARY:TI: Final exam 4th date (English) [vorläufig]
+DESCRIPTION:TISS: Datum ohne Uhrzeit/Ort. Anmeldung TISS 2027-05-06–202
+ 7-05-19.\nStatus: vorläufig\nQuelle: TISS Prüfungen
 LOCATION:noch nicht bekannt
 CATEGORIES:exam
 BEGIN:VALARM
 ACTION:DISPLAY
-DESCRIPTION:TI: Final exam 4. Termin (englisch) in 2 Tagen
+DESCRIPTION:TI: Final exam 4th date (English) in 2 Tagen
 TRIGGER:-P2D
 END:VALARM
 BEGIN:VALARM
 ACTION:DISPLAY
-DESCRIPTION:TI: Final exam 4. Termin (englisch) in 2 Stunden
+DESCRIPTION:TI: Final exam 4th date (English) in 2 Stunden
 TRIGGER:-PT2H
 END:VALARM
 END:VEVENT
 BEGIN:VEVENT
-UID:ad585afe8d1c24ebcda23c732622d04f39e5fa39@tuwien-kurse
-DTSTAMP:20261030T155818Z
+UID:e02109a43d8bf43f1f4f3d41ef9a2ee34a8f12a5@tuwien-kurse
+DTSTAMP:20261125T160310Z
 DTSTART;TZID=Europe/Vienna:20270602T170000
 DTEND;TZID=Europe/Vienna:20270602T190000
-SUMMARY:TI: Abschlusstest 4. Termin (deutsch)
-DESCRIPTION:Schriftlich\, max. 60 Punkte (≥30 nötig)\; nur 1 handgesch
- riebener A4-Zettel (beidseitig)\, keine elektronischen Hilfsmittel\; Antr
- itt bei 2 von 4 Terminen\, besseres Ergebnis zählt. Welcher Hörsaal: no
- ch nicht bekannt. Bestätigung der Anmeldung manuell.\nStatus: fest\nQuel
- le: TISS Prüfungen\; Vorbesprechung S. 10
-LOCATION:Informatikhörsaal\, EI 7\, GM 1 Audi. Max.
+SUMMARY:TI: Abschlusstest 4. Termin (Deutsch)
+DESCRIPTION:Schriftlich\, max. 60 Punkte (≥30 nötig)\, nur 1 handgesch
+ riebenes A4-Blatt (beidseitig). Antritt bei max. 2 von 4 Terminen\, besse
+ res Ergebnis zählt. TISS-Anmeldung 2027-05-06–2027-05-19 nötig. Hörs
+ aalzuteilung noch nicht bekannt.\nStatus: fest\nQuelle: TISS Prüfungen\;
+  Vorbesprechung S. 10
+LOCATION:Informatikhörsaal\, EI 7 Hörsaal\, GM 1 Audi. Max.
 CATEGORIES:exam
 BEGIN:VALARM
 ACTION:DISPLAY
-DESCRIPTION:TI: Abschlusstest 4. Termin (deutsch) in 2 Tagen
+DESCRIPTION:TI: Abschlusstest 4. Termin (Deutsch) in 2 Tagen
 TRIGGER:-P2D
 END:VALARM
 BEGIN:VALARM
 ACTION:DISPLAY
-DESCRIPTION:TI: Abschlusstest 4. Termin (deutsch) in 2 Stunden
+DESCRIPTION:TI: Abschlusstest 4. Termin (Deutsch) in 2 Stunden
 TRIGGER:-PT2H
 END:VALARM
 END:VEVENT

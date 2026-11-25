@@ -1,5 +1,15 @@
-import type { CalEvent } from './model.ts'
+import type { CSSProperties } from 'react'
+import { courses, type CalEvent, type Course } from './model.ts'
 import { formatTime } from './time.ts'
+
+/* One color per course, in file order; white text on each stays above 4.5:1 */
+const COURSE_COLORS = ['#2563eb', '#047857', '#7c3aed', '#b45309', '#be185d', '#0f766e']
+
+/* Sets --course, which the badges, chips, tiles and dots in calendar.css pick up */
+export function courseStyle(course: Course) {
+  const index = Math.max(0, courses.indexOf(course))
+  return { '--course': COURSE_COLORS[index % COURSE_COLORS.length] } as CSSProperties
+}
 
 const KIND_LABEL: Record<CalEvent['kind'], string> = {
   deadline: 'Frist',

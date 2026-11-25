@@ -24,24 +24,25 @@ END:STANDARD
 END:VTIMEZONE
 BEGIN:VEVENT
 UID:c6e885536328c9974efc1388b9dc99b353166c6c@tuwien-kurse
-DTSTAMP:20261030T155818Z
+DTSTAMP:20261125T160311Z
 DTSTART;TZID=Europe/Vienna:20261005T094300
 DTEND;TZID=Europe/Vienna:20261005T101300
 SUMMARY:PET: Gruppenanmeldung Exercise Groups – Beginn
-DESCRIPTION:Anmeldebeginn Übungsgruppen.\nStatus: fest\nQuelle: TUWEL Ex
- ercise Groups (grouptool id=3100069)
+DESCRIPTION:Gruppenanmeldung für die Übungsgruppen (1 Bonuspunkt 'Group
+  Enrollment'). Vergangen.\nStatus: fest\nQuelle: TUWEL Exercise Groups (G
+ rouptool)
 LOCATION:TUWEL Grouptool
 CATEGORIES:registration
 END:VEVENT
 BEGIN:VEVENT
 UID:07b1c819250c6cfd2e3c4116ea8a636eb9fd34af@tuwien-kurse
-DTSTAMP:20261030T155818Z
+DTSTAMP:20261125T160311Z
 DTSTART;TZID=Europe/Vienna:20261012T232900
 DTEND;TZID=Europe/Vienna:20261012T235900
 SUMMARY:PET: Gruppenanmeldung Exercise Groups – Ende
-DESCRIPTION:FRIST: 12.10.2026 23:59. Registrierung = 1 Punkt. Vergangen\;
-  du bist in Gruppe 8.\nStatus: fest\nQuelle: TUWEL Exercise Groups\; Foli
- en Lecture 01: Introduction S. 14
+DESCRIPTION:FRIST: 12.10.2026 23:59. Ende der Gruppenanmeldung. Vergangen
+ \; David ist in Gruppe 8 (zusammengelegte Gruppen).\nStatus: fest\nQuelle
+ : TUWEL Exercise Groups\; Merged Exercise Groups.pdf
 LOCATION:TUWEL Grouptool
 CATEGORIES:deadline
 BEGIN:VALARM
@@ -56,26 +57,14 @@ TRIGGER:-PT2H
 END:VALARM
 END:VEVENT
 BEGIN:VEVENT
-UID:72da9e52b693d5d88107a07f5862eb23f8405214@tuwien-kurse
-DTSTAMP:20261030T155818Z
-DTSTART;VALUE=DATE:20261013
-DTEND;VALUE=DATE:20261014
-TRANSP:TRANSPARENT
-SUMMARY:PET: Übungsblatt 1 veröffentlicht
-DESCRIPTION:Blatt 1 (Version 13.10.2026) und Merged Groups online.\nStatu
- s: fest\nQuelle: Announcement „First Exercise Sheet“ 13.10.2026
-LOCATION:TUWEL
-CATEGORIES:other
-END:VEVENT
-BEGIN:VEVENT
 UID:5458f495d65e7a2f77cd27acf1e94a8ea6926cd3@tuwien-kurse
-DTSTAMP:20261030T155818Z
+DTSTAMP:20261125T160311Z
 DTSTART;TZID=Europe/Vienna:20261025T232900
 DTEND;TZID=Europe/Vienna:20261025T235900
 SUMMARY:PET: Rückmeldung falls UE1-Slot nicht passt
-DESCRIPTION:FRIST: 25.10.2026 23:59. 'by the end of Sunday' – Uhrzeit n
- icht angegeben. Vergangen.\nStatus: fest\nQuelle: Announcement „First E
- xercise Session Info“ 22.10.2026
+DESCRIPTION:FRIST: 25.10.2026 23:59. 'by the end of Sunday' – Rückmeld
+ ung\, falls der UE1-Slot nicht passt. Vergangen.\nStatus: fest\nQuelle: A
+ nnouncement 'First Exercise Session Info' 22.10.2026
 LOCATION:E-Mail / TUWEL-Forum
 CATEGORIES:deadline
 BEGIN:VALARM
@@ -90,157 +79,166 @@ TRIGGER:-PT2H
 END:VALARM
 END:VEVENT
 BEGIN:VEVENT
-UID:0a9bc933503d8e3c57f31d4dda50c4f7e858e737@tuwien-kurse
-DTSTAMP:20261030T155818Z
+UID:b62dc18aa6e406b1c7ec164b9d60363802b5030d@tuwien-kurse
+DTSTAMP:20261125T160311Z
 DTSTART;TZID=Europe/Vienna:20261028T151500
 DTEND;TZID=Europe/Vienna:20261028T154000
-SUMMARY:PET: UE1 Übungssession (Gruppe 8) – Tracking\, Fingerprinting\
- , Censorship
-DESCRIPTION:Dein Slot (25-Minuten-Slot\, ca. 20 Min. Diskussion)\, 5–10
-  Min. früher kommen\; Anwesenheit Pflicht für Punkte\; bis 6 Punkte. Ve
- rgangen. Übungsblatt nennt KW 45\, Session-Programm bestätigt 28.10.\nS
- tatus: fest\nQuelle: Exercise_Session_Program.pdf (Ordner „Exercise Ses
- sion 1“)\; Announcement „First Exercise Session Info“ 22.10.2026
+SUMMARY:PET: UE1 Übungssession – Gruppe 8 (Slot 15:15)
+DESCRIPTION:UE1 Tracking\, Fingerprinting\, Censorship (bis 6 Punkte). Da
+ vids Gruppe 8\, 25-Minuten-Slot\, 5–10 Min. früher kommen. Pflicht (An
+ wesenheit in der Gruppe nötig für Punkte). Vergangen\; Punkte in TUWEL 
+ noch nicht eingetragen.\nStatus: fest\nQuelle: TUWEL Ordner 'Exercise Ses
+ sion 1' → Exercise_Session_Program.pdf\; Announcement 22.10.2026
 LOCATION:Erzherzog-Johann-Platz 1\, 3. Stock\, Raum FB 03 14
 CATEGORIES:exercise
-END:VEVENT
-BEGIN:VEVENT
-UID:79de5a5237a76241bb6660d81ea710f064488958@tuwien-kurse
-DTSTAMP:20261030T155818Z
-DTSTART;TZID=Europe/Vienna:20261029T232500
-DTEND;TZID=Europe/Vienna:20261029T235500
-SUMMARY:PET: LVA-Anmeldung Ende
-DESCRIPTION:FRIST: 29.10.2026 23:55. Vergangen\; du bist angemeldet.\nSta
- tus: fest\nQuelle: TISS LVA-Anmeldung
-LOCATION:TISS
-CATEGORIES:deadline
 BEGIN:VALARM
 ACTION:DISPLAY
-DESCRIPTION:PET: LVA-Anmeldung Ende morgen
-TRIGGER:-P1D
+DESCRIPTION:PET: UE1 Übungssession – Gruppe 8 (Slot 15:15) in 2 Tagen
+TRIGGER:-P2D
 END:VALARM
 BEGIN:VALARM
 ACTION:DISPLAY
-DESCRIPTION:PET: LVA-Anmeldung Ende in 2 Stunden
+DESCRIPTION:PET: UE1 Übungssession – Gruppe 8 (Slot 15:15) in 2 Stunde
+ n
 TRIGGER:-PT2H
 END:VALARM
 END:VEVENT
 BEGIN:VEVENT
-UID:fcabcb0cabf050d8dc886265950a81d55596d252@tuwien-kurse
-DTSTAMP:20261030T155818Z
+UID:1282452f7628bbd971cdd10f1e482912d6408a5c@tuwien-kurse
+DTSTAMP:20261125T160311Z
+DTSTART;TZID=Europe/Vienna:20261029T232500
+DTEND;TZID=Europe/Vienna:20261029T235500
+SUMMARY:PET: LVA-Anmeldung – Ende
+DESCRIPTION:FRIST: 29.10.2026 23:55. Ende der LVA-Anmeldung. Vergangen\; 
+ David ist angemeldet.\nStatus: fest\nQuelle: TISS LVA-Anmeldung
+LOCATION:TISS
+CATEGORIES:deadline
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:PET: LVA-Anmeldung – Ende morgen
+TRIGGER:-P1D
+END:VALARM
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:PET: LVA-Anmeldung – Ende in 2 Stunden
+TRIGGER:-PT2H
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:47bcc4bcc0793a9e74c62fb6775aab4ad3078afb@tuwien-kurse
+DTSTAMP:20261125T160311Z
 DTSTART;TZID=Europe/Vienna:20261030T090000
 DTEND;TZID=Europe/Vienna:20261030T093000
-SUMMARY:PET: Midterm – Prüfungsanmeldung Beginn
-DESCRIPTION:Anmeldung offen\; Stand 30.10. noch nicht angemeldet.\nStatus
- : fest\nQuelle: TISS Prüfungen (examDateList)
+SUMMARY:PET: Midterm-Anmeldung – Beginn
+DESCRIPTION:Beginn der Prüfungsanmeldung Midterm. David ist inzwischen a
+ ngemeldet.\nStatus: fest\nQuelle: TISS Prüfungen
 LOCATION:TISS
 CATEGORIES:registration
 END:VEVENT
 BEGIN:VEVENT
-UID:9fccc0ea3080cf1bb6eb555789e523dafcddcb29@tuwien-kurse
-DTSTAMP:20261030T155818Z
-DTSTART;VALUE=DATE:20261113
-DTEND;VALUE=DATE:20261114
-TRANSP:TRANSPARENT
-SUMMARY:PET: Lecture 06 (TLS) Folien verfügbar
-DESCRIPTION:Freischaltung laut TUWEL 'Verfügbar ab 13. November 2026'.\n
- Status: fest\nQuelle: TUWEL Lecture Materials
-LOCATION:TUWEL
-CATEGORIES:other
-END:VEVENT
-BEGIN:VEVENT
-UID:79dff6f6f98f10c965ff337986dbc565bf612b90@tuwien-kurse
-DTSTAMP:20261030T155818Z
+UID:f3a8dab8875694019562888e2c312733c91362cc@tuwien-kurse
+DTSTAMP:20261125T160311Z
 DTSTART;TZID=Europe/Vienna:20261113T232500
 DTEND;TZID=Europe/Vienna:20261113T235500
-SUMMARY:PET: LVA-Abmeldung Ende
-DESCRIPTION:FRIST: 13.11.2026 23:55. Letzte Möglichkeit zur Online-Abmel
- dung von der LVA.\nStatus: fest\nQuelle: TISS LVA-Anmeldung
+SUMMARY:PET: LVA-Abmeldung – Ende
+DESCRIPTION:FRIST: 13.11.2026 23:55. Ende der Online-Abmeldung von der LV
+ A. Vergangen.\nStatus: fest\nQuelle: TISS LVA-Anmeldung
 LOCATION:TISS
 CATEGORIES:deadline
 BEGIN:VALARM
 ACTION:DISPLAY
-DESCRIPTION:PET: LVA-Abmeldung Ende morgen
+DESCRIPTION:PET: LVA-Abmeldung – Ende morgen
 TRIGGER:-P1D
 END:VALARM
 BEGIN:VALARM
 ACTION:DISPLAY
-DESCRIPTION:PET: LVA-Abmeldung Ende in 2 Stunden
+DESCRIPTION:PET: LVA-Abmeldung – Ende in 2 Stunden
 TRIGGER:-PT2H
 END:VALARM
 END:VEVENT
 BEGIN:VEVENT
-UID:9f554bd1378b9340db479330ddfaba9508f68927@tuwien-kurse
-DTSTAMP:20261030T155818Z
-DTSTART;VALUE=DATE:20261123
-DTEND;VALUE=DATE:20261124
-TRANSP:TRANSPARENT
-SUMMARY:PET: UE2 Übungssession – Definitions\, Security Games and Redu
- ctions (Slot noch unbekannt) [vorläufig]
-DESCRIPTION:Slot noch unbekannt. TUWEL-Tabelle: KW 48\, Mo 23.11.2026 (Fo
- lien: KW 48). TISS führt an diesem Tag 'Lecture' 08:00–10:00 FAV HS 1.
-  Bei UE1 lag die Session nicht am Montag. Blatt 2 noch nicht online\; bis
-  7 Punkte\; Aufgaben vorher in TUWEL markieren\; Anwesenheit Pflicht.\nSt
- atus: vorläufig\nQuelle: TUWEL Kurstabelle (course/view.php?id=82202)\; 
- Folien Lecture 01: Introduction S. 13\; TISS Einzeltermine (educationDeta
- ils\, 30.10.2026)
-LOCATION:FAV HS 1 / Erzherzog-Johann-Platz 1 (3. Stock) laut TUWEL
-CATEGORIES:exercise
-END:VEVENT
-BEGIN:VEVENT
-UID:075b53ed33b043201a4cafcf44f1bc8e76e1b96c@tuwien-kurse
-DTSTAMP:20261030T155818Z
+UID:0c8145a6fa907f03b25907ee75ba2f45bb3df781@tuwien-kurse
+DTSTAMP:20261125T160311Z
 DTSTART;TZID=Europe/Vienna:20261123T083000
 DTEND;TZID=Europe/Vienna:20261123T090000
-SUMMARY:PET: Midterm – Online-Abmeldung Ende
-DESCRIPTION:FRIST: 23.11.2026 09:00. Abmeldung vom Midterm online bis hie
- r.\nStatus: fest\nQuelle: TISS Prüfungen (examDateList)
+SUMMARY:PET: Midterm – Ende Online-Abmeldung
+DESCRIPTION:FRIST: 23.11.2026 09:00. Ende der Online-Abmeldung vom Midter
+ m. Vergangen\; David ist angemeldet.\nStatus: fest\nQuelle: TISS Prüfung
+ en
 LOCATION:TISS
 CATEGORIES:deadline
 BEGIN:VALARM
 ACTION:DISPLAY
-DESCRIPTION:PET: Midterm – Online-Abmeldung Ende morgen
+DESCRIPTION:PET: Midterm – Ende Online-Abmeldung morgen
 TRIGGER:-P1D
 END:VALARM
 BEGIN:VALARM
 ACTION:DISPLAY
-DESCRIPTION:PET: Midterm – Online-Abmeldung Ende in 2 Stunden
+DESCRIPTION:PET: Midterm – Ende Online-Abmeldung in 2 Stunden
 TRIGGER:-PT2H
 END:VALARM
 END:VEVENT
 BEGIN:VEVENT
-UID:9ab7dea612ec03ffa9ea058e75da238c0238ae03@tuwien-kurse
-DTSTAMP:20261030T155818Z
+UID:6f49a765edfcf0a792f036658314c55f4e281724@tuwien-kurse
+DTSTAMP:20261125T160311Z
+DTSTART;TZID=Europe/Vienna:20261123T093000
+DTEND;TZID=Europe/Vienna:20261123T100000
+SUMMARY:PET: UE2 Übungssession – Gruppe 8 (Slot 09:30)
+DESCRIPTION:UE2 Definitions\, Security Games and Reductions (Blatt 2\, bi
+ s 7 Punkte). Davids Gruppe 8 (Rashid\, Schröttle\, Orsini\, Hofer\, Barb
+ u)\, Slot 09:30 in FB 03 16. Programm hat Startzeiten im 30-Minuten-Raste
+ r (08:00–09:30)\; ein Ende ist nicht angegeben\, 10:00 ist daraus abgel
+ eitet. Pflicht. Vergangen\; Punkte in TUWEL noch nicht eingetragen.\nStat
+ us: fest\nQuelle: TUWEL Ordner 'Exercise Session 2' → Exercise_Session_
+ Program_23Nov2026.pdf\; Announcement 'Second Exercise Session' 19.11.2026
+LOCATION:Erzherzog-Johann-Platz 1\, 3. Stock\, Raum FB 03 16
+CATEGORIES:exercise
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:PET: UE2 Übungssession – Gruppe 8 (Slot 09:30) in 2 Tagen
+TRIGGER:-P2D
+END:VALARM
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:PET: UE2 Übungssession – Gruppe 8 (Slot 09:30) in 2 Stunde
+ n
+TRIGGER:-PT2H
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:cf84ab8955dd22a0a864cc4409c4feafb80c6d21@tuwien-kurse
+DTSTAMP:20261125T160311Z
 DTSTART;TZID=Europe/Vienna:20261129T232900
 DTEND;TZID=Europe/Vienna:20261129T235900
-SUMMARY:PET: Midterm – Prüfungsanmeldung Ende
-DESCRIPTION:FRIST: 29.11.2026 23:59. Anmeldung zum Midterm (30.11.) nöti
- g.\nStatus: fest\nQuelle: TISS Prüfungen (examDateList)
+SUMMARY:PET: Midterm-Anmeldung – Ende
+DESCRIPTION:FRIST: 29.11.2026 23:59. Ende der Prüfungsanmeldung Midterm.
+  David ist bereits angemeldet (Stand 25.11.2026) – nichts mehr zu tun.\
+ nStatus: fest\nQuelle: TISS Prüfungen
 LOCATION:TISS
 CATEGORIES:deadline
 BEGIN:VALARM
 ACTION:DISPLAY
-DESCRIPTION:PET: Midterm – Prüfungsanmeldung Ende morgen
+DESCRIPTION:PET: Midterm-Anmeldung – Ende morgen
 TRIGGER:-P1D
 END:VALARM
 BEGIN:VALARM
 ACTION:DISPLAY
-DESCRIPTION:PET: Midterm – Prüfungsanmeldung Ende in 2 Stunden
+DESCRIPTION:PET: Midterm-Anmeldung – Ende in 2 Stunden
 TRIGGER:-PT2H
 END:VALARM
 END:VEVENT
 BEGIN:VEVENT
 UID:41ca008e3dd0a0ef602b48cd6d39e0031ad52bdc@tuwien-kurse
-DTSTAMP:20261030T155818Z
+DTSTAMP:20261125T160311Z
 DTSTART;TZID=Europe/Vienna:20261130T090000
 DTEND;TZID=Europe/Vienna:20261130T110000
 SUMMARY:PET: Midterm Exam
-DESCRIPTION:Schriftlich\, 35 Punkte. Anmeldung in TISS bis 29.11.2026 23:
- 59. Hinweis: TISS-Einzeltermine führen am 30.11. weiterhin 'Lecture' 08:
- 00–10:00 FAV HS 1 (laut TUWEL keine Vorlesung).\nStatus: fest\nQuelle: 
- TUWEL Kurstabelle (course/view.php?id=82202)\; TISS Prüfungen (examDateL
- ist)\; Folien Lecture 01: Introduction S. 16
-LOCATION:Helmut Rauch Hörsaal – TPH
+DESCRIPTION:Schriftlich\, 35 Punkte. David ist in TISS ANGEMELDET (Stand 
+ 25.11.2026). Altklausur 2025W: closed-book\, keine Hilfsmittel\, 90 Minut
+ en\, Kugelschreiber schwarz/blau\, Studierendenausweis – ob das 2026W g
+ leich gilt\, nicht bestätigt.\nStatus: fest\nQuelle: TISS Prüfungen\; T
+ UWEL General Info\; TUWEL Ordner 'Past Exams'
+LOCATION:Helmut Rauch Hörsaal - TPH
 CATEGORIES:exam
 BEGIN:VALARM
 ACTION:DISPLAY
@@ -254,133 +252,107 @@ TRIGGER:-PT2H
 END:VALARM
 END:VEVENT
 BEGIN:VEVENT
-UID:60362d69f88108daf6c3dacd12c6f482ea024c70@tuwien-kurse
-DTSTAMP:20261030T155818Z
-DTSTART;VALUE=DATE:20261204
-DTEND;VALUE=DATE:20261205
-TRANSP:TRANSPARENT
-SUMMARY:PET: Lecture 07 (Messaging) Folien verfügbar
-DESCRIPTION:Laut TUWEL 'Verfügbar ab 4. Dezember 2026'.\nStatus: fest\nQ
- uelle: TUWEL Lecture Materials
-LOCATION:TUWEL
-CATEGORIES:other
-END:VEVENT
-BEGIN:VEVENT
-UID:ffd84c3d407d8beb0946ffb9572874662fc9d3ac@tuwien-kurse
-DTSTAMP:20261030T155818Z
-DTSTART;VALUE=DATE:20261211
-DTEND;VALUE=DATE:20261212
-TRANSP:TRANSPARENT
-SUMMARY:PET: Lecture 08 (Messaging II) Folien verfügbar
-DESCRIPTION:Laut TUWEL 'Verfügbar ab 11. Dezember 2026'.\nStatus: fest\n
- Quelle: TUWEL Lecture Materials
-LOCATION:TUWEL
-CATEGORIES:other
-END:VEVENT
-BEGIN:VEVENT
-UID:c3300007c53560cfe0269d64e7b55e57820411f9@tuwien-kurse
-DTSTAMP:20261030T155818Z
+UID:93fc90edcd3205691750119e9c9c7202ed9d78dc@tuwien-kurse
+DTSTAMP:20261125T160311Z
 DTSTART;TZID=Europe/Vienna:20261231T090000
 DTEND;TZID=Europe/Vienna:20261231T093000
-SUMMARY:PET: Final – Prüfungsanmeldung Beginn
-DESCRIPTION:Anmeldung zum Final Exam öffnet.\nStatus: fest\nQuelle: TISS
-  Prüfungen (examDateList)
+SUMMARY:PET: Final-Anmeldung – Beginn
+DESCRIPTION:Beginn der Prüfungsanmeldung 'Klausur Privacy Enhancing Tech
+ nologies' (Final 01.02.2027).\nStatus: fest\nQuelle: TISS Prüfungen
 LOCATION:TISS
 CATEGORIES:registration
 END:VEVENT
 BEGIN:VEVENT
-UID:e2a9237e23c0b90fc992ec8e25cf8d63a976cb34@tuwien-kurse
-DTSTAMP:20261030T155818Z
+UID:4b2841d49f3bc1ec83a75e5fffc030a3526dd8e7@tuwien-kurse
+DTSTAMP:20261125T160311Z
 DTSTART;VALUE=DATE:20270118
-DTEND;VALUE=DATE:20270122
+DTEND;VALUE=DATE:20270119
 TRANSP:TRANSPARENT
-SUMMARY:PET: UE3 Übungssession – TLS and Messaging (Slot noch unbekann
- t) [widersprüchlich]
-DESCRIPTION:Slot noch unbekannt. Widerspruch: TUWEL-Tabelle KW 3\, Mo 18.
- 01.2027 vs. Folien Lecture I S. 14 'exercise week 19 to 21 January'. TISS
-  führt am 18.01. 'Lecture' 08:00–10:00. Blatt 3 noch nicht online\; bi
- s 6 Punkte\; Anwesenheit Pflicht.\nStatus: widersprüchlich\nQuelle: TUWE
- L Kurstabelle (course/view.php?id=82202)\; Folien Lecture 01: Introductio
- n S. 13–14\; TISS Einzeltermine (educationDetails\, 30.10.2026)
-LOCATION:FAV HS 1 / Erzherzog-Johann-Platz 1 (3. Stock) laut TUWEL
+SUMMARY:PET: UE3 Übungssession (Slot noch nicht bekannt) [widersprüchli
+ ch]
+DESCRIPTION:UE3 TLS and Messaging (Double Ratchet\, Forward Security\, Po
+ st Compromise Security)\, bis 6 Punkte. Pflicht. Widerspruch: TUWEL-Tabel
+ le Mo 18.01.2027\; Folien Lecture I 'exercise week 19 to 21 January'. Bla
+ tt 3\, Slot und Raum noch nicht veröffentlicht (Stand 25.11.2026).\nStat
+ us: widersprüchlich\nQuelle: TUWEL General Info\; Folien Lecture I S. 14
+LOCATION:FAV HS 1 / Erzherzog-Johann-Platz 1 (3. Stock)
 CATEGORIES:exercise
-END:VEVENT
-BEGIN:VEVENT
-UID:8f8d8090fc4d882e54e91187d578b53cf22ece28@tuwien-kurse
-DTSTAMP:20261030T155818Z
-DTSTART;VALUE=DATE:20270122
-DTEND;VALUE=DATE:20270123
-TRANSP:TRANSPARENT
-SUMMARY:PET: Lecture 10 (Onion Routing and Q&A) Folien verfügbar
-DESCRIPTION:Laut TUWEL 'Verfügbar ab 22. Januar 2027'.\nStatus: fest\nQu
- elle: TUWEL Lecture Materials
-LOCATION:TUWEL
-CATEGORIES:other
-END:VEVENT
-BEGIN:VEVENT
-UID:60618982545723d7904c5e5893a9e407280772b0@tuwien-kurse
-DTSTAMP:20261030T155818Z
-DTSTART;TZID=Europe/Vienna:20270122T090000
-DTEND;TZID=Europe/Vienna:20270122T093000
-SUMMARY:PET: Reexam – Prüfungsanmeldung Beginn
-DESCRIPTION:Anmeldung zur Wiederholungsklausur öffnet.\nStatus: fest\nQu
- elle: TISS Prüfungen (examDateList)
-LOCATION:TISS
-CATEGORIES:registration
-END:VEVENT
-BEGIN:VEVENT
-UID:6e90aea0491c98a7f8b510ff6349296a555f8374@tuwien-kurse
-DTSTAMP:20261030T155818Z
-DTSTART;TZID=Europe/Vienna:20270125T232900
-DTEND;TZID=Europe/Vienna:20270125T235900
-SUMMARY:PET: Final – Online-Abmeldung Ende
-DESCRIPTION:FRIST: 25.01.2027 23:59. Abmeldung vom Final online bis hier.
- \nStatus: fest\nQuelle: TISS Prüfungen (examDateList)
-LOCATION:TISS
-CATEGORIES:deadline
 BEGIN:VALARM
 ACTION:DISPLAY
-DESCRIPTION:PET: Final – Online-Abmeldung Ende morgen
-TRIGGER:-P1D
+DESCRIPTION:PET: UE3 Übungssession (Slot noch nicht bekannt) in 2 Tagen
+TRIGGER:-P2D
 END:VALARM
 BEGIN:VALARM
 ACTION:DISPLAY
-DESCRIPTION:PET: Final – Online-Abmeldung Ende in 2 Stunden
+DESCRIPTION:PET: UE3 Übungssession (Slot noch nicht bekannt) in 2 Stunde
+ n
 TRIGGER:-PT2H
 END:VALARM
 END:VEVENT
 BEGIN:VEVENT
-UID:d3ee4e8a7541f044e76744e0c61d8c3f4e26f180@tuwien-kurse
-DTSTAMP:20261030T155818Z
-DTSTART;TZID=Europe/Vienna:20270131T232900
-DTEND;TZID=Europe/Vienna:20270131T235900
-SUMMARY:PET: Final – Prüfungsanmeldung Ende
-DESCRIPTION:FRIST: 31.01.2027 23:59. Anmeldung zum Final (01.02.2027) nö
- tig.\nStatus: fest\nQuelle: TISS Prüfungen (examDateList)
+UID:c7d616371696a1c4a1e62a13d97ee9bb917d590a@tuwien-kurse
+DTSTAMP:20261125T160311Z
+DTSTART;TZID=Europe/Vienna:20270122T090000
+DTEND;TZID=Europe/Vienna:20270122T093000
+SUMMARY:PET: Reexam-Anmeldung – Beginn
+DESCRIPTION:Beginn der Anmeldung 'Wiederholungsklausur Privacy Enhancing 
+ Technologies' (22.02.2027).\nStatus: fest\nQuelle: TISS Prüfungen
+LOCATION:TISS
+CATEGORIES:registration
+END:VEVENT
+BEGIN:VEVENT
+UID:0796d4c6f82d7ce113f45fadffbee221c9925c18@tuwien-kurse
+DTSTAMP:20261125T160311Z
+DTSTART;TZID=Europe/Vienna:20270125T232900
+DTEND;TZID=Europe/Vienna:20270125T235900
+SUMMARY:PET: Final – Ende Online-Abmeldung
+DESCRIPTION:FRIST: 25.01.2027 23:59. Ende der Online-Abmeldung vom Final.
+ \nStatus: fest\nQuelle: TISS Prüfungen
 LOCATION:TISS
 CATEGORIES:deadline
 BEGIN:VALARM
 ACTION:DISPLAY
-DESCRIPTION:PET: Final – Prüfungsanmeldung Ende morgen
+DESCRIPTION:PET: Final – Ende Online-Abmeldung morgen
 TRIGGER:-P1D
 END:VALARM
 BEGIN:VALARM
 ACTION:DISPLAY
-DESCRIPTION:PET: Final – Prüfungsanmeldung Ende in 2 Stunden
+DESCRIPTION:PET: Final – Ende Online-Abmeldung in 2 Stunden
+TRIGGER:-PT2H
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:56f50edbeb9d32e53e7d722f7d098cd4423e8dde@tuwien-kurse
+DTSTAMP:20261125T160311Z
+DTSTART;TZID=Europe/Vienna:20270131T232900
+DTEND;TZID=Europe/Vienna:20270131T235900
+SUMMARY:PET: Final-Anmeldung – Ende
+DESCRIPTION:FRIST: 31.01.2027 23:59. Ende der Prüfungsanmeldung Final (0
+ 1.02.2027). Anmeldung in TISS für jede Prüfung nötig.\nStatus: fest\nQ
+ uelle: TISS Prüfungen
+LOCATION:TISS
+CATEGORIES:deadline
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:PET: Final-Anmeldung – Ende morgen
+TRIGGER:-P1D
+END:VALARM
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:PET: Final-Anmeldung – Ende in 2 Stunden
 TRIGGER:-PT2H
 END:VALARM
 END:VEVENT
 BEGIN:VEVENT
 UID:254813a522e41a05eb7ada261693287c8bdcf28e@tuwien-kurse
-DTSTAMP:20261030T155818Z
+DTSTAMP:20261125T160311Z
 DTSTART;TZID=Europe/Vienna:20270201T120000
 DTEND;TZID=Europe/Vienna:20270201T140000
 SUMMARY:PET: Final Exam
-DESCRIPTION:Schriftlich\, 35 Punkte. Anmeldung in TISS 31.12.2026–31.01
- .2027.\nStatus: fest\nQuelle: TUWEL Kurstabelle (course/view.php?id=82202
- )\; TISS Prüfungen (examDateList)\; Folien Lecture 01: Introduction S. 1
- 6
-LOCATION:FH Hörsaal 1 – MWB (TISS: FH 1 Peter Skalicky HS – MWB)
+DESCRIPTION:Schriftlich\, 35 Punkte. Anmeldung in TISS 31.12.2026 09:00 
+ – 31.01.2027 23:59 (noch nicht offen).\nStatus: fest\nQuelle: TISS Prü
+ fungen\; TUWEL General Info
+LOCATION:FH Hörsaal 1 - MWB (TISS: FH 1 Peter Skalicky HS - MWB)
 CATEGORIES:exam
 BEGIN:VALARM
 ACTION:DISPLAY
@@ -394,92 +366,90 @@ TRIGGER:-PT2H
 END:VALARM
 END:VEVENT
 BEGIN:VEVENT
-UID:aae0315ed8149aafd7ea717851b712ed30955a34@tuwien-kurse
-DTSTAMP:20261030T155818Z
+UID:e285eab56148a5c474d5e9be41925db8b5aa5d37@tuwien-kurse
+DTSTAMP:20261125T160311Z
 DTSTART;TZID=Europe/Vienna:20270221T153000
 DTEND;TZID=Europe/Vienna:20270221T160000
-SUMMARY:PET: Reexam – Prüfungsanmeldung Ende
-DESCRIPTION:FRIST: 21.02.2027 16:00. Anmeldung zur Wiederholungsklausur (
- 22.02.2027) nötig.\nStatus: fest\nQuelle: TISS Prüfungen (examDateList)
+SUMMARY:PET: Reexam-Anmeldung – Ende
+DESCRIPTION:FRIST: 21.02.2027 16:00. Ende der Anmeldung zur Wiederholungs
+ klausur (22.02.2027).\nStatus: fest\nQuelle: TISS Prüfungen
 LOCATION:TISS
 CATEGORIES:deadline
 BEGIN:VALARM
 ACTION:DISPLAY
-DESCRIPTION:PET: Reexam – Prüfungsanmeldung Ende morgen
+DESCRIPTION:PET: Reexam-Anmeldung – Ende morgen
 TRIGGER:-P1D
 END:VALARM
 BEGIN:VALARM
 ACTION:DISPLAY
-DESCRIPTION:PET: Reexam – Prüfungsanmeldung Ende in 2 Stunden
+DESCRIPTION:PET: Reexam-Anmeldung – Ende in 2 Stunden
 TRIGGER:-PT2H
 END:VALARM
 END:VEVENT
 BEGIN:VEVENT
-UID:05aab0319ebada1ece10b4cd47fe6b3d30f7b4ca@tuwien-kurse
-DTSTAMP:20261030T155818Z
+UID:d1fa97225cee6a9ccc1ff0e908f7f5a09b1a8071@tuwien-kurse
+DTSTAMP:20261125T160311Z
 DTSTART;TZID=Europe/Vienna:20270221T232900
 DTEND;TZID=Europe/Vienna:20270221T235900
-SUMMARY:PET: Reexam – Online-Abmeldung Ende
-DESCRIPTION:FRIST: 21.02.2027 23:59. Laut TISS Abmeldung online bis 21.02
- .2027 23:59 (später als Anmeldeende).\nStatus: fest\nQuelle: TISS Prüfu
- ngen (examDateList)
+SUMMARY:PET: Reexam – Ende Online-Abmeldung
+DESCRIPTION:FRIST: 21.02.2027 23:59. Ende der Online-Abmeldung von der Wi
+ ederholungsklausur (laut TISS nach dem Anmeldeende 16:00).\nStatus: fest\
+ nQuelle: TISS Prüfungen
 LOCATION:TISS
 CATEGORIES:deadline
 BEGIN:VALARM
 ACTION:DISPLAY
-DESCRIPTION:PET: Reexam – Online-Abmeldung Ende morgen
+DESCRIPTION:PET: Reexam – Ende Online-Abmeldung morgen
 TRIGGER:-P1D
 END:VALARM
 BEGIN:VALARM
 ACTION:DISPLAY
-DESCRIPTION:PET: Reexam – Online-Abmeldung Ende in 2 Stunden
+DESCRIPTION:PET: Reexam – Ende Online-Abmeldung in 2 Stunden
 TRIGGER:-PT2H
 END:VALARM
 END:VEVENT
 BEGIN:VEVENT
-UID:8f4007275e41a4539bae36f327dba9b6a529d22f@tuwien-kurse
-DTSTAMP:20261030T155818Z
+UID:5f1b03c71c654e36d4fcedff0b8c16fa178b32aa@tuwien-kurse
+DTSTAMP:20261125T160311Z
 DTSTART;TZID=Europe/Vienna:20270222T090000
 DTEND;TZID=Europe/Vienna:20270222T110000
-SUMMARY:PET: Retake Midterm (Reexam)
-DESCRIPTION:Bessere der beiden Bewertungen zählt. TISS führt nur einen 
- Termin 'Wiederholungsklausur' 09:00–13:00. Folien nennen KW 9 (22.02.20
- 27 liegt in KW 8).\nStatus: fest\nQuelle: TUWEL Kurstabelle (course/view.
- php?id=82202)\; TISS Prüfungen (examDateList)\; Folien Lecture 01: Intro
- duction S. 13/16
-LOCATION:EI 9 Hlawka HS – ETIT
+SUMMARY:PET: Retake Midterm Exam
+DESCRIPTION:Wiederholung Midterm\; die bessere der beiden Bewertungen zä
+ hlt. TISS führt nur einen Termin 'Wiederholungsklausur' 09:00–13:00. F
+ olien nennen KW 9 (22.02.2027 liegt in KW 8).\nStatus: fest\nQuelle: TUWE
+ L General Info\; TISS Prüfungen\; Folien Lecture I
+LOCATION:EI 9 Hlawka HS - ETIT
 CATEGORIES:exam
 BEGIN:VALARM
 ACTION:DISPLAY
-DESCRIPTION:PET: Retake Midterm (Reexam) in 2 Tagen
+DESCRIPTION:PET: Retake Midterm Exam in 2 Tagen
 TRIGGER:-P2D
 END:VALARM
 BEGIN:VALARM
 ACTION:DISPLAY
-DESCRIPTION:PET: Retake Midterm (Reexam) in 2 Stunden
+DESCRIPTION:PET: Retake Midterm Exam in 2 Stunden
 TRIGGER:-PT2H
 END:VALARM
 END:VEVENT
 BEGIN:VEVENT
-UID:5ef9d6392352b21c9c50a6c3ecb8092c5bfd9292@tuwien-kurse
-DTSTAMP:20261030T155818Z
+UID:20ba88949fb8aa3785d72391638fb48ccbb770c1@tuwien-kurse
+DTSTAMP:20261125T160311Z
 DTSTART;TZID=Europe/Vienna:20270222T110000
 DTEND;TZID=Europe/Vienna:20270222T130000
-SUMMARY:PET: Retake Final (Reexam)
-DESCRIPTION:Bessere der beiden Bewertungen zählt. TISS führt nur einen 
- Termin 'Wiederholungsklausur' 09:00–13:00.\nStatus: fest\nQuelle: TUWEL
-  Kurstabelle (course/view.php?id=82202)\; TISS Prüfungen (examDateList)\
- ; Folien Lecture 01: Introduction S. 16
-LOCATION:EI 9 Hlawka HS – ETIT
+SUMMARY:PET: Retake Final Exam
+DESCRIPTION:Wiederholung Final\; die bessere der beiden Bewertungen zähl
+ t. TISS: ein Termin 'Wiederholungsklausur' 09:00–13:00.\nStatus: fest\n
+ Quelle: TUWEL General Info\; TISS Prüfungen
+LOCATION:EI 9 Hlawka HS - ETIT
 CATEGORIES:exam
 BEGIN:VALARM
 ACTION:DISPLAY
-DESCRIPTION:PET: Retake Final (Reexam) in 2 Tagen
+DESCRIPTION:PET: Retake Final Exam in 2 Tagen
 TRIGGER:-P2D
 END:VALARM
 BEGIN:VALARM
 ACTION:DISPLAY
-DESCRIPTION:PET: Retake Final (Reexam) in 2 Stunden
+DESCRIPTION:PET: Retake Final Exam in 2 Stunden
 TRIGGER:-PT2H
 END:VALARM
 END:VEVENT

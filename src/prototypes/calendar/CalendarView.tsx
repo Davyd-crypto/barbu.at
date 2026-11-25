@@ -1,8 +1,8 @@
 import { useRef, useState, type TouchEvent } from 'react'
-import { CheckIcon, ChevronLeft, ChevronRight, OpensIcon } from './icons.tsx'
-import { eventTime } from './labels.ts'
-import { courses, events, tasksByOpens, type CalEvent } from './model.ts'
-import { addDays, dayKey, formatLongDate, formatMonth, formatShort, formatWeekday, sameDay, startOfDay, startOfWeek } from './time.ts'
+import { CheckIcon, ChevronLeft, ChevronRight } from './icons.tsx'
+import { courseStyle, eventTime } from './labels.ts'
+import { courses, events, type CalEvent } from './model.ts'
+import { addDays, dayKey, formatLongDate, formatMonth, formatWeekday, sameDay, startOfDay, startOfWeek } from './time.ts'
 import { CertaintyBadge, CourseTag, KindBadge, PageHeader } from './ui.tsx'
 import { useDone } from './useDone.ts'
 import { useStoredState } from './useStoredState.ts'
@@ -25,8 +25,9 @@ function daysOf(e: CalEvent) {
 /* Time the entry is listed under: the deadline for deadlines, else the start */
 const sortTime = (e: CalEvent) => (e.allDay ? 0 : (e.kind === 'deadline' ? e.end : e.start).getTime())
 
+/* "UE1 Abgabe öffnet" and the like only feed the task list (Task.opens), they are not shown here */
 const byDay = new Map<string, CalEvent[]>()
-for (const e of events) {
+for (const e of events.filter((e) => e.kind !== 'start')) {
   for (const d of daysOf(e)) byDay.set(dayKey(d), [...(byDay.get(dayKey(d)) ?? []), e])
 }
 for (const list of byDay.values()) list.sort((a, b) => sortTime(a) - sortTime(b))
@@ -105,9 +106,6 @@ export function CalendarView({ now, onOpen }: Props) {
         )}
         <div className="cal-legend cal-legend-kinds">
           <span className="cal-badge soft">Frist</span>
-          <span className="cal-opens">
-            <OpensIcon /> öffnet
-          </span>
           <span className="cal-badge solid">Prüfung</span>
           <span className="cal-badge outline">Termin</span>
         </div>
@@ -173,7 +171,7 @@ function MonthGrid({ cursor, now, selected, onSelect, onOpen }: MonthProps) {
             <span className="cal-day-num">{d.getDate()}</span>
             <span className="cal-day-dots" aria-hidden="true">
               {list.slice(0, 4).map((e) => (
-                <span key={e.id} className={`cal-dot ${e.kind}`} />
+                <span key={e.id} className={`cal-dot ${e.kind}`} style={courseStyle(e.course)} />
               ))}
             </span>
             <span className="cal-day-chips">
@@ -181,10 +179,10 @@ function MonthGrid({ cursor, now, selected, onSelect, onOpen }: MonthProps) {
                 <button
                   key={e.id}
                   className={`cal-chip ${e.kind} ${done.has(e.id) ? 'done' : ''}`}
+                  style={courseStyle(e.course)}
                   onClick={() => onOpen(e)}
                   title={`${e.course.code}: ${e.title}`}
                 >
-                  {e.kind === 'start' && <OpensIcon />}
                   <b>{e.course.code}</b>
                   <span>{e.title}</span>
                 </button>
@@ -226,7 +224,6 @@ function DayList({ day, now, onOpen }: { day: Date; now: Date; onOpen: (e: CalEv
 
 function EventRow({ event: e, onOpen }: { event: CalEvent; onOpen: (e: CalEvent) => void }) {
   const done = useDone().has(e.id)
-  const opens = tasksByOpens.get(e.id) ?? []
   return (
     <li>
       <button className={`cal-event-row ${e.kind} ${done ? 'done' : ''}`} onClick={() => onOpen(e)}>
@@ -240,9 +237,6 @@ function EventRow({ event: e, onOpen }: { event: CalEvent; onOpen: (e: CalEvent)
             <CourseTag course={e.course} />
             <KindBadge event={e} />
             <CertaintyBadge event={e} />
-            {opens.map((t) => (
-              <span key={t.id}>Abgabe bis {formatShort(t.due)}</span>
-            ))}
           </span>
         </span>
       </button>
@@ -266,11 +260,12 @@ function WeekGrid({ start, now, onOpen }: { start: Date; now: Date; onOpen: (e: 
             <ul className="cal-week-events">
               {list.map((e) => (
                 <li key={e.id}>
-                  <button className={`cal-tile ${e.kind} ${done.has(e.id) ? 'done' : ''}`} onClick={() => onOpen(e)}>
-                    <span className="cal-tile-time">
-                      {e.kind === 'start' && <OpensIcon />}
-                      {eventTime(e)}
-                    </span>
+                  <button
+                    className={`cal-tile ${e.kind} ${done.has(e.id) ? 'done' : ''}`}
+                    style={courseStyle(e.course)}
+                    onClick={() => onOpen(e)}
+                  >
+                    <span className="cal-tile-time">{eventTime(e)}</span>
                     <span className="cal-tile-title">{e.title}</span>
                     <span className="cal-tile-course">{e.course.code}</span>
                   </button>

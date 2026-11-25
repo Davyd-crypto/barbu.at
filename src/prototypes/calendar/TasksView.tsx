@@ -4,10 +4,11 @@ import { events, tasks, type CalEvent, type Task } from './model.ts'
 import { DAY, dayCount, formatDuration, formatLongDate, formatRelativeDay, formatShort } from './time.ts'
 import { CertaintyBadge, CourseTag, PageHeader } from './ui.tsx'
 import { setDone, useDone } from './useDone.ts'
+import { useStoredState } from './useStoredState.ts'
 
 const SOON_DAYS = 14 // "Demnächst" shows deadlines this far ahead (at least SOON_MIN), the rest behind a button
 const SOON_MIN = 3
-const OVERDUE_DAYS = 14 // missed deadlines older than this are only in the calendar
+const OVERDUE_DAYS = 14 // checked-off tasks stay under "Abgegeben" until this long after their deadline; missed ones are only in the calendar
 const UNDO_MS = 5000
 
 interface Props {
@@ -17,7 +18,8 @@ interface Props {
 
 export function TasksView({ now, onOpen }: Props) {
   const done = useDone()
-  const [showAll, setShowAll] = useState(false)
+  const [showAllStored, setShowAllStored] = useStoredState('calendar:showAll', 'no', ['no', 'yes'])
+  const showAll = showAllStored === 'yes'
   const [undo, setUndo] = useState<Task | null>(null)
 
   useEffect(() => {
@@ -37,9 +39,6 @@ export function TasksView({ now, onOpen }: Props) {
   const active = open.filter(isActive)
   const upcoming = open.filter((task) => task.due.getTime() > t && !isActive(task))
   const soon = upcoming.filter((task, i) => i < SOON_MIN || task.due.getTime() - t < SOON_DAYS * DAY)
-  const overdue = open
-    .filter((task) => task.due.getTime() <= t && t - task.due.getTime() < OVERDUE_DAYS * DAY)
-    .reverse()
   const recentlyDone = tasks.filter((task) => done.has(task.id) && t - task.due.getTime() < OVERDUE_DAYS * DAY)
 
   const nextTask = open.find((task) => task.due.getTime() > t)
@@ -77,16 +76,6 @@ export function TasksView({ now, onOpen }: Props) {
         )}
       </section>
 
-      {overdue.length > 0 && (
-        <Fold label={`${overdue.length} ${overdue.length === 1 ? 'Frist' : 'Fristen'} vorbei, nicht abgehakt`} alert>
-          <ul className="cal-card cal-list">
-            {overdue.map((task) => (
-              <TaskRow key={task.id} task={task} now={now} onCheck={() => check(task)} onOpen={() => onOpen(task.event)} />
-            ))}
-          </ul>
-        </Fold>
-      )}
-
       <section className="cal-section">
         <SectionTitle title="Demnächst" count={upcoming.length} />
         {listed.length === 0 ? (
@@ -99,14 +88,14 @@ export function TasksView({ now, onOpen }: Props) {
           </ul>
         )}
         {upcoming.length > soon.length && (
-          <button className="cal-btn cal-more" onClick={() => setShowAll((v) => !v)}>
+          <button className="cal-btn cal-more" onClick={() => setShowAllStored(showAll ? 'no' : 'yes')}>
             {showAll ? 'Weniger anzeigen' : `Alle ${upcoming.length} anzeigen`}
           </button>
         )}
       </section>
 
       {recentlyDone.length > 0 && (
-        <Fold label={`Abgegeben · ${recentlyDone.length}`}>
+        <Fold label={`Abgegeben · ${recentlyDone.length}`} storageKey="calendar:fold:done">
           <ul className="cal-card cal-list">
             {recentlyDone.map((task) => (
               <TaskRow key={task.id} task={task} now={now} done onCheck={() => setDone(task.id, false)} onOpen={() => onOpen(task.event)} />
@@ -159,11 +148,12 @@ function SectionTitle({ title, count }: { title: string; count: number }) {
   )
 }
 
-function Fold({ label, alert = false, children }: { label: string; alert?: boolean; children: ReactNode }) {
+/* Collapsible section; open or closed is remembered under `storageKey` */
+function Fold({ label, storageKey, children }: { label: string; storageKey: string; children: ReactNode }) {
+  const [state, setState] = useStoredState(storageKey, 'closed', ['closed', 'open'])
   return (
-    <details className="cal-fold">
+    <details className="cal-fold" open={state === 'open'} onToggle={(e) => setState(e.currentTarget.open ? 'open' : 'closed')}>
       <summary className="cal-btn outline">
-        {alert && <i className="cal-mark" />}
         {label}
         <ChevronDown />
       </summary>

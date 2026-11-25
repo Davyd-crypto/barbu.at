@@ -1,7 +1,7 @@
 /* Small shared pieces: page header, badges */
 import type { ReactNode } from 'react'
 import { OpensIcon } from './icons.tsx'
-import { kindLabel } from './labels.ts'
+import { courseStyle, kindLabel } from './labels.ts'
 import type { CalEvent, Course } from './model.ts'
 
 export function PageHeader({ eyebrow, title, children }: { eyebrow: string; title: string; children?: ReactNode }) {
@@ -18,7 +18,7 @@ export function PageHeader({ eyebrow, title, children }: { eyebrow: string; titl
 
 export function CourseTag({ course }: { course: Course }) {
   return (
-    <span className="cal-badge outline" title={course.name}>
+    <span className="cal-badge course" style={courseStyle(course)} title={course.name}>
       {course.code}
     </span>
   )

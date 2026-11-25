@@ -1,6 +1,8 @@
 /*
  * Calendar prototype, styled after DESIGN.md: monochrome, Geist, hairline
  * cards (24px radius), pill controls (18px), red only as a small mark.
+ * Exception: each course has its own color (--course, set inline by
+ * courseStyle() in ui.tsx) on its badges, chips, tiles and dots.
  * Everything is scoped to .cal, the site styles stay untouched.
  */
 html:has(.cal) {
@@ -405,6 +407,11 @@ html:has(.cal) body {
   color: var(--color-ink);
 }
 
+.cal-badge.course {
+  background: color-mix(in srgb, var(--course) 12%, var(--color-paper));
+  color: var(--course);
+}
+
 .cal-opens {
   display: inline-flex;
   align-items: center;
@@ -788,27 +795,22 @@ button.cal-stat-card:hover {
   gap: 3px;
 }
 
-/* Deadline: filled · exam: filled with ring · opens: hollow · session: gray */
+/* In the course color. Deadline: filled · exam: filled with ring · session: lighter */
 .cal-dot {
   display: inline-block;
   width: 6px;
   height: 6px;
   border-radius: 50%;
-  background: var(--color-ink);
+  background: var(--course);
 }
 
 .cal-dot.exam {
-  box-shadow: 0 0 0 1.5px var(--color-paper), 0 0 0 2.5px var(--color-ink);
-}
-
-.cal-dot.start {
-  background: transparent;
-  box-shadow: inset 0 0 0 1.5px var(--color-mid-gray);
+  box-shadow: 0 0 0 1.5px var(--color-paper), 0 0 0 2.5px var(--course);
 }
 
 .cal-dot.session,
 .cal-dot.info {
-  background: #a3a3a3;
+  background: color-mix(in srgb, var(--course) 40%, var(--color-paper));
 }
 
 .cal-day-chips {
@@ -830,17 +832,17 @@ button.cal-stat-card:hover {
   border-radius: var(--radius-small);
   font-size: 12px;
   white-space: nowrap;
-  background: var(--color-canvas);
+  background: color-mix(in srgb, var(--course) 12%, var(--color-paper));
   transition: background 0.15s;
 }
 
 .cal-chip:hover {
-  background: #ebebeb;
+  background: color-mix(in srgb, var(--course) 20%, var(--color-paper));
 }
 
 .cal-chip b {
   font-weight: 600;
-  color: var(--color-mid-gray);
+  color: var(--course);
   flex-shrink: 0;
 }
 
@@ -850,29 +852,23 @@ button.cal-stat-card:hover {
 }
 
 .cal-chip.exam {
-  background: var(--color-ink-soft);
+  background: var(--course);
   color: #fafafa;
 }
 
 .cal-chip.exam b {
-  color: rgb(250 250 250 / 0.6);
-}
-
-.cal-chip.start {
-  background: transparent;
-  color: var(--color-mid-gray);
-  padding-left: 4px;
-}
-
-.cal-chip.start:hover,
-.cal-chip.session:hover {
-  background: var(--color-canvas);
+  color: rgb(250 250 250 / 0.75);
 }
 
 .cal-chip.session,
 .cal-chip.info {
   background: transparent;
-  box-shadow: inset 0 0 0 1px var(--color-hairline);
+  box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--course) 35%, var(--color-paper));
+}
+
+.cal-chip.session:hover,
+.cal-chip.info:hover {
+  background: color-mix(in srgb, var(--course) 6%, var(--color-paper));
 }
 
 .cal-chip.done span {
@@ -930,10 +926,6 @@ button.cal-stat-card:hover {
 
 .cal-event-row.exam .cal-event-title {
   font-weight: 600;
-}
-
-.cal-event-row.start .cal-event-title {
-  color: var(--color-mid-gray);
 }
 
 .cal-event-row.done .cal-event-title {
@@ -1016,12 +1008,12 @@ button.cal-stat-card:hover {
   width: 100%;
   padding: 8px 10px;
   border-radius: var(--radius-nested);
-  background: var(--color-canvas);
+  background: color-mix(in srgb, var(--course) 12%, var(--color-paper));
   transition: background 0.15s;
 }
 
 .cal-tile:hover {
-  background: #ebebeb;
+  background: color-mix(in srgb, var(--course) 20%, var(--color-paper));
 }
 
 .cal-tile-time {
@@ -1043,34 +1035,26 @@ button.cal-stat-card:hover {
 .cal-tile-course {
   font-size: 12px;
   font-weight: 600;
-  color: var(--color-mid-gray);
+  color: var(--course);
 }
 
 .cal-tile.exam {
-  background: var(--color-ink-soft);
+  background: var(--course);
   color: #fafafa;
 }
 
 .cal-tile.exam :is(.cal-tile-time, .cal-tile-course) {
-  color: rgb(250 250 250 / 0.6);
-}
-
-.cal-tile.start {
-  background: transparent;
-}
-
-.cal-tile.start .cal-tile-title {
-  color: var(--color-mid-gray);
+  color: rgb(250 250 250 / 0.75);
 }
 
 .cal-tile.session,
 .cal-tile.info {
   background: transparent;
-  box-shadow: inset 0 0 0 1px var(--color-hairline);
+  box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--course) 35%, var(--color-paper));
 }
 
-.cal-tile:is(.start, .session, .info):hover {
-  background: var(--color-surface-alt);
+.cal-tile:is(.session, .info):hover {
+  background: color-mix(in srgb, var(--course) 6%, var(--color-paper));
 }
 
 .cal-tile.done .cal-tile-title {

@@ -213,20 +213,6 @@ TRIGGER:-PT2H
 END:VALARM
 END:VEVENT
 BEGIN:VEVENT
-UID:c21551b1296223060cb3d9c9c787eed0e0105024@tuwien-kurse
-DTSTAMP:20261125T160310Z
-DTSTART;VALUE=DATE:20261130
-DTEND;VALUE=DATE:20261207
-TRANSP:TRANSPARENT
-SUMMARY:VS: Abgabegespräche A2 Zeitraum [widersprüchlich]
-DESCRIPTION:Interview-Zeitraum A2 (alle Studierenden). Widerspruch: TISS/
- Timetable 30.11.–04.12.2026\, Terminplaner hat Slots bis 06.12.2026 (Sa
- /So Zoom). Davids Slot: 02.12. 08:00.\nStatus: widersprüchlich\nQuelle: 
- TISS Einzeltermine\, Course Timetable\, TUWEL Terminplaner
-LOCATION:DSLab / Zoom
-CATEGORIES:other
-END:VEVENT
-BEGIN:VEVENT
 UID:d70ce9cc40df87e7ad6baaf759be2daf41def817@tuwien-kurse
 DTSTAMP:20261125T160310Z
 DTSTART;TZID=Europe/Vienna:20261202T080000

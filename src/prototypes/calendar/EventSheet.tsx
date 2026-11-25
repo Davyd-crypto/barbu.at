@@ -76,7 +76,7 @@ export function EventSheet({ event, now, onClose, onOpen }: Props) {
               <dd>{formatRelativeDay(task.due, now)}</dd>
             </div>
             <div>
-              <dt>Begonnen</dt>
+              <dt>{task.prep ? 'Lernen ab' : 'Begonnen'}</dt>
               <dd>{task.opens ? formatShort(task.opens) : '–'}</dd>
             </div>
             {running && task.opens && task.opens.getTime() <= t && (
@@ -131,7 +131,10 @@ export function EventSheet({ event, now, onClose, onOpen }: Props) {
 
         {task && (
           <button className={`cal-btn wide ${isDone ? 'secondary' : 'primary'}`} onClick={() => setDone(task.id, !isDone)}>
-            <CheckIcon /> {isDone ? 'Abgegeben · rückgängig machen' : 'Als abgegeben markieren'}
+            <CheckIcon />{' '}
+            {isDone
+              ? `${task.prep ? 'Erledigt' : 'Abgegeben'} · rückgängig machen`
+              : `Als ${task.prep ? 'erledigt' : 'abgegeben'} markieren`}
           </button>
         )}
       </div>

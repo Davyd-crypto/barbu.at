@@ -4,8 +4,13 @@
  * A task is every entry with CATEGORIES:deadline; it is due at DTEND. Its
  * start is the entry of the same course that announces it ("UE1 Abgabe öffnet",
  * "Assignment 1 verfügbar", "… – Beginn"), matched by title.
+ *
+ * Exams and interviews are tasks too (prep: time to study): due when they
+ * start, open PREP_DAYS before.
  */
 import { parseIcs, type IcsEvent } from './ics.ts'
+
+const PREP_DAYS = 14
 
 const files = import.meta.glob<string>('./ics/*.ics', { query: '?raw', import: 'default', eager: true })
 
@@ -23,6 +28,7 @@ export interface CalEvent {
   course: Course
   title: string
   kind: Kind
+  categories: string[]
   certainty: Certainty
   notes: string
   source: string
@@ -40,6 +46,8 @@ export interface Task {
   opensEvent: CalEvent | undefined
   opens: Date | undefined
   due: Date
+  /* Exam or interview to prepare for, not something to hand in */
+  prep: boolean
 }
 
 const START_WORDS = new Set(['öffnet', 'verfügbar', 'veröffentlicht', 'beginn'])
@@ -104,6 +112,7 @@ function toCalEvent(event: IcsEvent, course: Course): CalEvent {
     course,
     title,
     kind: kindOf(event.categories, title),
+    categories: event.categories,
     certainty: tagged ?? certainty,
     notes,
     source,
@@ -157,7 +166,7 @@ function build() {
   events.sort((a, b) => a.start.getTime() - b.start.getTime() || a.title.localeCompare(b.title))
 
   const starts = events.filter((e) => e.kind === 'start')
-  const tasks: Task[] = events
+  const deadlines: Task[] = events
     .filter((e) => e.kind === 'deadline')
     .map((event) => {
       const opensEvent = findOpens(event, starts)
@@ -170,9 +179,22 @@ function build() {
         opens: opensEvent?.start,
         // All-day deadlines end at midnight; show them as due at 23:59 that day
         due: event.allDay ? new Date(event.end.getTime() - 60_000) : event.end,
+        prep: false,
       }
     })
-    .sort((a, b) => a.due.getTime() - b.due.getTime())
+  const preps: Task[] = events
+    .filter((e) => e.kind === 'exam' || e.categories.includes('interview'))
+    .map((event) => ({
+      id: event.id,
+      course: event.course,
+      title: event.title,
+      event,
+      opensEvent: undefined,
+      opens: new Date(new Date(event.start).setDate(event.start.getDate() - PREP_DAYS)),
+      due: event.start,
+      prep: true,
+    }))
+  const tasks = [...deadlines, ...preps].sort((a, b) => a.due.getTime() - b.due.getTime())
 
   // "… 2026W" → "WS 2026"
   const termMatch = calendars.map(({ cal }) => /(\d{4})([WS])$/.exec(cal.name.trim())).find(Boolean)

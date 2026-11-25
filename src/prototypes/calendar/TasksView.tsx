@@ -41,7 +41,7 @@ export function TasksView({ now, onOpen }: Props) {
   const soon = upcoming.filter((task, i) => i < SOON_MIN || task.due.getTime() - t < SOON_DAYS * DAY)
   const recentlyDone = tasks.filter((task) => done.has(task.id) && t - task.due.getTime() < OVERDUE_DAYS * DAY)
 
-  const nextTask = open.find((task) => task.due.getTime() > t)
+  const nextTask = open.find((task) => !task.prep && task.due.getTime() > t)
   const nextExam = events.find((e) => e.kind === 'exam' && e.start.getTime() > t)
   const listed = showAll ? upcoming : soon
 
@@ -95,7 +95,7 @@ export function TasksView({ now, onOpen }: Props) {
       </section>
 
       {recentlyDone.length > 0 && (
-        <Fold label={`Abgegeben · ${recentlyDone.length}`} storageKey="calendar:fold:done">
+        <Fold label={`Erledigt · ${recentlyDone.length}`} storageKey="calendar:fold:done">
           <ul className="cal-card cal-list">
             {recentlyDone.map((task) => (
               <TaskRow key={task.id} task={task} now={now} done onCheck={() => setDone(task.id, false)} onOpen={() => onOpen(task.event)} />
@@ -200,9 +200,11 @@ function ActiveCard({ task, now, onCheck, onOpen }: ItemProps) {
         </span>
       </button>
       <div className="cal-card-footer">
-        <span>Fällig {formatRelativeDay(task.due, now)}</span>
+        <span>
+          {task.prep ? 'Termin' : 'Fällig'} {formatRelativeDay(task.due, now)}
+        </span>
         <button className="cal-btn primary" onClick={onCheck}>
-          <CheckIcon /> Abgegeben
+          <CheckIcon /> {task.prep ? 'Erledigt' : 'Abgegeben'}
         </button>
       </div>
     </article>
@@ -218,7 +220,7 @@ function TaskRow({ task, now, onCheck, onOpen, done = false }: ItemProps & { don
       <button
         className={`cal-checkbox ${done ? 'checked' : ''}`}
         onClick={onCheck}
-        aria-label={done ? `${task.title}: als offen markieren` : `${task.title}: als abgegeben markieren`}
+        aria-label={done ? `${task.title}: als offen markieren` : `${task.title}: als ${task.prep ? 'erledigt' : 'abgegeben'} markieren`}
       >
         <CheckIcon size={12} />
       </button>
@@ -228,7 +230,7 @@ function TaskRow({ task, now, onCheck, onOpen, done = false }: ItemProps & { don
           <CourseTag course={task.course} />
           <span>
             bis {formatRelativeDay(task.due, now)}
-            {opensLater && ` · öffnet ${formatShort(task.opens!, false)}`}
+            {opensLater && ` · ${task.prep ? 'lernen ab' : 'öffnet'} ${formatShort(task.opens!, false)}`}
           </span>
         </span>
       </button>

@@ -63,7 +63,7 @@ export function CalendarPrototype() {
               <li key={c.id}>
                 <CourseTag course={c} />
                 <span className="cal-course-name">{c.name}</span>
-                <span className="cal-course-count" title="offene Fristen">
+                <span className="cal-course-count" title="offene Aufgaben">
                   {pending.filter((task) => task.course === c).length}
                 </span>
               </li>
